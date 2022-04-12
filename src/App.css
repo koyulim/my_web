@@ -1,4 +1,59 @@
-.App {
+body {
+  font-family: 'nanumsquare';
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns:
+    [jobtype-start] 20% [jobtype-end jobborde-start] 80% [jobborde-end];
+  /* grid-template-rows:
+    [body-start] 80% [body-end]; */
+}
+
+.href {
+  text-decoration: none;
+  color: black;
+}
+
+.jobtype {
+  background: skyblue;
+  padding: 10px;
+
+}
+
+.jobborde {
+  text-align: center;
+  background: rgb(197, 212, 218);
+  padding: 10px;
+}
+
+.title-bar {
+  background: black;
+  width: 100%;
+  color: white;
+  font-weight: 600;
+  font-size: 30px;
+  display: grid;
+  height: 50px;
+  grid-template-columns:
+    [title-start] 90% [title-end login-start] 10% [login-end];
+}
+
+.login {
+  text-align: center;
+}
+
+.signup {
+  text-align: center;
+}
+
+.map {
+  padding-left: 200px;
+}
+
+.title {
+  padding: 5px;
   text-align: center;
 }
 
@@ -32,6 +87,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
