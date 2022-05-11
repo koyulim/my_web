@@ -6,9 +6,18 @@ body {
   display: grid;
   height: 100vh;
   grid-template-columns:
-    [jobtype-start] 20% [jobtype-end jobborde-start] 80% [jobborde-end];
-  /* grid-template-rows:
-    [body-start] 80% [body-end]; */
+    [jobtype-start] 20% 
+    [jobtype-end jobborde-start] 80% 
+    [jobborde-end];
+  
+}
+
+.textsize{
+  
+  /* padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px; */
 }
 
 .href {
@@ -37,7 +46,13 @@ body {
   display: grid;
   height: 50px;
   grid-template-columns:
-    [title-start] 90% [title-end login-start] 10% [login-end];
+    [title-start] 80% 
+    [title-end login-start] 20% 
+    [login-end];
+}
+
+.overlap{
+  color: red;
 }
 
 .login {

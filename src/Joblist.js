@@ -1,12 +1,11 @@
 import './App.css';
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 
 import Eat from 'Jobtype/Eat';
 import Management from 'Jobtype/Management';
 import Service from 'Jobtype/Service';
 import Post from 'Jobtype/Post';
-
 
 function Joblist() {
     return (
@@ -29,6 +28,8 @@ function Joblist() {
                 </div>
             </div>
         </div>
+    
+
     );
 }
 
