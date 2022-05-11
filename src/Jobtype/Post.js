@@ -19,7 +19,7 @@ class Post extends Component {
                 <Location/>
                 </div>
                 <br/>
-                <button>올리기</button>
+                <button>올리기에용 헷</button>
             </div>
         );
     }
