@@ -32,6 +32,12 @@ let sequelize = new Sequelize(
     });
 
     db.Signup = require('./signup')(sequelize, Sequelize);
+    db.Eatinfo = require('./eatinfo')(sequelize, Sequelize);
+    db.Manageinfo = require('./manageinfo')(sequelize, Sequelize);
+    db.Serviceinfo = require('./serviceinfo')(sequelize, Sequelize);
+
+
+
     
 
 db.secret = '(9*)5$&!3%^0%^@@2$1!#5@2!4';

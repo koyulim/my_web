@@ -6,7 +6,7 @@ function Eat() {
   const [data, setData] = useState(null);
   useEffect(() => {
     const getData = async () => {
-      const datas = await axios.get("http://localhost:4000/Eat");
+      const datas = await axios.get("/Eat");
       setData(datas.data);
     };
     getData();
@@ -34,7 +34,7 @@ function Eat() {
               <div>
                 <hr />
                 <div>
-                  {elem.text} | {elem.num} | {elem.url} 
+                {elem.area} | {elem.jobname} | {elem.url}
                 </div>
                 <div style={{ padding: '10px' }}>
                   <button onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No='+ elem.url +'&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
@@ -49,6 +49,5 @@ function Eat() {
       </div>
     );
   }
-
 }
 export default Eat;

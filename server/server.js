@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
-
 const sequelize = require('./models').sequelize;
 const bodyParser = require('body-parser');
-
+const cron = require('node-cron');
 const cors = require('cors');
 const cheerio = require('cheerio');
 const axios = require('axios');
@@ -21,88 +20,203 @@ const getHtml = (url) => {
   return axios.get(url, { responseType: 'arraybuffer', responseEncoding: 'binary' });
 };
 
-const getBookInfo = (target) => {
-  const $ = cheerio.load(Iconv.decode(target.data, "EUC-KR"));
+// const getBookInfo = (target) => {
+//   const $ = cheerio.load(Iconv.decode(target.data, "EUC-KR"));
+//   let parentTag = $('tr');
+//   // 크롤링할 태그 찾기
+
+//   let resultArr = [];
+//   var n = 0;
+//   parentTag.each(function (i, elem) {
+
+//     let itemObj = {
+//       url: $(this).find('a').eq(0).toString().substring(35, 43),
+//       area: $(this).find('td.area').toString().substring(206, 212),
+//       jobname: $(this).find('p.cName').text(),
+//     };
+
+//     n++;
+//     if (n > 2) resultArr.push(itemObj);
+
+//   });
+
+//   resultArr.forEach((elem) => {
+//     console.log(`${elem.area} | ${elem.jobname} | ${elem.url}`);
+
+//     Eatinfo.create({
+//       url: elem.url,
+//       area: elem.area,
+//       jobname: elem.jobname
+//     })
+
+//   });
+//   return resultArr;
+// }
+
+cron.schedule('* * * * *', function () {
+  console.log("getBookInfo");
+});
+
+app.get('/Eat', async (req, res) => {
+
+  try {
+    const answer = await getHtml('https://www.albamon.com/list/gi/mon_part_list.asp?ps=20&ob=6&sExcChk=y&lvtype=1&rpcd=,1000,&partExc=&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=,1');
+    // const preProcessingResult = getBookInfo(answer);
+    // res.send(preProcessingResult);
+
+    //const getBookInfo = (target) => {
+      const $ = cheerio.load(Iconv.decode(answer.data, "EUC-KR"));
       let parentTag = $('tr');
       // 크롤링할 태그 찾기
-
+    
       let resultArr = [];
       var n = 0;
       parentTag.each(function (i, elem) {
-
+    
         let itemObj = {
           url: $(this).find('a').eq(0).toString().substring(35, 43),
-          text: $(this).find('td.area').toString().substring(206, 212),
-          num: $(this).find('p.cName').text(),
+          area: $(this).find('td.area').toString().substring(206, 212),
+          jobname: $(this).find('p.cName').text(),
         };
-
+    
         n++;
         if (n > 2) resultArr.push(itemObj);
+    
       });
-
+    
       resultArr.forEach((elem) => {
-        console.log(`${elem.text} | ${elem.num} | ${elem.url}`);
+        console.log(`${elem.area} | ${elem.jobname} | ${elem.url}`);
+    
+        Eatinfo.create({
+          url: elem.url,
+          area: elem.area,
+          jobname: elem.jobname
+        })
+        
       });
-  return resultArr;
-}
+      res.send(resultArr);
+      //return resultArr;
+    //}
 
-app.get('/Eat', async(req, res) => {
-  
-  try {
-    const answer = await getHtml('https://www.albamon.com/list/gi/mon_part_list.asp?ps=20&ob=6&sExcChk=y&lvtype=1&rpcd=,1000,&partExc=&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=,1');
-    const preProcessingResult = getBookInfo(answer);
-    res.send(preProcessingResult);
   } catch (error) {
     res.send(error);
   }
 });
 
-app.get('/Management', async(req, res) => {
-  
+app.get('/Management', async (req, res) => {
+
+  // try {
+  //   const answer = await getHtml('https://www.albamon.com/list/gi/mon_part_list.asp?ps=20&ob=6&sExcChk=y&lvtype=1&rpcd=,2000,&partExc=&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=,1');
+  //   const preProcessingResult = getBookInfo(answer);
+  //   res.send(preProcessingResult);
+  // } catch (error) {
+  //   res.send(error);
+  // }
   try {
     const answer = await getHtml('https://www.albamon.com/list/gi/mon_part_list.asp?ps=20&ob=6&sExcChk=y&lvtype=1&rpcd=,2000,&partExc=&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=,1');
-    const preProcessingResult = getBookInfo(answer);
-    res.send(preProcessingResult);
+    // const preProcessingResult = getBookInfo(answer);
+    // res.send(preProcessingResult);
+
+    //const getBookInfo = (target) => {
+      const $ = cheerio.load(Iconv.decode(answer.data, "EUC-KR"));
+      let parentTag = $('tr');
+      // 크롤링할 태그 찾기
+    
+      let resultArr = [];
+      var n = 0;
+      parentTag.each(function (i, elem) {
+    
+        let itemObj = {
+          url: $(this).find('a').eq(0).toString().substring(35, 43),
+          area: $(this).find('td.area').toString().substring(206, 212),
+          jobname: $(this).find('p.cName').text(),
+        };
+    
+        n++;
+        if (n > 2) resultArr.push(itemObj);
+    
+      });
+    
+      resultArr.forEach((elem) => {
+        console.log(`${elem.area} | ${elem.jobname} | ${elem.url}`);
+    
+        Manageinfo.create({
+          url: elem.url,
+          area: elem.area,
+          jobname: elem.jobname
+        })
+      });
+      res.send(resultArr);
+      //return resultArr;
+    //}
+    
+
   } catch (error) {
     res.send(error);
   }
-});
 
-app.get('/Service', async(req, res) => {
   
+});
+
+app.get('/Service', async (req, res) => {
+
+  // try {
+  //   const answer = await getHtml('https://www.albamon.com/list/gi/mon_part_list.asp?ps=20&ob=6&sExcChk=y&lvtype=1&rpcd=,4000&partExc=&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=,1');
+  //   const preProcessingResult = getBookInfo(answer);
+  //   res.send(preProcessingResult);
+  // } catch (error) {
+  //   res.send(error);
+  // }
+
   try {
-    const answer = await getHtml('https://www.albamon.com/list/gi/mon_part_list.asp?ps=20&ob=6&sExcChk=y&lvtype=1&rpcd=,4000&partExc=&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=,1');
-    const preProcessingResult = getBookInfo(answer);
-    res.send(preProcessingResult);
+    const answer = await getHtml('https://www.albamon.com/list/gi/mon_part_list.asp?ps=20&ob=6&sExcChk=y&lvtype=1&rpcd=,4000,&partExc=&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=,1');
+    // const preProcessingResult = getBookInfo(answer);
+    // res.send(preProcessingResult);
+
+    //const getBookInfo = (target) => {
+      const $ = cheerio.load(Iconv.decode(answer.data, "EUC-KR"));
+      let parentTag = $('tr');
+      // 크롤링할 태그 찾기
+    
+      let resultArr = [];
+      var n = 0;
+      parentTag.each(function (i, elem) {
+    
+        let itemObj = {
+          url: $(this).find('a').eq(0).toString().substring(35, 43),
+          area: $(this).find('td.area').toString().substring(206, 212),
+          jobname: $(this).find('p.cName').text(),
+        };
+    
+        n++;
+        if (n > 2) resultArr.push(itemObj);
+    
+      });
+    
+      resultArr.forEach((elem) => {
+        console.log(`${elem.area} | ${elem.jobname} | ${elem.url}`);
+    
+        Serviceinfo.create({
+          url: elem.url,
+          area: elem.area,
+          jobname: elem.jobname
+        })
+      });
+      res.send(resultArr);
+      //return resultArr;
+    //}
+
   } catch (error) {
     res.send(error);
   }
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const {
   Signup,
+  Eatinfo,
+  Manageinfo,
+  Serviceinfo,
   Sequelize: { Op }
 } = require('./models');
 const { text } = require('body-parser');

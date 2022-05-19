@@ -6,7 +6,7 @@ function Management() {
   const [data, setData] = useState(null);
   useEffect(() => {
     const getData = async () => {
-      const datas = await axios.get("http://localhost:4000/Management");
+      const datas = await axios.get("/Management");
       setData(datas.data);
     };
     getData();
@@ -34,7 +34,7 @@ function Management() {
               <div>
                 <hr />
                 <div>
-                  {elem.text} | {elem.num} | {elem.url}
+                  {elem.area} | {elem.jobname} | {elem.url}
                   
                 </div>
                 <div style={{ padding: '10px' }}>

@@ -6,7 +6,7 @@ function Service() {
   const [data, setData] = useState(null);
   useEffect(() => {
     const getData = async () => {
-      const datas = await axios.get("http://localhost:4000/Service");
+      const datas = await axios.get("/Service");
       setData(datas.data);
     };
     getData();
@@ -34,7 +34,7 @@ function Service() {
               <div>
                 <hr />
                 <div>
-                  {elem.text} | {elem.num} | {elem.url}
+                  {elem.area} | {elem.jobname} | {elem.url}
                   
                 </div>
                 <div style={{ padding: '10px' }}>
