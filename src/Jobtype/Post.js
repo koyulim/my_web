@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
 import Location from 'Location';
-
 
 class Post extends Component {
     render(){
@@ -19,7 +17,7 @@ class Post extends Component {
                 <Location/>
                 </div>
                 <br/>
-                <button>올리기에용 헷</button>
+                <button>올리기</button>
             </div>
         );
     }
