@@ -39,11 +39,11 @@ async function manageInfo() {
   resultArr.forEach((elem) => {
     console.log(`${elem.area} | ${elem.jobname} | ${elem.url}`);
 
-    // Manageinfo.create({
-    //   url: elem.url,
-    //   area: elem.area,
-    //   jobname: elem.jobname
-    // })
+    Manageinfo.create({
+      url: elem.url,
+      area: elem.area,
+      jobname: elem.jobname
+    })
     
   });
   return resultArr;

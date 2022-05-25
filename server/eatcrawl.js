@@ -39,11 +39,11 @@ async function eatInfo() {
   resultArr.forEach((elem) => {
     console.log(`${elem.area} | ${elem.jobname} | ${elem.url}`);
 
-    // Eatinfo.create({
-    //   url: elem.url,
-    //   area: elem.area,
-    //   jobname: elem.jobname
-    // })
+    Eatinfo.create({
+      url: elem.url,
+      area: elem.area,
+      jobname: elem.jobname
+    })
 
     // 조회 후 
     // 비교

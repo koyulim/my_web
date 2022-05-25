@@ -28,16 +28,18 @@ render() {
   const { sample1List } = this.state;
   return (
       <>
-      <div className='App'>
-      <h3>Service List</h3>
+     <div className='App'>
+        <h2>Service List</h2>
+        <input type='text' maxLength='10' placeholder='지역 검색' onChange={(e) => this._nameUpdate(e)} />
+        <input type='text' maxLength='20' placeholder='가게 이름 검색' onChange={(e) => this._emailUpdate(e)}/>
+        <button onClick={this._getKeywordData}>Search</button>
+        <button onClick={this._getData}>ListAll</button>
 
-      <input type='text' maxLength='10' placeholder='검색키워드(name)' onChange={(e) => this._nameUpdate(e)} />
-      <input type='text' maxLength='20' placeholder='검색키워드(email)' onChange={(e) => this._emailUpdate(e)}/>
-      <button onClick={this._getKeywordData}>Search</button>
-      <button onClick={this._getData}>ListAll</button>
+        <br/>
+        <br/>
+        <h3>지역 | 가게 이름</h3>
+        <hr/>
 
-      <br/>
-      <br/>
 
       {sample1List.length !== 0 ? 
       sample1List.map( (el, key) => {

@@ -26,7 +26,7 @@ async function handleAsync() {
 }
 
 cron.schedule("* * * * *", async () => {
-  console.log("running a task every two minutes");
+  console.log("running a schedule");
   await handleAsync();
 });
 
@@ -89,9 +89,6 @@ app.get('/get/servicedata', (req, res) => {
    .then( result => { res.send(result) })
    .catch( err => { throw err })
 })
-
-
-
 
 
 app.post('/get/multiKeywordData', (req, res) => {
