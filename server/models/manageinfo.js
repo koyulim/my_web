@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
-        'eatinfo', 
+        'manageinfo', 
         {
             url: {
                 type: DataTypes.STRING(50),
