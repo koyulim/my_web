@@ -22,9 +22,9 @@ async function manageInfo() {
   let resultArr = [];
   var n = 0;
   parentTag.each(function (i, elem) {
-    const url = $(this).find('a').eq(0).toString().substring(35, 43);
-    const area = $(this).find('td.area').toString().substring(206, 212);
-    const jobname = $(this).find('p.cName').text();
+    const url = $(this).find('td.area').toString().substring(131,139);
+    const area = $(this).find('td.area').toString().substring(323,330);
+    const jobname = $(this).find('p.cName').find('a').text();
     let itemObj = {
       url: url,
       area: area,
@@ -37,7 +37,7 @@ async function manageInfo() {
   });
 
   resultArr.forEach((elem) => {
-    console.log(`${elem.area} | ${elem.jobname} | ${elem.url}`);
+    console.log(`${elem.url} | ${elem.area} | ${elem.jobname}`);
 
     Manageinfo.create({
       url: elem.url,
