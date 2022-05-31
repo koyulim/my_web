@@ -6,7 +6,7 @@ const express = require("express");
 
 async function getHtml() {
   try {
-    return await axios.get('https://www.albamon.com/list/gi/mon_part_list.asp?ps=20&ob=6&sExcChk=y&lvtype=1&rpcd=,1000,&partExc=&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=,1', { responseType: 'arraybuffer', responseEncoding: 'binary' });
+    return await axios.get('https://www.albamon.com/recruit/area?rArea=%2cB000&rpcd=%2c1000&partExc=0&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=%2c1&sExcChk=y', { responseType: 'arraybuffer', responseEncoding: 'binary' });
   } catch (error) {
     console.error(error);
   }
@@ -15,7 +15,7 @@ async function getHtml() {
 async function eatInfo() {
   const html = await getHtml();
 
-  const $ = cheerio.load(Iconv.decode(html.data, "EUC-KR"));
+  const $ = cheerio.load(Iconv.decode(html.data, "UTF-8"));
   let parentTag = $('tr');
   // 크롤링할 태그 찾기
 
