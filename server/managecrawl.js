@@ -49,7 +49,6 @@ async function manageInfo() {
         url: elem.url,
         area: elem.area,
         jobname: elem.jobname,
-        date: elem.time,
       },
       defaults: {
         url: elem.url,

@@ -3,7 +3,7 @@ const Iconv = require('iconv-lite');
 const cheerio = require('cheerio');
 const { Eatinfo } = require("./models");
 const express = require("express");
-const date = require("date-utils");
+const moment = require('moment');
 
 async function getHtml() {
   try {
@@ -26,8 +26,12 @@ async function eatInfo() {
     const url = $(this).find('td.area').toString().substring(131, 139);
     const area = $(this).find('td.area').toString().substring(323, 330);
     const jobname = $(this).find('p.cName').find('a').text();
-    const newDate = new Date();
-    const time = newDate.toFormat('YYYY-MM-DD HH24:MI:SS');  //YYYY-MM-DD HH24:MI:SS
+    //const newDate = new Date();
+    const time = moment().format('YYYY-MM-DD hh:mm:ss');  //YYYY-MM-DD HH24:MI:SS
+    const deletetime = moment().subtract(1,'days')
+    console.log ("test :" + time);
+    console.log ("test2 :" + deletetime);
+
 
     let itemObj = {
       url: url,
@@ -47,23 +51,20 @@ async function eatInfo() {
 
     //기간이 오래되었을때 지우는것 
 
-    Eatinfo.findCreateFind({  //조회시 없으면 생성후 조회
-      where: {
-        url: elem.url,
-        area: elem.area,
-        jobname: elem.jobname,
-        date: elem.time,
-      },
-      defaults: {
-        url: elem.url,
-        area: elem.area,
-        jobname: elem.jobname,
-        date: elem.time,
-      }
-    })
-
-
-
+    // Eatinfo.findCreateFind({  //조회시 없으면 생성후 조회
+    //   where: {
+    //     url: elem.url,
+    //     area: elem.area,
+    //     jobname: elem.jobname,
+    //   },
+    //   defaults: {
+    //     url: elem.url,
+    //     area: elem.area,
+    //     jobname: elem.jobname,
+    //     date: elem.time,
+    //   }
+    // })
+    
   });
   return resultArr;
 }
