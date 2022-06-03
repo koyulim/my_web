@@ -39,8 +39,6 @@ class Findnickname extends Component {
 
     }
 
-
-
     render() {
         const { sample1List } = this.state;
         return (

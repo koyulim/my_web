@@ -20,8 +20,8 @@ app.use(bodyParser.json());
 
 async function handleAsync() {
   const eatInfos = await eatInfo();
-  const manageInfos = await manageInfo();
-  const serviceInfos = await serviceInfo();
+  //const manageInfos = await manageInfo();
+  //const serviceInfos = await serviceInfo();
   return eatInfos,manageInfos,serviceInfos;
 }
 
@@ -38,6 +38,24 @@ const {
   Sequelize: { Op }
 } = require('./models');
 sequelize.query('SET NAMES utf8;');
+
+
+app.post('/add/eatdata', (req, res) => {
+  console.log(req.body);
+
+  Signup.create({
+    email: req.body.email,
+    nickname: req.body.nickname,
+    password: req.body.password
+  })
+    .then(result => {
+      res.send(result)
+    })
+    .catch(err => {
+      console.log(err)
+      throw err;
+    })
+})
 
 app.post('/get/keywordData', (req, res) => {
   Signup.findAll({
@@ -77,6 +95,7 @@ app.get('/get/eatdata', (req, res) => {
    .then( result => { res.send(result) })
    .catch( err => { throw err })
 })
+
 
 app.get('/get/managedata', (req, res) => {
   Manageinfo.findAll()

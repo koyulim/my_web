@@ -38,7 +38,7 @@ render() {
 
         <br/>
         <br/>
-        <h3>지역 | 가게 이름</h3>
+        <h3>지역 | 가게 이름 | 날짜</h3>
         <hr/>
 
 
@@ -49,7 +49,8 @@ render() {
             <div key={key}>
               {/* <span>  {el.url} </span>/ */}
               <span> {el.area} </span> |
-              <span> {el.jobname} </span>
+              <span> {el.jobname} </span> |
+              <span> {el.date} </span>
             </div>
             <div style={{ padding: '10px' }}>
                   <button onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No='+ el.url +'&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>

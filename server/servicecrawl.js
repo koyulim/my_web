@@ -3,10 +3,11 @@ const Iconv = require('iconv-lite');
 const cheerio = require('cheerio');
 const { Serviceinfo } = require("./models");
 const express = require("express");
+const date = require("date-utils");
 
 async function getHtml() {
   try {
-    return await axios.get('https://www.albamon.com/list/gi/mon_part_list.asp?ps=20&ob=6&sExcChk=y&lvtype=1&rpcd=,4000,&partExc=&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=,1', { responseType: 'arraybuffer', responseEncoding: 'binary' });
+    return await axios.get('https://www.albamon.com/recruit/area?ps=20&ob=6&sExcChk=y&lvtype=1&rArea=,B000&rpcd=,4000&partExc=0&paycd=A000&paycd_a=&rWDate=1&Empmnt_Type=,1', { responseType: 'arraybuffer', responseEncoding: 'binary' });
   } catch (error) {
     console.error(error);
   }
@@ -15,20 +16,24 @@ async function getHtml() {
 async function serviceInfo() {
   const html = await getHtml();
 
-  const $ = cheerio.load(Iconv.decode(html.data, "EUC-KR"));
+  const $ = cheerio.load(Iconv.decode(html.data, "UTF-8"));
   let parentTag = $('tr');
   // 크롤링할 태그 찾기
 
   let resultArr = [];
   var n = 0;
   parentTag.each(function (i, elem) {
-    const url = $(this).find('a').eq(0).toString().substring(35, 43);
-    const area = $(this).find('td.area').toString().substring(206, 212);
-    const jobname = $(this).find('p.cName').text();
+    const url = $(this).find('td.area').toString().substring(131,139);
+    const area = $(this).find('td.area').toString().substring(323,330);
+    const jobname = $(this).find('p.cName').find('a').text();
+    const newDate = new Date();
+    const time = newDate.toFormat('YYYY-MM-DD');  //YYYY-MM-DD HH24:MI:SS
+    
     let itemObj = {
       url: url,
       area: area,
       jobname: jobname,
+      time : time,
     };
 
     n++;
@@ -37,14 +42,23 @@ async function serviceInfo() {
   });
 
   resultArr.forEach((elem) => {
-    console.log(`${elem.area} | ${elem.jobname} | ${elem.url}`);
-
-    Serviceinfo.create({
-      url: elem.url,
-      area: elem.area,
-      jobname: elem.jobname
+    console.log(`${elem.url} | ${elem.area} | ${elem.jobname} | ${elem.time}`);
+   
+    Serviceinfo.findCreateFind({
+      where: {
+        url: elem.url,
+        area: elem.area,
+        jobname: elem.jobname,
+        date: elem.time,
+      },
+      defaults: {
+        url: elem.url,
+        area: elem.area,
+        jobname: elem.jobname,
+        date: elem.time,
+      }
     })
-    
+
   });
   return resultArr;
 }
