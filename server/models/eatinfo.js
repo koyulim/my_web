@@ -2,15 +2,15 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         'eatinfo', 
         {
-            url: {
-                type: DataTypes.STRING(50),
-                allowNull: true
-            },
             area: {
                 type: DataTypes.STRING(50),
                 allowNull: true
             },
             jobname: {
+                type: DataTypes.STRING(50),
+                allowNull: true
+            },
+            url: {
                 type: DataTypes.STRING(50),
                 allowNull: true
             },
