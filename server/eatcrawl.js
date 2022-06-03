@@ -26,18 +26,20 @@ async function eatInfo() {
     const url = $(this).find('td.area').toString().substring(131, 139);
     const area = $(this).find('td.area').toString().substring(323, 330);
     const jobname = $(this).find('p.cName').find('a').text();
-    //const newDate = new Date();
-    const time = moment().format('YYYY-MM-DD hh:mm:ss');  //YYYY-MM-DD HH24:MI:SS
-    const deletetime = moment().subtract(1,'days')
-    console.log ("test :" + time);
-    console.log ("test2 :" + deletetime);
-
-
+    const today = moment();
+    const time = today.format('YYYY-MM-DD');  //YYYY-MM-DD HH24:MI:SS
+    //const deletetime = today.clone().subtract(4, "m").format('YYYY-MM-DD hh:mm'); //5분전
+    const createtime = today.format('YYYY-MM');
+    //const deletetime = today.format('YYYY-MM');
+    const deletetime = today.clone().subtract(6, "month").format('YYYY-MM'); //6개월전
+    
     let itemObj = {
       url: url,
       area: area,
       jobname: jobname,
       time: time,
+      createtime : createtime,
+      deletetime :deletetime,
     };
 
     n++;
@@ -49,21 +51,27 @@ async function eatInfo() {
   resultArr.forEach((elem) => {
     console.log(`${elem.url} | ${elem.area} | ${elem.jobname} | ${elem.time}`);
 
-    //기간이 오래되었을때 지우는것 
+    Eatinfo.findCreateFind({  //조회시 없으면 생성후 조회
+      where: {
+        url: elem.url,
+        area: elem.area,
+        jobname: elem.jobname,
+      },
+      defaults: {
+        url: elem.url,
+        area: elem.area,
+        jobname: elem.jobname,
+        date: elem.time,
+        createtime : elem.createtime,
+      }
+    })
 
-    // Eatinfo.findCreateFind({  //조회시 없으면 생성후 조회
-    //   where: {
-    //     url: elem.url,
-    //     area: elem.area,
-    //     jobname: elem.jobname,
-    //   },
-    //   defaults: {
-    //     url: elem.url,
-    //     area: elem.area,
-    //     jobname: elem.jobname,
-    //     date: elem.time,
-    //   }
-    // })
+    //기간이 오래되었을때 지우는것 
+    Eatinfo.destroy({  
+      where: {
+        createtime : elem.deletetime,
+      }
+    })
     
   });
   return resultArr;

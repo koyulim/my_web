@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
             date: {
                 type: DataTypes.STRING(50),
                 allowNull: true
+            },
+            createtime: {
+                type: DataTypes.STRING(50),
+                allowNull: true
             }
         },
         {
