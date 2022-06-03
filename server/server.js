@@ -18,17 +18,17 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-async function handleAsync() {
-  const eatInfos = await eatInfo();
-  //const manageInfos = await manageInfo();
-  //const serviceInfos = await serviceInfo();
-  return eatInfos,manageInfos,serviceInfos;
-}
+// async function handleAsync() {
+//   const eatInfos = await eatInfo();
+//   const manageInfos = await manageInfo();
+//   const serviceInfos = await serviceInfo();
+//   return eatInfos,manageInfos,serviceInfos;
+// }
 
-cron.schedule("* * * * *", async () => {
-  console.log("running a schedule");
-  await handleAsync();
-});
+// cron.schedule("* * * * *", async () => {
+//   console.log("running a schedule");
+//   await handleAsync();
+// });
 
 const {
   Signup,

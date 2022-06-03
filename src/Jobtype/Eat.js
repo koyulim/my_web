@@ -53,7 +53,7 @@ render() {
             </div>
             <div style={{ padding: '10px' }}>
                   <button onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No='+ el.url +'&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
-                  <button>후기글 보기</button>
+                  <button><a className='href' href='Board'>후기글 보기</a></button>
             </div>
             <hr/>
             </>

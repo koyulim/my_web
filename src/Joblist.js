@@ -6,6 +6,8 @@ import Eat from 'Jobtype/Eat';
 import Management from 'Jobtype/Management';
 import Service from 'Jobtype/Service';
 import Post from 'Jobtype/Post';
+import Board from 'Jobtype/Board';
+
 
 function Joblist() {
     return (
@@ -24,6 +26,7 @@ function Joblist() {
                         <Route path='Management/*' element={<Management />} />
                         <Route path='Service/*' element={<Service />} />
                         <Route path='Post/*' element={<Post />} />
+                        <Route path='Board/*' element={<Board />} />
                     </Routes>
                 </div>
             </div>
