@@ -1,16 +1,25 @@
 
 
 const nickname = sessionStorage.getItem('nickname');
+const area = sessionStorage.getItem('area');
+const jobname = sessionStorage.getItem('jobname');
+const url = sessionStorage.getItem('url');
+
+
 
 function Board(){
     return(
         <>
-        <div>안녕</div>
+        <div>글 목록</div>
         {
             nickname !== null
             ? <div><button><a className='href' href='Post'>글쓰기</a></button></div>
             :<button style={{padding : '5px'}} onClick={Posts}>글쓰기</button>
         }
+
+        <a>{area}</a>
+        <a>{jobname}</a>
+        <a>{url}</a>
 
         
         

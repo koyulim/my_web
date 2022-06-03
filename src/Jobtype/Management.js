@@ -14,11 +14,32 @@ class Management extends Component {
         }
       };
     
-      componentDidMount() {
-        this._getData();
+      areaUpdate(e) {
+        this.setState({ area: e.target.value })
+      }
+      jobnameUpdate(e) {
+        this.setState({ jobname: e.target.value })
       }
     
-      _getData = async () => {
+      getKeywordmanageData = async () => {
+        const res = await axios('/get/keywordmanageData', {
+          method: 'POST',
+          data: {
+            'area': this.state.area,
+            'jobname': this.state.jobname
+          },
+          headers: new Headers()
+        });
+        this.setState({
+          sample1List: res.data
+        })
+      }
+
+      componentDidMount() {
+        this.getData();
+      }
+    
+      getData = async () => {
         const res = await axios.get('/get/managedata');
         this.setState({ 
           sample1List : res.data
@@ -31,10 +52,10 @@ render() {
         <>
         <div className='App'>
         <h2>Management List</h2>
-        <input type='text' maxLength='10' placeholder='지역 검색' onChange={(e) => this._nameUpdate(e)} />
-        <input type='text' maxLength='20' placeholder='가게 이름 검색' onChange={(e) => this._emailUpdate(e)}/>
-        <button onClick={this._getKeywordData}>Search</button>
-        <button onClick={this._getData}>ListAll</button>
+        <input type='text' maxLength='10' placeholder='지역 검색' onChange={(e) => this.areaUpdate(e)} />
+        <input type='text' maxLength='20' placeholder='가게 이름 검색' onChange={(e) => this.jobnameUpdate(e)}/>
+        <button onClick={this.getKeywordmanageData}>Search</button>
+        <button onClick={this.getData}>ListAll</button>
 
         <br/>
         <br/>

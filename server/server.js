@@ -18,6 +18,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//크롤링
 // async function handleAsync() {
 //   const eatInfos = await eatInfo();
 //   const manageInfos = await manageInfo();
@@ -88,6 +89,28 @@ app.post('/add/data', (req, res) => {
       console.log(err)
       throw err;
     })
+})
+
+app.post('/get/keywordEatData', (req, res) => {
+  Eatinfo.findAll({
+    where: { [Op.or]: [{ area : req.body.area }, { jobname : req.body.jobname }] }
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+app.post('/get/keywordserviceData', (req, res) => {
+  Serviceinfo.findAll({
+    where: { [Op.or]: [{ area : req.body.area }, { jobname : req.body.jobname }] }
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+app.post('/get/keywordmanageData', (req, res) => {
+  Manageinfo.findAll({
+    where: { [Op.or]: [{ area : req.body.area }, { jobname : req.body.jobname }] }
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
 })
 
 app.get('/get/eatdata', (req, res) => {
