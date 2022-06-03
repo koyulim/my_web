@@ -42,6 +42,7 @@
     "jest-watch-typeahead": "^1.0.0",
     "jquery": "^3.6.0",
     "mini-css-extract-plugin": "^2.4.5",
+    "moment": "^2.29.3",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "node-cron": "^3.0.0",

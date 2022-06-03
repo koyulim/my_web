@@ -23,17 +23,23 @@ async function serviceInfo() {
   let resultArr = [];
   var n = 0;
   parentTag.each(function (i, elem) {
-    const url = $(this).find('td.area').toString().substring(131,139);
-    const area = $(this).find('td.area').toString().substring(323,330);
+    const url = $(this).find('td.area').toString().substring(131, 139);
+    const area = $(this).find('td.area').toString().substring(323, 330);
     const jobname = $(this).find('p.cName').find('a').text();
-    const newDate = new Date();
-    const time = newDate.toFormat('YYYY-MM-DD');  //YYYY-MM-DD HH24:MI:SS
+    const today = moment();
+    const time = today.format('YYYY-MM-DD');  //YYYY-MM-DD HH24:MI:SS
+    //const deletetime = today.clone().subtract(4, "m").format('YYYY-MM-DD hh:mm'); //5분전
+    const createtime = today.format('YYYY-MM');
+    //const deletetime = today.format('YYYY-MM');
+    const deletetime = today.clone().subtract(6, "month").format('YYYY-MM'); //6개월전
     
     let itemObj = {
       url: url,
       area: area,
       jobname: jobname,
-      time : time,
+      time: time,
+      createtime : createtime,
+      deletetime :deletetime,
     };
 
     n++;
@@ -44,18 +50,25 @@ async function serviceInfo() {
   resultArr.forEach((elem) => {
     console.log(`${elem.url} | ${elem.area} | ${elem.jobname} | ${elem.time}`);
    
-    Serviceinfo.findCreateFind({
+    Serviceinfo.findCreateFind({  //조회시 없으면 생성후 조회
       where: {
         url: elem.url,
         area: elem.area,
         jobname: elem.jobname,
-        date: elem.time,
       },
       defaults: {
         url: elem.url,
         area: elem.area,
         jobname: elem.jobname,
         date: elem.time,
+        createtime : elem.createtime,
+      }
+    })
+
+    //기간이 오래되었을때 지우는것 
+    Serviceinfo.destroy({  
+      where: {
+        createtime : elem.deletetime,
       }
     })
 
