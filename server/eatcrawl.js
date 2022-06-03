@@ -23,17 +23,17 @@ async function eatInfo() {
   let resultArr = [];
   var n = 0;
   parentTag.each(function (i, elem) {
-    const url = $(this).find('td.area').toString().substring(131,139);
-    const area = $(this).find('td.area').toString().substring(323,330);
+    const url = $(this).find('td.area').toString().substring(131, 139);
+    const area = $(this).find('td.area').toString().substring(323, 330);
     const jobname = $(this).find('p.cName').find('a').text();
     const newDate = new Date();
-    const time = newDate.toFormat('YYYY-MM-DD');  //YYYY-MM-DD HH24:MI:SS
-    
+    const time = newDate.toFormat('YYYY-MM-DD HH24:MI:SS');  //YYYY-MM-DD HH24:MI:SS
+
     let itemObj = {
       url: url,
       area: area,
       jobname: jobname,
-      time : time,
+      time: time,
     };
 
     n++;
@@ -41,30 +41,28 @@ async function eatInfo() {
 
   });
 
+
   resultArr.forEach((elem) => {
     console.log(`${elem.url} | ${elem.area} | ${elem.jobname} | ${elem.time}`);
 
-    Eatinfo.create({
-      url: elem.url,
-      area: elem.area,
-      jobname: elem.jobname,
-      date : elem.time,
+    //기간이 오래되었을때 지우는것 
+
+    Eatinfo.findCreateFind({  //조회시 없으면 생성후 조회
+      where: {
+        url: elem.url,
+        area: elem.area,
+        jobname: elem.jobname,
+        date: elem.time,
+      },
+      defaults: {
+        url: elem.url,
+        area: elem.area,
+        jobname: elem.jobname,
+        date: elem.time,
+      }
     })
 
-    // 조회 후 
-    // 비교
-    // 완전탐색
 
-     // const key = Eatinfo.findAll({ where: { url: elem.url } });
-    // console.log("test : " + key);
-    // if(key !== elem.url){
-    //   Eatinfo.create({
-    //     url: elem.url,
-    //     area: elem.area,
-    //     jobname: elem.jobname
-    //   })
-
-    // }
 
   });
   return resultArr;

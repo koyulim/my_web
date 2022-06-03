@@ -39,8 +39,7 @@ render() {
         <br/>
         <h3>지역 | 가게 이름 | 날짜</h3>
         <hr/>
-
-
+        
       {sample1List.length !== 0 ? 
       sample1List.map( (el, key) => {
         return(

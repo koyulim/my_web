@@ -44,13 +44,21 @@ async function serviceInfo() {
   resultArr.forEach((elem) => {
     console.log(`${elem.url} | ${elem.area} | ${elem.jobname} | ${elem.time}`);
    
-    Serviceinfo.create({
-      url: elem.url,
-      area: elem.area,
-      jobname: elem.jobname,
-      date : elem.time,
+    Serviceinfo.findCreateFind({
+      where: {
+        url: elem.url,
+        area: elem.area,
+        jobname: elem.jobname,
+        date: elem.time,
+      },
+      defaults: {
+        url: elem.url,
+        area: elem.area,
+        jobname: elem.jobname,
+        date: elem.time,
+      }
     })
-    
+
   });
   return resultArr;
 }

@@ -44,11 +44,19 @@ async function manageInfo() {
   resultArr.forEach((elem) => {
     console.log(`${elem.url} | ${elem.area} | ${elem.jobname} | ${elem.time}`);
     
-    Manageinfo.create({
-      url: elem.url,
-      area: elem.area,
-      jobname: elem.jobname,
-      date : elem.time,
+    Manageinfo.findCreateFind({
+      where: {
+        url: elem.url,
+        area: elem.area,
+        jobname: elem.jobname,
+        date: elem.time,
+      },
+      defaults: {
+        url: elem.url,
+        area: elem.area,
+        jobname: elem.jobname,
+        date: elem.time,
+      }
     })
     
   });
