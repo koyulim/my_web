@@ -45,6 +45,8 @@ class Eat extends Component {
     })
   }
 
+ 
+
   render() {
     const { sample1List } = this.state;
     return (
@@ -64,28 +66,20 @@ class Eat extends Component {
           {sample1List.length !== 0 ?
             sample1List.map((el, key) => {
               return (
-                <>
-                  <div key={key}>
-                    {/* <span>  {el.url} </span>/ */}
+                <div key={key}>
+                <div>
+                    {/* <span>  {el.id} </span>/ */}
                     <span> {el.area} </span> |
                     <span> {el.jobname} </span> |
                     <span> {el.date} </span>
                   </div>
-                  {/* {
-                    sessionStorage.setItem('area', el.area) // 지역 값 보내기
-                  }
-                  {
-                    sessionStorage.setItem('jobname', el.jobname) // 가게이름 값 보내기
-                  }
-                  {
-                    sessionStorage.setItem('url', el.url) // url 값 보내기
-                  } */}
                   <div style={{ padding: '10px' }}>
                     <button onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
-                    <button><a className='href' href='Board'>후기글 보기</a></button>
+                    <button><Link style={{ textDecoration: 'none', color: 'Black'}} to={{pathname: `/Joblist/Board?Jolist=Eat=id=${el.id}`}}>후기글 보기</Link></button>
+
                   </div>
                   <hr />
-                </>
+                </div>
               )
             })
             : <div>데이터가 없습니다.</div>}
@@ -96,7 +90,5 @@ class Eat extends Component {
 
     );
   }
-
-
 }
 export default Eat;
