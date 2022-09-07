@@ -15,9 +15,9 @@ function Joblist() {
             <div className='container'>
                 <div className='jobtype'>
                     <ul>
-                        <li><Link style={{ textDecoration: 'none'}} to='Eat'>외식.음료</Link></li>
-                        <li><Link style={{ textDecoration: 'none'}} to='Management'>매장관리.판매</Link></li>
-                        <li><Link style={{ textDecoration: 'none'}} to='Service'>서비스</Link></li>
+                        <li><Link style={{ textDecoration: 'none', color: 'Black'}} to='Eat'>외식.음료</Link></li>
+                        <li><Link style={{ textDecoration: 'none', color: 'Black'}} to='Management'>매장관리.판매</Link></li>
+                        <li><Link style={{ textDecoration: 'none', color: 'Black'}} to='Service'>서비스</Link></li>
                     </ul>
                 </div>
                 <div className='jobborde'>

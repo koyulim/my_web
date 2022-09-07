@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//크롤링
+// //크롤링
 // async function handleAsync() {
 //   const eatInfos = await eatInfo();
 //   const manageInfos = await manageInfo();
