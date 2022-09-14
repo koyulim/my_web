@@ -40,9 +40,7 @@ function Eat() {
     setSample1List(res.data);
   }
 
-
   return (
-
     <>
       <div className='App'>
         <h2>Eat List</h2>
@@ -66,7 +64,7 @@ function Eat() {
                 </div>
                 <div style={{ padding: '10px' }}>
                   <button onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
-                  <button><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Board?Jolist=Eat&id=${el.id}` }}>후기글 보기</Link></button>
+                  <button><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatboard?Jolist=Eat&id=${el.id}` }} >후기글 보기</Link></button>
                 </div>
                 <hr />
               </div>
@@ -75,11 +73,6 @@ function Eat() {
           : <div>데이터가 없습니다.</div>}
       </div>
     </>
-
   )
-
-
 }
-
-
 export default Eat;

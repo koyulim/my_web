@@ -67,7 +67,7 @@ function Service() {
                 </div>
                 <div style={{ padding: '10px' }}>
                   <button onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
-                  <button><a className='href' href='Board'>후기글 보기</a></button>
+                  <button><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Board?Jolist=Service&id=${el.id}` }}>후기글 보기</Link></button>
                 </div>
                 <hr />
               </div>
