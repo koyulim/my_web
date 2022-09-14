@@ -29,7 +29,7 @@ function App() {
         </div>
         <Routes>
           <Route path='' element={<Navigate to='Joblist' replace />} />
-          <Route path='Joblist' element={<Joblist />} />
+          <Route path='Joblist/*' element={<Joblist />} />
           <Route path='Login/*' element={<Login />} />
           <Route path='Joblist/*' element={<Joblist />} />
           <Route path='Signup/*' element={<Signup />} />
