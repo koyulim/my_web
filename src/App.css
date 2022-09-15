@@ -13,12 +13,10 @@ body {
 }
 
 .textsize{
-  
-  /* padding-left: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 20px; */
+  font-weight: 1300;
+  font-size: 20px;
 }
+
 
 .href {
   text-decoration: none;

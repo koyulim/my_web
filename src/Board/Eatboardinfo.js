@@ -3,23 +3,25 @@ import React, { useEffect, useState, Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-function Eatboard() {
 
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+function Eatboardinfo(){
     const [sample1List, setSample1List] = useState([]);
-
-    const nickname = sessionStorage.getItem('nickname');
     const [searchParams, setSearchParams] = useSearchParams();
+    const nickname = sessionStorage.getItem('nickname');
     const area = searchParams.get('area');
+    const nicknames = searchParams.get('nickname');
+    const title = searchParams.get('title');
     const jobname = searchParams.get('jobname');
    
+   
     const getKeywordEatData = async () => {
-        const res = await axios('/get/keywordEatpostData', {
+        const res = await axios('/get/keywordEatpostinfoData', {
             method: 'POST',
             data: {
+                'title' : title,
                 'area': area,
                 'jobname': jobname,
+                'nickname' : nicknames,
             }
         });
         setSample1List(res.data);
@@ -48,54 +50,40 @@ function Eatboard() {
         }
     }
 
-    return (
-        <>
-            <a><h1>{jobname}</h1>{area}</a>
+    return(
+    <>
             <br />
             <br />
-            <h2>게시글</h2>
+            <h2>상세내용</h2>
             <hr></hr>
             {sample1List.length !== 0 ?
                 sample1List.map((el, key) => {
                     return (
                         <div key={key}>
                             <div>
-                                <Link  className='textsize' style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatboardinfo?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}> {el.title}</Link>
-                                {/* <span> {el.content} </span> | */}
-                                <div>
-                                    <span> {el.nickname} </span>
-                                </div>
-                                <span> {el.date} </span>
+                                <div className='textsize'>제목 : {el.title}</div> 
+                                <div style={{ padding: '10px' }} ><span> 내용 : {el.content} </span> </div>
+                                <div style={{ padding: '10px' }} ><span> {el.date} </span></div>
 
                             </div>
-                            {/* <div>
+                            <hr />
+                            <div>
                                 {el.nickname == nickname ?
                                     <div style={{ padding: '10px' }}>
-                                        <button>수정</button>
+                                        <button><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatrevise?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}>수정</Link></button>
                                         <button onClick={() => deletepost(el)}>삭제</button>
                                     </div>
                                     : <div></div>
                                 }
-                            </div> */}
-                            <hr />
+                            </div>
+                           
                         </div>
                     )
                 })
                 : <div>데이터가 없습니다.</div>}
 
-            <br />
-
-            {
-                nickname !== null
-                    ? <div><button><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Post?area=${area}&jobname=${jobname}` }}>글쓰기</Link></button></div>
-                    : <button style={{ padding: '5px' }} onClick={Posts}>글쓰기</button>
-
-            }
-        </>
+            <br /></>
     )
-}
 
-function Posts() {
-    alert('로그인을 해주세요.')
 }
-export default Eatboard;
+export default Eatboardinfo;

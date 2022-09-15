@@ -19,7 +19,6 @@ class Findnickname extends Component {
         this.setState({ nickname: e.target.value })
     }
 
-
     getemailnicknameDataData = async () => {
         const res = await axios('/get/emailnicknameData', {
             method: 'POST',
