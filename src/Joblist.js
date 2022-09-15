@@ -7,6 +7,8 @@ import Management from 'Jobtype/Management';
 import Service from 'Jobtype/Service';
 import Post from 'Jobtype/Post';
 import Eatboard from 'Board/Eatboard';
+import Eatboardinfo from 'Board/Eatboardinfo';
+import Eatrevise from 'Board/Eatrevise';
 
 
 function Joblist() {
@@ -26,7 +28,9 @@ function Joblist() {
                         <Route path='Management/*' element={<Management />} />
                         <Route path='Service/*' element={<Service />} />
                         <Route path='Post/*' element={<Post />} />
-                        <Route path='Eatboard/*' element={<Eatboard />} />
+                        <Route path='Eatboard/*' element={<Eatboard />} />                        
+                        <Route path='Eatboardinfo/*' element={<Eatboardinfo />} />
+                        <Route path='Eatrevise/*' element={<Eatrevise />} />
                     </Routes>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function Eat() {
   const [area, setArea] = useState('');
+  const [id, setId] = useState('');
   const [jobname, setJobname] = useState('');
   const [sample1List, setSample1List] = useState([]);
 
@@ -21,6 +22,7 @@ function Eat() {
     const res = await axios('/get/keywordEatData', {
       method: 'POST',
       data: {
+        'id' : id,
         'area': area,
         'jobname': jobname
       }
@@ -64,7 +66,7 @@ function Eat() {
                 </div>
                 <div style={{ padding: '10px' }}>
                   <button onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
-                  <button><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatboard?Jolist=Eat&id=${el.id}` }} >후기글 보기</Link></button>
+                  <button><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatboard?area=${el.area}&jobname=${el.jobname}` }} >후기글 보기</Link></button>
                 </div>
                 <hr />
               </div>

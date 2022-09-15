@@ -18,11 +18,11 @@ function App() {
           {
             sessionStorage.getItem('nickname') !== null
             ? 
-            <div className='textsize'>
+            <div>
               {
                  sessionStorage.getItem('nickname') // 로그인 닉네임값 받기
               }
-              <a>님</a>  <button style={{padding : '5px'}} onClick={Logout} ><a className='href' href='http://localhost:3000/Login'>로그아웃</a></button>
+              <a>님</a>  <button style={{padding : '5px'}} onClick={Logout} >로그아웃</button>
             </div>
             :<button><Link style={{ textDecoration: 'none', color: 'Black' }} to='Login'>로그인</Link></button>
           }
@@ -43,6 +43,7 @@ function App() {
 function Logout(){
   alert('로그아웃 되었습니다.')
   sessionStorage.removeItem('nickname');
+  window.location.replace('/Joblist');
 }
 
 export default App;
