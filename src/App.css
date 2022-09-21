@@ -44,8 +44,8 @@ body {
   display: grid;
   height: 50px;
   grid-template-columns:
-    [title-start] 80% 
-    [title-end login-start] 20% 
+    [title-start] 70% 
+    [title-end login-start] 30% 
     [login-end];
 }
 

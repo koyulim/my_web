@@ -36,6 +36,8 @@ let sequelize = new Sequelize(
     db.Manageinfo = require('./manageinfo')(sequelize, Sequelize);
     db.Serviceinfo = require('./serviceinfo')(sequelize, Sequelize);
     db.Eatpost = require('./eatpost')(sequelize, Sequelize);
+    db.Eatcomment = require('./eatcomment')(sequelize, Sequelize);
+
 
 
 

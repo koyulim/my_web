@@ -37,6 +37,7 @@ const {
   Manageinfo,
   Serviceinfo,
   Eatpost,
+  Eatcomment,
   Sequelize: { Op }
 } = require('./models');
 sequelize.query('SET NAMES utf8;');
@@ -51,6 +52,26 @@ app.post('/add/eatpost', (req, res) => {
     title: req.body.title,
     content: req.body.content,
     date: req.body.date
+  })
+    .then(result => {
+      res.send(result)
+    })
+    .catch(err => {
+      console.log(err)
+      throw err;
+    })
+})
+
+app.post('/add/eatcomment', (req, res) => {
+  console.log(req.body);
+
+  Eatcomment.create({
+    area: req.body.area,
+    jobname: req.body.jobname,
+    nickname: req.body.nickname,
+    title: req.body.title,
+    date: req.body.date,
+    comment: req.body.comment,
   })
     .then(result => {
       res.send(result)
@@ -127,11 +148,38 @@ app.post('/get/keywordEatpostinfoData', (req, res) => {
     .catch(err => { throw err })
 })
 
+app.post('/get/keywordEatcommentData', (req, res) => {
+  Eatcomment.findAll({
+    where: [{ title : req.body.title },  { area : req.body.area }, { jobname : req.body.jobname }] 
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
 app.post('/delete/data', (req, res) => {
   Eatpost.destroy({
       where : { id : req.body.delete.id }
   })
   .then( res.sendStatus(200) )
+  .catch( err => { throw err })
+})
+
+app.post('/delete/commentdata', (req, res) => {
+  Eatcomment.destroy({
+      where : { id : req.body.delete.id }
+  })
+  .then( res.sendStatus(200) )
+  .catch( err => { throw err })
+})
+
+app.post('/modify/data', (req, res) => {
+  Eatcomment.update({ comment : req.body.modify.comment }, {
+      where : { id : req.body.modify.id }
+  })
+  Eatcomment.update({ date : req.body.modify.date }, {
+    where : { id : req.body.modify.id }
+  })
+  .then( result => { res.send(result) })
   .catch( err => { throw err })
 })
 

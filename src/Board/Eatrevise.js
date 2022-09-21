@@ -47,7 +47,7 @@ function Eatrevise() {
             'nickname': nickname,
             'title': title,
             'content': content,
-            'date': date,
+            'date': date + ('   (수정됨)'),
           }
         });
     
@@ -78,7 +78,6 @@ function Eatrevise() {
         }
     }
     return(
-
     <>
             <br />
             <br />
