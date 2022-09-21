@@ -61,27 +61,17 @@ function Eatboard() {
                         <div key={key}>
                             <div>
                                 <Link  className='textsize' style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatboardinfo?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}> {el.title}</Link>
-                                {/* <span> {el.content} </span> | */}
                                 <div>
                                     <span> {el.nickname} </span>
                                 </div>
                                 <span> {el.date} </span>
 
                             </div>
-                            {/* <div>
-                                {el.nickname == nickname ?
-                                    <div style={{ padding: '10px' }}>
-                                        <button>수정</button>
-                                        <button onClick={() => deletepost(el)}>삭제</button>
-                                    </div>
-                                    : <div></div>
-                                }
-                            </div> */}
                             <hr />
                         </div>
                     )
                 })
-                : <div>데이터가 없습니다.</div>}
+                : <div>게시글이 없습니다.</div>}
 
             <br />
 

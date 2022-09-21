@@ -22,7 +22,8 @@ function App() {
               {
                  sessionStorage.getItem('nickname') // 로그인 닉네임값 받기
               }
-              <a>님</a>  <button style={{padding : '5px'}} onClick={Logout} >로그아웃</button>
+              <a>님</a> <button style={{padding : '5px'}}>쪽지</button>
+              <button style={{padding : '5px'}} onClick={Logout} >로그아웃</button>
             </div>
             :<button><Link style={{ textDecoration: 'none', color: 'Black' }} to='Login'>로그인</Link></button>
           }
