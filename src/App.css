@@ -49,6 +49,14 @@ body {
     [login-end];
 }
 
+.right{
+  text-align: right;
+}
+
+.left{
+  text-align: left;
+}
+
 .overlap{
   color: red;
 }
