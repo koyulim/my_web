@@ -111,29 +111,28 @@ function Eatboardinfo() {
 
     const modify = async (el) => {
         const comment = prompt('변경할 내용을 입력해주세요.')
-    
-        if(comment !== null) {
-          const dataToModify = {
-            comment : comment,
-            date : date + ('   (수정됨)'),
-            id : el.id
-            
-          }
-    
-          const res = await axios('/modify/data', {
-            method : 'POST',
-            data : { 'modify' : dataToModify },
-            headers: new Headers()
-          })
-    
-          if(res.data) {
-            console.log(res.data[0]);
-            alert(' 수정되었습니다.')
-            return window.location.reload();
-          }
-        }
-      }
 
+        if (comment !== null) {
+            const dataToModify = {
+                comment: comment,
+                date: date + ('   (수정됨)'),
+                id: el.id
+
+            }
+
+            const res = await axios('/modify/data', {
+                method: 'POST',
+                data: { 'modify': dataToModify },
+                headers: new Headers()
+            })
+
+            if (res.data) {
+                console.log(res.data[0]);
+                alert(' 수정되었습니다.')
+                return window.location.reload();
+            }
+        }
+    }
 
     return (
         <>
@@ -148,8 +147,13 @@ function Eatboardinfo() {
                             <div>
                                 <div className='textsize'>제목 : {el.title}</div>
                                 <div style={{ padding: '10px' }} ><span> 내용 : {el.content} </span> </div>
+                                <div style={{ padding: '10px' }} ><span> 작성자 : {el.nickname} </span></div>
                                 <div style={{ padding: '10px' }} ><span> {el.date} </span></div>
-
+                                {el.nickname != nickname ?
+                                    <button style={{ padding: '5px' }}><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnote?user_namer=${el.nickname}` }}>쪽지보내기</Link></button>
+                                    :
+                                    <div></div>
+                                }
                             </div>
                             <hr />
 
@@ -168,10 +172,8 @@ function Eatboardinfo() {
                 })
                 : <div>데이터가 없습니다.</div>
             }
-
             <br />
             <br />
-
             <div>
                 <h3>댓글</h3>
                 <hr />
@@ -181,10 +183,14 @@ function Eatboardinfo() {
                         return (
                             <div key={key}>
                                 <div>
-                                    <div className='textsize'>{el.comment}</div>
-                                    <div style={{ padding: '10px' }} ><span> {el.nickname} </span> </div>
+                                    <div className='textsize'> 내용 : {el.comment}</div>
+                                    <div style={{ padding: '10px' }} ><span> 작성자 : {el.nickname} </span> </div>
                                     <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
-
+                                    {el.nickname != nickname ?
+                                        <button style={{ padding: '5px' }}><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnote?user_namer=${el.nickname}` }}>쪽지보내기</Link></button>
+                                        :
+                                        <div></div>
+                                    }
                                 </div>
 
                                 <div>
@@ -196,7 +202,6 @@ function Eatboardinfo() {
                                         : <div></div>
                                     }
                                 </div>
-
                                 <hr />
                             </div>
                         )

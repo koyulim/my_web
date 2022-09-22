@@ -17,15 +17,15 @@ function App() {
           </div>
           {
             sessionStorage.getItem('nickname') !== null
-            ? 
-            <div>
-              {
-                 sessionStorage.getItem('nickname') // 로그인 닉네임값 받기
-              }
-              <a>님</a> <button style={{padding : '5px'}}>쪽지</button>
-              <button style={{padding : '5px'}} onClick={Logout} >로그아웃</button>
-            </div>
-            :<button><Link style={{ textDecoration: 'none', color: 'Black' }} to='Login'>로그인</Link></button>
+              ?
+              <div>
+                {
+                  sessionStorage.getItem('nickname') // 로그인 닉네임값 받기
+                }
+                <a>님</a> <button style={{ padding: '5px' }} ><Link style={{ textDecoration: 'none', color: 'Black' }} to='joblist/Eatnoteboard'>쪽지</Link></button>
+                <button style={{ padding: '5px' }} onClick={Logout} >로그아웃</button>
+              </div>
+              : <button><Link style={{ textDecoration: 'none', color: 'Black' }} to='Login'>로그인</Link></button>
           }
         </div>
         <Routes>
@@ -41,7 +41,7 @@ function App() {
     </>
   )
 }
-function Logout(){
+function Logout() {
   alert('로그아웃 되었습니다.')
   sessionStorage.removeItem('nickname');
   window.location.replace('/Joblist');
