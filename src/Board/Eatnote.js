@@ -14,33 +14,21 @@ function Eatnote() {
     const today = moment();
     const date = today.format('YYYY-MM-DD hh:mm:ss');
     const [sample1List, setSample1List] = useState([]);
-    const [sample2List, setSample2List] = useState([]);
 
 
     const getKeywordEatnoteData = async () => {
         const res = await axios('/get/keywordEatnoteData', {
             method: 'POST',
             data: {
-                'user_name': user_name,
+                'user_name': my_name,
                 'my_name': my_name,
             }
         },);
         setSample1List(res.data);
     }
-    const getKeywordEatnotesData = async () => {
-        const res = await axios('/get/keywordEatnoteData', {
-            method: 'POST',
-            data: {
-                'user_name': my_name,
-                'my_name': user_name,
-            }
-        },);
-        setSample2List(res.data);
-    }
 
     useEffect(() => {
         getKeywordEatnoteData();
-        getKeywordEatnotesData();
     }, []);
 
     const conversationUpdate = (e) => {
@@ -77,40 +65,30 @@ function Eatnote() {
                         return (
                             <div key={key}>
                                 <div >
-                                    {my_name == el.my_name ?
+                                    {user_name == el.user_name ?
                                         <div className='right'>
-                                            <div style={{ padding: '10px' }} ><span> my_name : {el.my_name} </span> </div>
+                                            {/* <div style={{ padding: '10px' }} ><span> my_name : {el.my_name} </span> </div> */}
                                             <div className='textsize'> 내용 : {el.conversation}</div>
                                             <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
                                         </div>
                                         :
                                         <div></div>
                                     }
+                                    {user_name == el.my_name ?
+                                        <div className='left'>
+                                            <div style={{ padding: '10px' }} ><span> user_name : {el.my_name} </span> </div>
+                                            <div className='textsize'> 내용 : {el.conversation}</div>
+                                            <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
+                                        </div>
+                                        :
+                                        <div></div>
+                                    }
+
                                 </div>
                             </div>
                         )
                     })
                     : <div></div>
-                }
-                {sample2List.length !== 0 ?
-                    sample2List.map((el, key) => {
-                        return (
-                            <div key={key}>
-                                <div >
-                                    {user_name == el.my_name ?
-                                        <div className='left'>
-                                            <div style={{ padding: '10px' }} ><span> user_name : {el.user_name} </span> </div>
-                                            <div className='textsize'> 내용 : {el.conversation}</div>
-                                            <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
-                                        </div>
-                                        :
-                                        <div></div>
-                                    }
-                                </div>
-                            </div>
-                        )
-                    })
-                    : <div>쪽지가 없습니다.</div>
                 }
                 <input type={'text'} placeholder="comment..." style={{ width: '300px' }} onChange={(e) => conversationUpdate(e)} ></input>
                 <form method='POST' onSubmit={addData}><button>보내기</button></form>
