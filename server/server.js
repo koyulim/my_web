@@ -162,7 +162,7 @@ app.post('/get/keywordEatpostData', (req, res) => {
 
 app.post('/get/keywordEatnoteData', (req, res) => {
   Eatnote.findAll({
-    where: [{ user_name: req.body.user_name }, { my_name: req.body.my_name }]
+    where: { [Op.or]: [{ user_name: req.body.my_name }, { my_name: req.body.my_name }] }
   })
 
     .then(result => { res.send(result) })
