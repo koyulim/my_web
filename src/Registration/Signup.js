@@ -65,13 +65,14 @@ class Signup extends Component {
     const { nicknameList } = this.state;
 
     return (
-      <div className='signup'>
+      <div className='login'>
         <h2>회원가입</h2>
         <h4>이메일</h4>
         <input type='email' placeholder='이메일을 입력하시오.' onChange={(e) => this.emailUpdate(e)} />
         <h4>닉네임</h4>
         <input type='text' placeholder='닉네임을 입력하시오.' onChange={(e) => this.nicknameUpdate(e)} />
-        <button onClick={this.getKeywordData}>중복 확인</button>
+        <a>&nbsp;</a>
+        <button className='loginbtn' onClick={this.getKeywordData}>중복 확인</button>
         <div className='overlap'>중복확인을 해주세요.</div>
         <h4>비밀번호</h4>
         <input type='password'placeholder='비밀번호를 입력하시오.' onChange={(e) => this.passwordUpdate(e)} />
@@ -85,11 +86,11 @@ class Signup extends Component {
                     ? nicknameList.map((key) => {
                       return (
                         <div key={key}>
-                          <button disabled={true}>완료</button>
+                          <button className='loginbtn' disabled={true}>완료</button>
                         </div>
                       )
                     })
-                    : <button type='submit'>완료</button>
+                    : <button className='loginbtn' type='submit'>완료</button>
                   )
               }
             </div>

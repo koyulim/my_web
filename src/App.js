@@ -1,5 +1,10 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { AiFillCaretDown } from "react-icons/ai";
+import { BsFillFilePersonFill } from "react-icons/bs";
+import { AiOutlineUser } from "react-icons/ai";
+
 
 import Login from 'Registration/Login';
 import Joblist from 'Joblist';
@@ -8,26 +13,58 @@ import Findnickname from 'Registration/Findnickname';
 import Findpassword from 'Registration/Findpassword';
 
 function App() {
+
+  const [showLinks, setShowLinks] = useState(false);
+  const linksContainerRef = useRef(null);
+  const linksRef = useRef(null);
+  const toggleLinks = () => {
+    setShowLinks(!showLinks);
+  };
+  useEffect(() => {
+    const linksHeight = linksRef.current.getBoundingClientRect().height;
+    if (showLinks) {
+      linksContainerRef.current.style.height = `${linksHeight}px`;
+    } else {
+      linksContainerRef.current.style.height = '0px';
+    }
+  }, [showLinks]);
+
   return (
     <>
-      <div className="App">
-        <div className="title-bar">
-          <div className='title'>
-            <Link style={{ textDecoration: 'none', color: 'white' }} to='Joblist'>알바 정보 공유 사이트</Link>
+      <div>
+      <nav>
+      <div className='nav-center'>
+        <div className='nav-header'>
+          <div>
+            <Link style={{ textDecoration: 'none', color: '#660000' }} to='Joblist'>알바 정보 공유 사이트</Link>
           </div>
+          <button className='nav-toggle' onClick={toggleLinks}>
+            <BsFillFilePersonFill/><AiFillCaretDown/>
+          </button>
+        </div>
+        <div className='links-container' ref={linksContainerRef}>
+          <ul className='links' ref={linksRef}>
           {
             sessionStorage.getItem('nickname') !== null
-              ?
-              <div>
-                {
-                  sessionStorage.getItem('nickname') // 로그인 닉네임값 받기
-                }
-                <a>님</a> <button style={{ padding: '5px' }} ><Link style={{ textDecoration: 'none', color: 'Black' }} to='joblist/Eatnoteboard'>쪽지함</Link></button>
-                <button style={{ padding: '5px' }} onClick={Logout} >로그아웃</button>
+              ? 
+              <div className='links'>
+                <a>{sessionStorage.getItem('nickname')}님&nbsp;&nbsp;&nbsp;</a>
+                <Link style={{ textDecoration: 'none', color: '#660000' }} to='joblist'>Home&nbsp;&nbsp;&nbsp;</Link> 
+                <Link style={{ textDecoration: 'none', color: '#660000' }} to='joblist/Eatnoteboard'>Mail&nbsp;&nbsp;&nbsp;</Link>
+                <a style={{ color: '#660000' }} onClick={Logout} >로그아웃&nbsp;&nbsp;&nbsp;</a>
+                <br/>
               </div>
-              : <button><Link style={{ textDecoration: 'none', color: 'Black' }} to='Login'>로그인</Link></button>
-          }
+              : 
+              <div className='links'>
+                <Link style={{ textDecoration: 'none', color: '#660000' }} to='joblist'>Home&nbsp;&nbsp;&nbsp;</Link> 
+                <Link style={{ textDecoration: 'none', color: '#660000' }} to='Login'>로그인&nbsp;&nbsp;&nbsp;</Link>
+                <br/>
+              </div>
+              }
+          </ul>
         </div>
+      </div>
+    </nav>
         <Routes>
           <Route path='' element={<Navigate to='Joblist' replace />} />
           <Route path='Joblist/*' element={<Joblist />} />

@@ -47,7 +47,7 @@ function Findnickname() {
                         : null}
                 </a>
                 <h4>
-                    <button onClick={getemailData} >조회하기</button>
+                    <button className='loginbtn' onClick={getemailData} >조회하기</button>
                 </h4>
 
             </div>

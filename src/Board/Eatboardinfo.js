@@ -138,35 +138,33 @@ function Eatboardinfo() {
         <>
             <br />
             <br />
-            <h2>상세내용</h2>
-            <hr></hr>
+            <h2 className='login'>상세내용</h2>
+            <hr color='#660000' />
             {sample1List.length !== 0 ?
                 sample1List.map((el, key) => {
                     return (
                         <div key={key}>
-                            <div>
+                            <div className='note'>
                                 <div className='textsize'>제목 : {el.title}</div>
                                 <div style={{ padding: '10px' }} ><span> 내용 : {el.content} </span> </div>
                                 <div style={{ padding: '10px' }} ><span> 작성자 : {el.nickname} </span></div>
                                 <div style={{ padding: '10px' }} ><span> {el.date} </span></div>
                                 {el.nickname != nickname ?
-                                    <button style={{ padding: '5px' }}><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnote?user_namer=${el.nickname}` }}>쪽지보내기</Link></button>
+                                    <button className='loginbtn' style={{ padding: '5px' }} ><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnote?user_namer=${el.nickname}` }}>쪽지보내기</Link></button>
                                     :
                                     <div></div>
                                 }
                             </div>
-                            <hr />
-
-                            <div>
+                            <div className='note'>
                                 {el.nickname == nickname ?
                                     <div style={{ padding: '10px' }}>
-                                        <button><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatrevise?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}>수정</Link></button>
-                                        <button onClick={() => deletepost(el)}>삭제</button>
+                                        <button className='loginbtn'><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatrevise?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}>수정</Link></button>
+                                        <button className='loginbtn' onClick={() => deletepost(el)}>삭제</button>
                                     </div>
                                     : <div></div>
                                 }
                             </div>
-
+                            <hr />
                         </div>
                     )
                 })
@@ -175,29 +173,30 @@ function Eatboardinfo() {
             <br />
             <br />
             <div>
-                <h3>댓글</h3>
-                <hr />
+                <h3 className='login' >댓글</h3>
+                <hr color='#660000' />
 
                 {sample2List.length !== 0 ?
                     sample2List.map((el, key) => {
                         return (
                             <div key={key}>
-                                <div>
+                                <div className='note' >
                                     <div className='textsize'> 내용 : {el.comment}</div>
                                     <div style={{ padding: '10px' }} ><span> 작성자 : {el.nickname} </span> </div>
                                     <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
                                     {el.nickname != nickname ?
-                                        <button style={{ padding: '5px' }}><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnote?user_namer=${el.nickname}` }}>쪽지보내기</Link></button>
+                                        <button className='loginbtn' style={{ padding: '5px' }}><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnote?user_namer=${el.nickname}` }}>쪽지보내기</Link></button>
                                         :
                                         <div></div>
                                     }
                                 </div>
 
-                                <div>
+                                <div className='note'>
                                     {el.nickname == nickname ?
                                         <div style={{ padding: '10px' }}>
-                                            <button onClick={() => modify(el)}>수정</button>
-                                            <button onClick={() => deletecommentpost(el)}>삭제</button>
+                                            <button className='loginbtn' onClick={() => modify(el)}>수정</button>
+                                            <a>&nbsp;</a>
+                                            <button className='loginbtn' onClick={() => deletecommentpost(el)}>삭제</button>
                                         </div>
                                         : <div></div>
                                     }
@@ -206,12 +205,12 @@ function Eatboardinfo() {
                             </div>
                         )
                     })
-                    : <div>댓글이 없습니다.</div>
+                    : <div className='login'>댓글이 없습니다.</div>
                 }
 
                 <input type={'text'} placeholder="comment..." style={{ width: '300px' }} onChange={(e) => commentUpdate(e)} ></input>
                 {nickname !== null
-                    ? <form method='POST' onSubmit={addData}><button>댓글 달기</button></form>
+                    ? <form method='POST' onSubmit={addData}><button className='loginbtn'>댓글 달기</button></form>
                     : <button style={{ padding: '5px' }} onClick={Posts}>글쓰기</button>
 
                 }

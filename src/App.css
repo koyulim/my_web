@@ -6,81 +6,99 @@ body {
   display: grid;
   height: 100vh;
   grid-template-columns:
-    [jobtype-start] 20% 
-    [jobtype-end jobborde-start] 80% 
-    [jobborde-end];
-  
+    [jobtype-start] 20% [jobtype-end jobborde-start] 80% [jobborde-end];
+
 }
 
-.textsize{
+.textsize {
   font-weight: 1300;
   font-size: 20px;
 }
 
+.loginmain{
+  background-color: #F3ABB3;
+  color: #660000;
+  /* border: 10px; */
+  text-size-adjust: 10px;
+  padding: 6px;
+  border-radius: 50px; 
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  display: inline-block;
+  
+}
+
+.loginbtn{
+  background-color: #F3ABB3;
+  color: #660000;
+  border: 10px;
+  padding: 6px;
+}
 
 .href {
   text-decoration: none;
-  color: black;
+  color: #660000;
 }
 
 .jobtype {
-  background: skyblue;
+  /* background: #d8cacc; */
+  color: #660000;
+  font-size: large;
+  text-align: center;
   padding: 10px;
 
 }
 
 .jobborde {
   text-align: center;
-  background: rgb(197, 212, 218);
+  /* background: rgb(197, 212, 218); */
   padding: 10px;
 }
 
-.title-bar {
-  background: black;
+.title {
+  background: #F3ABB3;
   width: 100%;
-  color: white;
+  font-size: 35px;
   font-weight: 600;
-  font-size: 30px;
-  display: grid;
-  height: 50px;
-  grid-template-columns:
-    [title-start] 70% 
-    [title-end login-start] 30% 
-    [login-end];
+  padding: 5px;
+  text-align: center;
 }
 
-.right{
+.btn_area {
+  bottom: 0;
+  height: 5rem;
+  position: fixed;
+  width: 180%;
+  /*가로 사이즈를 브라우저에 가득 채움*/
+}
+
+.note{
+  background-color: #fad6d9;
+  color: #660000;
+  border: 10px;
+  padding: 6px;
+}
+
+.right {
   text-align: right;
 }
 
-.left{
+.left {
   text-align: left;
 }
 
-.overlap{
+.overlap {
   color: red;
 }
 
 .login {
+  color: #660000;
   text-align: center;
 }
 
 .signup {
   text-align: center;
-}
-
-.map {
-  padding-left: 200px;
-}
-
-.title {
-  padding: 5px;
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -112,4 +130,161 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* 말풍선 */
+.wrap {
+  /* padding: 5px; */
+  /* background-color: #f3c6cb; */
+  color: #660000;
+  text-align: right;
+}
+
+.wrap .chat {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.wrap .chat .textbox {
+  position: relative;
+  display: inline-block;
+  max-width: calc(100% - 70px);
+  padding: 10px;
+  margin-top: 7px;
+  font-size: 13px;
+  border-radius: 10px;
+}
+
+.wrap .chat .textbox::before {
+  position: absolute;
+  display: block;
+  top: 0;
+  font-size: 1.5rem;
+}
+
+.wrap .ch1 .textbox {
+  background-color: #f3c6cb;
+}
+
+.wrap .ch1 .textbox::before {
+  left: -15px;
+  content: "◀";
+  color: #f3c6cb;
+}
+
+.wrap .ch2 {
+  flex-direction: row-reverse; /* 오른쪽 정렬 */
+}
+
+.wrap .ch2 .textbox {
+  background-color: #F3ABB3;
+}
+
+.wrap .ch2 .textbox::before {
+  right: -15px;
+  content: "▶";
+  color: #F3ABB3;
+}
+
+
+/* 메뉴바 */
+nav {
+  background: #F3ABB3;
+  box-shadow: var(--light-shadow);
+}
+
+.nav-header {
+  font-size: 30px;
+  font-weight: 550;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.nav-toggle {
+  font-size: 2rem;
+  color: #660000;
+  background: transparent;
+  border-color: transparent;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.links a {
+  display: block;
+  color: var(--clr-grey-3);
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+}
+
+.links a:hover {
+  background: var(--clr-primary-8);
+  color: var(--clr-primary-5);
+  padding-left: 1.5rem;
+}
+
+.links-container {
+  background-color: #f3c6cb;
+  color: #660000;
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.show-container {
+  height: 10rem;
+}
+
+@media screen and (min-width: 800px) {  /*전체화면*/
+  .nav-center {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-header {
+    padding: 0;
+    font-size: 30px;
+    font-weight: 550;
+    padding-left: 50px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  /* 사이즈 변경위해 꼭 필요 */
+  .links-container {
+    height: auto !important;
+  }
+
+  .links {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+  }
+
+  .links a {
+    padding: 0;
+    margin-right: 10px;
+    text-align: center;
+  }
+
+  .links a:hover {
+    padding: 0;
+    background: transparent;
+  }
+
 }

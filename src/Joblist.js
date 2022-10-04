@@ -1,6 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 import Eat from 'Jobtype/Eat';
 import Management from 'Jobtype/Management';
@@ -14,14 +15,18 @@ import Eatnoteboard from 'Board/Eatnoteboard';
 
 function Joblist() {
     return (
-        <div className='mide'>
-            <div className='container'>
+        <div >
+           {/* <div className='container'>  */}
+           <div>
                 <div className='jobtype'>
-                    <ul>
-                        <li><Link style={{ textDecoration: 'none', color: 'Black' }} to='Eat'>외식.음료</Link></li>
-                        <li><Link style={{ textDecoration: 'none', color: 'Black' }} to='Management'>매장관리.판매</Link></li>
-                        <li><Link style={{ textDecoration: 'none', color: 'Black' }} to='Service'>서비스</Link></li>
-                    </ul>
+                    <div>
+                        <Link style={{ textDecoration: 'none', color: '#660000' }} to='Eat'>외식.음료</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <Link style={{ textDecoration: 'none', color: '#660000' }} to='Management'>매장관리.판매</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <Link style={{ textDecoration: 'none', color: '#660000' }} to='Service'>서비스</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a>시급계산기</a>
+                    </div>
+                    <hr color='#660000'/>
+
                 </div>
                 <div className='jobborde'>
                     <Routes>
