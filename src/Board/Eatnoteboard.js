@@ -27,16 +27,16 @@ function Eatnoteboard() {
 
     return (
         <>
-            <h1>쪽지함</h1>
+            <h1 style={{color:'#660000'}}>쪽지함</h1>
 
             {sample1List.length !== 0 ?
                 sample1List.map((el, key) => {
                     return (
                         <div key={key}>
-                            <div >
+                            <div className='note'>
                                 <div className='left'><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnote?user_namer=${el.my_name}` }}>
-                                <div style={{ padding: '10px' }} ><span> user_name : {el.my_name} </span> </div>
-                                <div className='textsize' > 내용 : {el.conversation}</div>
+                                <div style={{ padding: '10px', color:'#660000' }} ><span> user_name : {el.my_name} </span> </div>
+                                <div className='textsize' style={{color:'#660000'}} > 내용 : {el.conversation}</div>
                                 </Link></div>
                                 <div className='right' style={{ padding: '10px' }} ><span> {el.date} </span> </div>
                             </div>

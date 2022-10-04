@@ -56,42 +56,48 @@ function Eatnote() {
 
     return (
         <>
-            <h1>{user_name} 쪽지방</h1>
+            <h1 className='login' >{user_name} 쪽지방</h1>
             <div>
-                <hr />
-
+                <hr color='#660000' />
                 {sample1List.length !== 0 ?
                     sample1List.map((el, key) => {
                         return (
                             <div key={key}>
-                                <div >
+                                <div>
                                     {user_name == el.user_name ?
-                                        <div className='right'>
-                                            {/* <div style={{ padding: '10px' }} ><span> my_name : {el.my_name} </span> </div> */}
-                                            <div className='textsize'> 내용 : {el.conversation}</div>
-                                            <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
+                                        <div className="wrap">
+                                            <div className="chat ch2">
+                                                <div className='textbox'>
+                                                    {/* <div style={{ padding: '10px' }} ><span> my_name : {el.my_name} </span> </div> */}
+                                                    <div className='textsize'> 내용 : {el.conversation}</div>
+                                                    <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         :
                                         <div></div>
                                     }
                                     {user_name == el.my_name ?
-                                        <div className='left'>
-                                            <div style={{ padding: '10px' }} ><span> user_name : {el.my_name} </span> </div>
-                                            <div className='textsize'> 내용 : {el.conversation}</div>
-                                            <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
+                                        <div className="wrap">
+                                            <div className="chat ch1">
+                                                <div className='textbox'>
+                                                    <div style={{ padding: '10px' }} ><span> user_name : {el.my_name} </span> </div>
+                                                    <div className='textsize'> 내용 : {el.conversation}</div>
+                                                    <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         :
                                         <div></div>
                                     }
-
                                 </div>
                             </div>
                         )
                     })
                     : <div></div>
-                }
+                } 
                 <input type={'text'} placeholder="comment..." style={{ width: '300px' }} onChange={(e) => conversationUpdate(e)} ></input>
-                <form method='POST' onSubmit={addData}><button>보내기</button></form>
+                <form method='POST' onSubmit={addData}><button className='loginbtn'>보내기</button></form>
             </div>
         </>
     )

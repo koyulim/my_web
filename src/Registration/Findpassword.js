@@ -65,7 +65,7 @@ class Findnickname extends Component {
 
                     </a>
                     <h4>
-                        <button onClick={this.getemailnicknameDataData} >조회하기</button>
+                        <button className='loginbtn' onClick={this.getemailnicknameDataData} >조회하기</button>
                     </h4>
 
                 </div>

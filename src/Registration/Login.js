@@ -1,5 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState, Component } from "react";
+import { AiOutlineUser } from "react-icons/ai";
+//import 'bootstrap/dist/css/bootstrap.css';
+//import Button from 'react-bootstrap/Button';
 
 
 function Login() {
@@ -35,7 +38,9 @@ function Login() {
     return (
         <>
             <div className='login'>
-                <h1>Login</h1>
+            <h1 className='loginmain'><AiOutlineUser size='10x' />Login</h1>
+            <br/>
+            <br/>
                 <h4>닉네임</h4>
                 <input type='text' maxLength='10' placeholder='닉네임을 입력하시오.' onChange={(e) => nicknameUpdate(e)} />
                 <h4>비밀번호</h4>
@@ -61,7 +66,7 @@ function Login() {
                     }
                 </a>
                 <h4>
-                    <button onClick={getMultiKeywordData} >Login</button>
+                    <button className='loginbtn' onClick={getMultiKeywordData} >Login</button>
                 </h4>
                 <a className='href' href='Findnickname'>닉네임 찾기 | </a>
                 <a className='href' href='Findpassword'>비밀번호 찾기 | </a>
