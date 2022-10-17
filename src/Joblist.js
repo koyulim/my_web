@@ -10,8 +10,8 @@ import Post from 'Jobtype/Post';
 import Eatboard from 'Board/Eatboard';
 import Eatboardinfo from 'Board/Eatboardinfo';
 import Eatrevise from 'Board/Eatrevise';
-import Eatnote from 'Board/Eatnote';
 import Eatnoteboard from 'Board/Eatnoteboard';
+import Calculation from 'Calculation';
 
 function Joblist() {
     return (
@@ -23,7 +23,7 @@ function Joblist() {
                         <Link style={{ textDecoration: 'none', color: '#660000' }} to='Eat'>외식.음료</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <Link style={{ textDecoration: 'none', color: '#660000' }} to='Management'>매장관리.판매</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <Link style={{ textDecoration: 'none', color: '#660000' }} to='Service'>서비스</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a>시급계산기</a>
+                        <Link style={{ textDecoration: 'none', color: '#660000' }} to='Calculation'>시급계산기</Link>
                     </div>
                     <hr color='#660000'/>
 
@@ -37,8 +37,8 @@ function Joblist() {
                         <Route path='Eatboard/*' element={<Eatboard />} />
                         <Route path='Eatboardinfo/*' element={<Eatboardinfo />} />
                         <Route path='Eatrevise/*' element={<Eatrevise />} />
-                        <Route path='Eatnote/*' element={<Eatnote />} />
                         <Route path='Eatnoteboard/*' element={<Eatnoteboard />} />
+                        <Route path='Calculation/*' element={<Calculation />} />
                     </Routes>
                 </div>
             </div>

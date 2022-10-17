@@ -177,6 +177,15 @@ app.post('/get/keywordEatnoteboardData', (req, res) => {
     .then(result => { res.send(result) })
     .catch(err => { throw err })
 })
+app.post('/get/keywordEatnoteboardDatas', (req, res) => {
+  Eatnote.findAll({
+    where: [{ my_name: req.body.my_name }]
+  })
+
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
 
 app.post('/get/keywordEatpostinfoData', (req, res) => {
   Eatpost.findAll({

@@ -15,7 +15,7 @@ function Eatboard() {
     const [searchParams, setSearchParams] = useSearchParams();
     const area = searchParams.get('area');
     const jobname = searchParams.get('jobname');
-   
+
     const getKeywordEatData = async () => {
         const res = await axios('/get/keywordEatpostData', {
             method: 'POST',
@@ -37,20 +37,20 @@ function Eatboard() {
             <br />
             <br />
             <h2 className='login'>게시글</h2>
-            <hr color='#660000'/>
+            <hr color='#660000' />
             {sample1List.length !== 0 ?
                 sample1List.map((el, key) => {
                     return (
                         <div key={key}>
                             <div className='note'>
-                                <Link  className='textsize' style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Eatboardinfo?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}> {el.title}</Link>
+                                <Link className='textsize' style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Eatboardinfo?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}> {el.title}</Link>
                                 <div>
                                     <span> {el.nickname} </span>
                                 </div>
                                 <span> {el.date} </span>
 
                             </div>
-                            <hr/>
+                            <hr />
                         </div>
                     )
                 })
@@ -60,8 +60,8 @@ function Eatboard() {
 
             {
                 nickname !== null
-                    ? <div className="btn_area"><button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Post?area=${area}&jobname=${jobname}` }}><AiFillEdit size = '30px'/></Link></button></div>
-                    : <div className="btn_area" ><button style={{ padding: '5px' }} onClick={Posts}><AiFillEdit size = '30px'/></button></div>
+                    ? <div className="btn_area"><button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Post?area=${area}&jobname=${jobname}` }}><AiFillEdit size='30px' /></Link></button></div>
+                    : <div className="btn_area" ><button className='loginbtn' style={{ padding: '5px' }} onClick={Posts}><AiFillEdit size='30px' /></button></div>
 
             }
         </>

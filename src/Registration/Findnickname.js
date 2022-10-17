@@ -19,14 +19,8 @@ function Findnickname() {
                 'email': email
             }
         });
-        // setState({
-        //     sample1List: res.data
-        // })
         setSample1List(res.data);
 
-        if (sample1List.length === 0) {
-            alert('닉네임을 정확하게 입력해 주세요.')
-        }
     }
     return (
         <>
@@ -44,7 +38,7 @@ function Findnickname() {
                                 </div>
                             )
                         })
-                        : null}
+                        : <div>이메일을 정확히 입력해 주세요.</div>}
                 </a>
                 <h4>
                     <button className='loginbtn' onClick={getemailData} >조회하기</button>

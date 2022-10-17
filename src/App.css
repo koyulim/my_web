@@ -18,12 +18,24 @@ body {
 .loginmain{
   background-color: #F3ABB3;
   color: #660000;
-  /* border: 10px; */
   text-size-adjust: 10px;
   padding: 6px;
   border-radius: 50px; 
   width: 100px;
   height: 100px;
+  text-align: center;
+  display: inline-block;
+  
+}
+
+.calculatormain{
+  background-color: #F3ABB3;
+  color: #660000;
+  text-size-adjust: 10px;
+  padding: 6px;
+  border-radius: 100px; 
+  width: 200px;
+  height: 150px;
   text-align: center;
   display: inline-block;
   
@@ -187,6 +199,17 @@ body {
   color: #F3ABB3;
 }
 
+.center{
+  text-align: center;
+}
+
+.note{
+  background-color: #f7d0d5;
+  color: #660000;
+  padding: 10px;
+  text-align: center;
+  border-color: #0055ff;
+}
 
 /* 메뉴바 */
 nav {
@@ -286,5 +309,5 @@ nav {
     padding: 0;
     background: transparent;
   }
-
+  
 }

@@ -1,9 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState, Component } from "react";
 import { AiOutlineUser } from "react-icons/ai";
-//import 'bootstrap/dist/css/bootstrap.css';
-//import Button from 'react-bootstrap/Button';
-
 
 function Login() {
 
@@ -62,7 +59,8 @@ function Login() {
                                     </>
                                 )
                             })
-                            : null
+                            : <div>
+                            </div>
                     }
                 </a>
                 <h4>

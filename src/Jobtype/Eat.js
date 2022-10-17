@@ -9,12 +9,10 @@ function Eat() {
   const [sample1List, setSample1List] = useState([]);
 
   const areaUpdate = (e) => {
-    //this.setState({ area: e.target.value })
     setArea(e.target.value);
   }
 
   const jobnameUpdate = (e) => {
-    //this.setState({ jobname: e.target.value })
     setJobname(e.target.value);
   }
 
@@ -36,9 +34,6 @@ function Eat() {
 
   const getData = async () => {
     const res = await axios.get('/get/eatdata');
-    // this.setState({
-    //   sample1List: res.data
-    // })
     setSample1List(res.data);
   }
 
@@ -69,7 +64,7 @@ function Eat() {
                 <div className='note' style={{ padding: '10px' }}>
                   <button className='loginbtn' onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
                   <a>&nbsp;&nbsp;</a>
-                  <button className='loginbtn'><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatboard?area=${el.area}&jobname=${el.jobname}` }} >후기글 보기</Link></button>
+                  <button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Eatboard?area=${el.area}&jobname=${el.jobname}` }} >후기글 보기</Link></button>
                 </div>
                 <hr />
               </div>

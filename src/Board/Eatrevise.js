@@ -81,13 +81,13 @@ function Eatrevise() {
     <>
             <br />
             <br />
-            <h2>게시글 수정</h2>
-            <hr></hr>
+            <h2 className='login' >게시글 수정</h2>
+            <hr color='#660000'></hr>
             {sample1List.length !== 0 ?
                 sample1List.map((el, key) => {
                     return (
                         <div key={key}>
-                            <div>
+                            <div className='note'>
                                 <div style={{ padding: '10px' }}>제목</div>
                                 <input type={'text'} placeholder={el.title} style={{ width: '300px' }} onChange={(e) => titleUpdate(e)}></input>
                                 <div style={{ padding: '10px' }}>내용</div>
@@ -96,10 +96,10 @@ function Eatrevise() {
                                 
 
                             </div>
-                            <hr />
+                            <hr color='#660000'/>
                             <div>
                                 {/* <button onClick={() => addData(e)}>수정완료</button> */}
-                                <form method='POST' onSubmit={addData} ><button onClick={() => deletepost(el)}>수정완료</button></form>
+                                <form method='POST' onSubmit={addData} ><button className='loginbtn' onClick={() => deletepost(el)}>수정완료</button></form>
                             </div>
                            
                         </div>
