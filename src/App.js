@@ -73,6 +73,8 @@ function App() {
           <Route path='Findpassword/*' element={<Findpassword />} />
         </Routes>
       </div>
+      <div className='main'>Hello</div>
+
     </>
   )
 }

@@ -2,6 +2,15 @@ body {
   font-family: 'nanumsquare';
 }
 
+.loginbtnright{
+  background-color: #F3ABB3;
+  color: #660000;
+  border: 10px;
+  /* margin-top: 10px; */
+  padding: 6px;
+  float: right;
+}
+
 .container {
   display: grid;
   height: 100vh;
@@ -309,5 +318,10 @@ nav {
     padding: 0;
     background: transparent;
   }
+  
+}
+
+/* 메인 화면 */
+.main{
   
 }

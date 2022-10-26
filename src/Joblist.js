@@ -16,7 +16,6 @@ import Calculation from 'Calculation';
 function Joblist() {
     return (
         <div >
-           {/* <div className='container'>  */}
            <div>
                 <div className='jobtype'>
                     <div>

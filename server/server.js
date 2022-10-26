@@ -43,6 +43,14 @@ const {
 } = require('./models');
 sequelize.query('SET NAMES utf8;');
 
+app.post('/delete/eatnotedata', (req, res) => {
+  Eatnote.destroy({
+    where: { id: req.body.delete.id }
+  })
+    .then(res.sendStatus(200))
+    .catch(err => { throw err })
+})
+
 app.post('/add/eatnote', (req, res) => {
   console.log(req.body);
 
