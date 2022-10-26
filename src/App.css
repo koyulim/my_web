@@ -1,7 +1,12 @@
 body {
   font-family: 'nanumsquare';
 }
-
+.Carousel{
+  width: 100px;
+  text-align: center;
+  background-color: #7b7c80;
+  height: 300px;
+}
 .loginbtnright{
   background-color: #F3ABB3;
   color: #660000;
@@ -12,10 +17,10 @@ body {
 }
 
 .container {
-  display: grid;
-  height: 100vh;
+  text-align: center;
+  display:grid;
   grid-template-columns:
-    [jobtype-start] 20% [jobtype-end jobborde-start] 80% [jobborde-end];
+    [jobtype-start] 20% [jobtype-end jobborde-start] 30% [jobborde-end] 30% ;
 
 }
 
@@ -122,12 +127,6 @@ body {
   text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -141,71 +140,6 @@ body {
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* 말풍선 */
-.wrap {
-  /* padding: 5px; */
-  /* background-color: #f3c6cb; */
-  color: #660000;
-  text-align: right;
-}
-
-.wrap .chat {
-  display: flex;
-  align-items: flex-start;
-  padding: 10px;
-}
-
-.wrap .chat .textbox {
-  position: relative;
-  display: inline-block;
-  max-width: calc(100% - 70px);
-  padding: 10px;
-  margin-top: 7px;
-  font-size: 13px;
-  border-radius: 10px;
-}
-
-.wrap .chat .textbox::before {
-  position: absolute;
-  display: block;
-  top: 0;
-  font-size: 1.5rem;
-}
-
-.wrap .ch1 .textbox {
-  background-color: #f3c6cb;
-}
-
-.wrap .ch1 .textbox::before {
-  left: -15px;
-  content: "◀";
-  color: #f3c6cb;
-}
-
-.wrap .ch2 {
-  flex-direction: row-reverse; /* 오른쪽 정렬 */
-}
-
-.wrap .ch2 .textbox {
-  background-color: #F3ABB3;
-}
-
-.wrap .ch2 .textbox::before {
-  right: -15px;
-  content: "▶";
-  color: #F3ABB3;
 }
 
 .center{
@@ -275,6 +209,23 @@ nav {
   height: 10rem;
 }
 
+/* 메인 화면 */
+.main{
+  background-color: rgb(177, 177, 228);
+  border: 5px solid rgb(0, 0, 0);
+}
+.cardmargin{
+  border: 5px solid red;
+  position: relative;
+}
+.card{
+  /* width: 300px; */
+  padding: 20px;
+  border: 5px solid rgb(197, 196, 196);
+  margin: 10px;
+}
+
+
 @media screen and (min-width: 800px) {  /*전체화면*/
   .nav-center {
     margin: 0 auto;
@@ -318,10 +269,10 @@ nav {
     padding: 0;
     background: transparent;
   }
-  
+
+  .main{
+    background-color: #f3c6cb;
+
+  }
 }
 
-/* 메인 화면 */
-.main{
-  
-}
