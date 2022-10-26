@@ -43,6 +43,14 @@ const {
 } = require('./models');
 sequelize.query('SET NAMES utf8;');
 
+app.post('/delete/eatnotedata', (req, res) => {
+  Eatnote.destroy({
+    where: { id: req.body.delete.id }
+  })
+    .then(res.sendStatus(200))
+    .catch(err => { throw err })
+})
+
 app.post('/add/eatnote', (req, res) => {
   console.log(req.body);
 
@@ -177,6 +185,15 @@ app.post('/get/keywordEatnoteboardData', (req, res) => {
     .then(result => { res.send(result) })
     .catch(err => { throw err })
 })
+app.post('/get/keywordEatnoteboardDatas', (req, res) => {
+  Eatnote.findAll({
+    where: [{ my_name: req.body.my_name }]
+  })
+
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
 
 app.post('/get/keywordEatpostinfoData', (req, res) => {
   Eatpost.findAll({

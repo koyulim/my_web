@@ -44,31 +44,34 @@ function Management() {
   return (
 
     <>
-      <div className='App'>
+      <div className='login'>
         <h2>Management List</h2>
         <input type='text' maxLength='10' placeholder='지역 검색' onChange={(e) => areaUpdate(e)} />
         <input type='text' maxLength='20' placeholder='가게 이름 검색' onChange={(e) => jobnameUpdate(e)} />
-        <button onClick={getKeywordmanageData}>Search</button>
-        <button onClick={getData}>ListAll</button>
+        <a>&nbsp;&nbsp;</a>
+        <button className='loginbtn' onClick={getKeywordmanageData}>Search</button>
+        <a>&nbsp;</a>
+        <button className='loginbtn' onClick={getData}>ListAll</button>
 
         <br />
         <br />
         <h3>지역 | 가게 이름 | 날짜</h3>
-        <hr />
+        <hr color='#660000'/>
 
         {sample1List.length !== 0 ?
           sample1List.map((el, key) => {
             return (
               <div key={key}>
-                <div >
+                <div className='note'>
                   {/* <span>  {el.url} </span>/ */}
                   <span> {el.area} </span> |
                   <span> {el.jobname} </span> |
                   <span> {el.date} </span>
                 </div>
-                <div style={{ padding: '10px' }}>
-                  <button onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
-                  <button><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Board?Jolist=Management&id=${el.id}` }}>후기글 보기</Link></button>
+                <div className='note' style={{ padding: '10px' }}>
+                  <button className='loginbtn' onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
+                  <a>&nbsp;&nbsp;</a>
+                  <button className='loginbtn' ><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Board?Jolist=Management&id=${el.id}` }}>후기글 보기</Link></button>
                 </div>
                 <hr />
               </div>

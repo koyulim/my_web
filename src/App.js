@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-ro
 import React, { useState, useRef, useEffect } from 'react';
 import { AiFillCaretDown } from "react-icons/ai";
 import { BsFillFilePersonFill } from "react-icons/bs";
-import { AiOutlineUser } from "react-icons/ai";
-
 
 import Login from 'Registration/Login';
 import Joblist from 'Joblist';
@@ -75,6 +73,8 @@ function App() {
           <Route path='Findpassword/*' element={<Findpassword />} />
         </Routes>
       </div>
+      <div className='main'>Hello</div>
+
     </>
   )
 }

@@ -32,10 +32,6 @@ class Findnickname extends Component {
             sample1List: res.data
         })
 
-        if (this.state.sample1List.length === 0) {
-            alert('이메일과 닉네임 모두를 정확하게 입력해 주세요.')
-        }
-
     }
 
     render() {
@@ -59,7 +55,7 @@ class Findnickname extends Component {
                                     </div>
                                 )
                             })
-                            : null
+                            : <div>이메일과 닉네임 모두를 정확하게 입력해 주세요.</div>
                         }
 
 

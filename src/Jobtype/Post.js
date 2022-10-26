@@ -46,25 +46,24 @@ function Post() {
 
 
   return (
-    <>
-
-      <h2>
+    <div>
+      
+      <h2 className='login'>
         글쓰기
       </h2>
-      <div>
-        <div>제목</div> <input type={'text'} placeholder="제목" style={{ width: '300px' }} onChange={(e) => titleUpdate(e)}></input>
+      <hr color='#660000'/>
+      <div className='note'>
+      <div className='note'>
+        <div className='note'>제목</div> <input type={'text'} placeholder="제목" style={{ width: '300px' }} onChange={(e) => titleUpdate(e)}></input>
       </div>
-      <br />
-      <div style={{ padding: '10px' }} >내용</div><input type={'text'} placeholder="내용" style={{ width: '300px', height: '200px' }} onChange={(e) => contentUpdate(e)} ></input>
-      {/* <h4>지도</h4>
-            <div className='map'>
-                <Location/>
-            </div> */}
+      <div className='note' style={{ padding: '10px' }} >내용</div><input  type={'text'} placeholder="내용" style={{ width: '300px', height: '200px' }} onChange={(e) => contentUpdate(e)} ></input>
       <br />
       <br />
-      <form method='POST' onSubmit={addData} ><button>올리기</button></form>
+      </div>
+      <hr color='#660000'/>
+      <form method='POST' onSubmit={addData} ><button className='loginbtn'>올리기</button></form>
 
-    </>
+    </div>
   );
 }
 
