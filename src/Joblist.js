@@ -18,6 +18,7 @@ function Joblist() {
         <div >
            <div>
                 <div className='jobtype'>
+                    <hr color='#660000'/>
                     <div>
                         <Link style={{ textDecoration: 'none', color: '#660000' }} to='Eat'>외식.음료</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <Link style={{ textDecoration: 'none', color: '#660000' }} to='Management'>매장관리.판매</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
