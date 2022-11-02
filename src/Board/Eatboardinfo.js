@@ -167,52 +167,52 @@ function Eatboardinfo() {
     return (
         <>
             <br />
-            
-            <Modal 
 
-             style={{
-                overlay: {
-                  position : 'fixed',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  backgroundColor: 'rgba(255, 255, 255, 0.75)'
-                },
-                content: {
-                  position: 'fixed',
-                  top: '100px',
-                  left: '550px',
-                  right: '550px',
-                  bottom: '105px',
-                  border: '1px solid #ccc',
-                  background: '#F3ABB3',
-                  overflow: 'auto',
-                  WebkitOverflowScrolling: 'touch',
-                  borderRadius: '4px',
-                  outline: 'none',
-                  padding: '10px'
-                }
-              }}
-            
-            isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(true)}>
+            <Modal
+
+                style={{
+                    overlay: {
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                    },
+                    content: {
+                        position: 'fixed',
+                        top: '100px',
+                        left: '800px',
+                        right: '800px',
+                        bottom: '410px',
+                        border: '1px solid #ccc',
+                        background: '#F3ABB3',
+                        overflow: 'auto',
+                        WebkitOverflowScrolling: 'touch',
+                        borderRadius: '4px',
+                        outline: 'none',
+                        padding: '10px'
+                    }
+                }}
+
+                isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(true)}>
                 <div className='note'>
                     <div className='right'><button onClick={() => setModalIsOpen(false)}>x</button></div>
-                    <br/>
+                    <br />
                     <h3>쪽지 보내기</h3>
-                    <br/>
+                    <br />
                     <div>
-                    <div>받은 사람 : {nicknames}</div>
-                    <hr/>
-                    <div>보낸 시간 : {dates}</div>
-                    <hr/>
-                    <div>내용</div>
-                    <br/>
-                    <input type={'text'} placeholder="comment..." style={{ width: '300px', height: '200px' }} onChange={(e) => conversationUpdate(e)} ></input>
-                    <br/>
-                    <br/>
-                    <form className='center' method='POST' onSubmit={addDatas}><button className='loginbtn' >보내기</button>
-                    </form>
+                        <div>받은 사람 : {nicknames}</div>
+                        <hr />
+                        <div>보낸 시간 : {dates}</div>
+                        <hr />
+                        <div>내용</div>
+                        <br />
+                        <input type={'text'} placeholder="comment..." style={{ width: '300px', height: '200px' }} onChange={(e) => conversationUpdate(e)} ></input>
+                        <br />
+                        <br />
+                        <form className='center' method='POST' onSubmit={addDatas}><button className='loginbtn' >보내기</button>
+                        </form>
                     </div>
                 </div>
             </Modal>
@@ -228,20 +228,21 @@ function Eatboardinfo() {
                                 <div style={{ padding: '10px' }} ><span> 내용 : {el.content} </span> </div>
                                 <div style={{ padding: '10px' }} ><span> 작성자 : {el.nickname} </span></div>
                                 <div style={{ padding: '10px' }} ><span> {el.date} </span></div>
-                                {nickname !== null ?
-                                    <button className='loginbtn' style={{ padding: '5px' }} onClick={() => setModalIsOpen(true)} ><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Eatboardinfo?user_namer=${el.my_name}&date=${el.date}&content=${el.conversation}` }}>쪽지보내기</Link></button>
-                                    :
-                                    <div><button className='loginbtn' style={{ padding: '5px' }} onClick={Posts}>쪽지보내기</button></div>
-
-                                }
                             </div>
                             <div className='note'>
                                 {el.nickname == nickname ?
                                     <div style={{ padding: '10px' }}>
-                                        <button className='loginbtn'><Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatrevise?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}>수정</Link></button>
+                                        <button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Eatrevise?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}>수정</Link></button>&nbsp;&nbsp;
                                         <button className='loginbtn' onClick={() => deletepost(el)}>삭제</button>
                                     </div>
-                                    : <div></div>
+                                    : <div>
+                                        {nickname !== null ?
+                                            <button className='loginbtn' style={{ padding: '5px' }} onClick={() => setModalIsOpen(true)} >쪽지보내기</button>
+                                            :
+                                            <div><button className='loginbtn' style={{ padding: '5px' }} onClick={Posts}>쪽지보내기</button></div>
+
+                                        }
+                                    </div>
                                 }
                             </div>
                             <hr />
@@ -264,12 +265,6 @@ function Eatboardinfo() {
                                     <div className='textsize'> 내용 : {el.comment}</div>
                                     <div style={{ padding: '10px' }} ><span> 작성자 : {el.nickname} </span> </div>
                                     <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
-                                    {nickname !== null ?
-                                        <button className='loginbtn' style={{ padding: '5px' }} onClick={() => setModalIsOpen(true)} ><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Eatboardinfo?user_namer=${el.my_name}&date=${el.date}&content=${el.conversation}` }}>쪽지보내기</Link></button>
-                                        :
-                                        <div><button className='loginbtn' style={{ padding: '5px' }} onClick={Posts}>쪽지보내기</button></div>
-
-                                    }
                                 </div>
 
                                 <div className='note'>
@@ -279,7 +274,14 @@ function Eatboardinfo() {
                                             <a>&nbsp;</a>
                                             <button className='loginbtn' onClick={() => deletecommentpost(el)}>삭제</button>
                                         </div>
-                                        : <div></div>
+                                        : <div>
+                                            {nickname !== null ?
+                                                <button className='loginbtn' style={{ padding: '5px' }} onClick={() => setModalIsOpen(true)} >쪽지보내기</button>
+                                                :
+                                                <div><button className='loginbtn' style={{ padding: '5px' }} onClick={Posts}>쪽지보내기</button></div>
+
+                                            }
+                                        </div>
                                     }
                                 </div>
                                 <hr />

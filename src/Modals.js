@@ -54,9 +54,9 @@ const addDatas = async (e) => {
         content: {
           position: 'fixed',
           top: '100px',
-          left: '550px',
-          right: '550px',
-          bottom: '110px',
+          left: '800px',
+          right: '800px',
+          bottom: '410px',
           border: '1px solid #ccc',
           background: '#F3ABB3',
           overflow: 'auto',

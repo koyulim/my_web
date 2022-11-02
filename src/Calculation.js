@@ -63,7 +63,8 @@ function Calculation() {
 
     return (
         <div className='login'>
-            <h1 className='calculatormain'><BsCalculator size='10x' />시급 계산기</h1>
+            <br/>
+            <h1 className='calculatormain'><BsCalculator size='169' />시급 계산기</h1>
             <br/>
             <br/>
             <div>2022년 최저시급 9,160원 입니다.</div>
