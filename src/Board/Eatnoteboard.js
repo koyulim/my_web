@@ -24,7 +24,7 @@ function Eatnoteboard() {
     const date = today.format('YYYY-MM-DD hh:mm:ss');
 
     const deletenotepost = async (ID) => {
-        const remove = window.confirm( ID + '쪽지를 삭제하시겠습니까?');
+        const remove = window.confirm('쪽지를 삭제하시겠습니까?');
 
         if (remove) {
             const target = { id: ID }
@@ -88,9 +88,9 @@ function Eatnoteboard() {
                     content: {
                         position: 'fixed',
                         top: '100px',
-                        left: '550px',
-                        right: '550px',
-                        bottom: '280px',
+                        left: '800px',
+                        right: '800px',
+                        bottom: '580px',
                         border: '1px solid #ccc',
                         background: '#F3ABB3',
                         overflow: 'auto',

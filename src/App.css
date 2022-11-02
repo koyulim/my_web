@@ -1,12 +1,7 @@
 body {
   font-family: 'nanumsquare';
 }
-.Carousel{
-  width: 100px;
-  text-align: center;
-  background-color: #7b7c80;
-  height: 300px;
-}
+
 .loginbtnright{
   background-color: #F3ABB3;
   color: #660000;
@@ -14,14 +9,6 @@ body {
   /* margin-top: 10px; */
   padding: 6px;
   float: right;
-}
-
-.container {
-  text-align: center;
-  display:grid;
-  grid-template-columns:
-    [jobtype-start] 20% [jobtype-end jobborde-start] 30% [jobborde-end] 30% ;
-
 }
 
 .textsize {
@@ -49,7 +36,7 @@ body {
   padding: 6px;
   border-radius: 100px; 
   width: 200px;
-  height: 150px;
+  height: 175px;
   text-align: center;
   display: inline-block;
   
@@ -90,6 +77,7 @@ body {
   padding: 5px;
   text-align: center;
 }
+
 
 .btn_area {
   bottom: 0;
@@ -210,21 +198,55 @@ nav {
 }
 
 /* 메인 화면 */
-.main{
-  background-color: rgb(177, 177, 228);
-  border: 5px solid rgb(0, 0, 0);
-}
 .cardmargin{
-  border: 5px solid red;
-  position: relative;
+  /* position: relative; */
+  display: none;
 }
 .card{
-  /* width: 300px; */
-  padding: 20px;
-  border: 5px solid rgb(197, 196, 196);
+  width: 40%;
+  padding: 10%;
+  border:3px  solid rgb(243,171,179);
+  border-radius: 50%;
   margin: 10px;
+  color: #660000;
+  background-color: #f3c6cb;
+  transform: translate(25%);
 }
 
+.card-img-top{
+  height: 5rem;
+  object-fit: cover;
+}
+
+.container {
+  text-align: center;
+  display:grid;
+  grid-template-columns:
+    [jobtype-start] 50% 
+    [jobtype-end jobborde-start] 50% 
+}
+.slidepadding{
+  padding-left: 80px;
+  padding-right: 80px;
+  margin: 0;
+}
+
+.Carousel{
+  text-align: center;
+  color: #660000;
+  background-color: #fad6d9;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.slideimgpadding{
+  padding-left: 80px;
+  padding-right: 80px;
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  text-align: center;
+}
 
 @media screen and (min-width: 800px) {  /*전체화면*/
   .nav-center {
@@ -270,9 +292,58 @@ nav {
     background: transparent;
   }
 
-  .main{
-    background-color: #f3c6cb;
+  .card-img-top{
+    height: 10rem;
+    object-fit: cover;
+  }
 
+  .cardmargin{
+    display: block;
+    position: relative;
+  }
+
+  .cardmarginsmall{
+    display: none;
+    position: relative;
+  }
+  .card{
+    width: 80%;
+    padding: 20px;
+    border: 3px solid rgb(102, 0, 0);
+    margin: 10px;
+    color: #660000;
+    border-radius: 0%;
+    background-color: white;
+    transform: translate(0%);
+    }
+
+    .card-img-top{
+      height: 10rem;
+      object-fit: cover;
+    }
+
+  .container {
+    text-align: center;
+    display:grid;
+    grid-template-columns:
+      [jobtype-start] 25% 
+      [jobtype-end jobborde-start] 25% 
+      [jobborde-end jobborde-start] 25%
+      [jobborde-end] 25% ;
+  }
+
+  .slidepadding{
+    padding-left: 30px;
+    padding-right: 30px;
+  
+  }
+
+  .Carousel{
+    text-align: center;
+    color: #660000;
+    background-color: #fad6d9;
+    padding-top: 20px;
+    padding-bottom: 30px;
   }
 }
 

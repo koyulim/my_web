@@ -35,7 +35,7 @@ function Login() {
     return (
         <>
             <div className='login'>
-            <h1 className='loginmain'><AiOutlineUser size='10x' />Login</h1>
+            <h1 className='loginmain'><AiOutlineUser size='100' />Login</h1>
             <br/>
             <br/>
                 <h4>닉네임</h4>
@@ -51,7 +51,7 @@ function Login() {
                                 return (
                                     <>
                                         <div key={key}>
-                                            <meta http-equiv='refresh' content='0;url=Joblist' />
+                                            <meta http-equiv='refresh' content='0;url=Main' />
                                             {
                                                 sessionStorage.setItem('nickname', el.nickname) // 로그인 닉네임 값 보내기
                                             }
