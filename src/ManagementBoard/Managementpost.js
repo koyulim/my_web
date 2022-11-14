@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState, Component } from "react";
 import moment from "moment";
 
-function Post() {
+function Managementpost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const today = moment();
@@ -18,7 +18,7 @@ function Post() {
   const addData = async (e) => {
     e.preventDefault();
 
-    const res = await axios('/add/eatpost', {
+    const res = await axios('/add/Managementpost', {
       method: 'POST',
       data: {
         'area': area,
@@ -32,7 +32,7 @@ function Post() {
 
     if (res.data) {
       alert('게시글이 등록되었습니다.');
-      window.location.replace('/Joblist/Eat');
+      window.location.replace('/Joblist/Management');
     }
   }
 
@@ -69,4 +69,4 @@ function Post() {
 
 
 
-export default Post;
+export default Managementpost;

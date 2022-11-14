@@ -39,11 +39,14 @@ const {
   Eatpost,
   Eatcomment,
   Eatnote,
+  Managepost,
+  Managecomment,
   Sequelize: { Op }
 } = require('./models');
+const managecomment = require('./models/managecomment');
 sequelize.query('SET NAMES utf8;');
 
-app.post('/delete/eatnotedata', (req, res) => {
+app.post('/delete/Eatnotedata', (req, res) => {
   Eatnote.destroy({
     where: { id: req.body.delete.id }
   })
@@ -51,7 +54,7 @@ app.post('/delete/eatnotedata', (req, res) => {
     .catch(err => { throw err })
 })
 
-app.post('/add/eatnote', (req, res) => {
+app.post('/add/Eatnote', (req, res) => {
   console.log(req.body);
 
   Eatnote.create({
@@ -69,7 +72,7 @@ app.post('/add/eatnote', (req, res) => {
     })
 })
 
-app.post('/add/eatpost', (req, res) => {
+app.post('/add/Eatpost', (req, res) => {
   console.log(req.body);
 
   Eatpost.create({
@@ -89,7 +92,27 @@ app.post('/add/eatpost', (req, res) => {
     })
 })
 
-app.post('/add/eatcomment', (req, res) => {
+app.post('/add/Managementpost', (req, res) => {
+  console.log(req.body);
+
+  Managepost.create({
+    area: req.body.area,
+    jobname: req.body.jobname,
+    nickname: req.body.nickname,
+    title: req.body.title,
+    content: req.body.content,
+    date: req.body.date
+  })
+    .then(result => {
+      res.send(result)
+    })
+    .catch(err => {
+      console.log(err)
+      throw err;
+    })
+})
+
+app.post('/add/Eatcomment', (req, res) => {
   console.log(req.body);
 
   Eatcomment.create({
@@ -109,7 +132,27 @@ app.post('/add/eatcomment', (req, res) => {
     })
 })
 
-app.post('/add/eatdata', (req, res) => {
+app.post('/add/Managecomment', (req, res) => {
+  console.log(req.body);
+
+  Managecomment.create({
+    area: req.body.area,
+    jobname: req.body.jobname,
+    nickname: req.body.nickname,
+    title: req.body.title,
+    date: req.body.date,
+    comment: req.body.comment,
+  })
+    .then(result => {
+      res.send(result)
+    })
+    .catch(err => {
+      console.log(err)
+      throw err;
+    })
+})
+
+app.post('/add/Eatdata', (req, res) => {
   console.log(req.body);
 
   Signup.create({
@@ -168,6 +211,14 @@ app.post('/get/keywordEatpostData', (req, res) => {
     .catch(err => { throw err })
 })
 
+app.post('/get/keywordManagementpostData', (req, res) => {
+  Managepost.findAll({
+    where: [{ area: req.body.area }, { jobname: req.body.jobname }]
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
 app.post('/get/keywordEatnoteData', (req, res) => {
   Eatnote.findAll({
     where: { [Op.or]: [{ user_name: req.body.my_name }, { my_name: req.body.my_name }] }
@@ -203,6 +254,14 @@ app.post('/get/keywordEatpostinfoData', (req, res) => {
     .catch(err => { throw err })
 })
 
+app.post('/get/keywordManagementpostinfoData', (req, res) => {
+  Managepost.findAll({
+    where: [{ title: req.body.title }, { area: req.body.area }, { jobname: req.body.jobname }, { nickname: req.body.nickname }]
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
 app.post('/get/keywordEatcommentData', (req, res) => {
   Eatcomment.findAll({
     where: [{ title: req.body.title }, { area: req.body.area }, { jobname: req.body.jobname }]
@@ -211,7 +270,15 @@ app.post('/get/keywordEatcommentData', (req, res) => {
     .catch(err => { throw err })
 })
 
-app.post('/delete/data', (req, res) => {
+app.post('/get/keywordManagementcommentData', (req, res) => {
+  Managecomment.findAll({
+    where: [{ title: req.body.title }, { area: req.body.area }, { jobname: req.body.jobname }]
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
+app.post('/delete/Eatdata', (req, res) => {
   Eatpost.destroy({
     where: { id: req.body.delete.id }
   })
@@ -219,7 +286,15 @@ app.post('/delete/data', (req, res) => {
     .catch(err => { throw err })
 })
 
-app.post('/delete/commentdata', (req, res) => {
+app.post('/delete/Managementdata', (req, res) => {
+  Managepost.destroy({
+    where: { id: req.body.delete.id }
+  })
+    .then(res.sendStatus(200))
+    .catch(err => { throw err })
+})
+
+app.post('/delete/Eatcommentdata', (req, res) => {
   Eatcomment.destroy({
     where: { id: req.body.delete.id }
   })
@@ -227,7 +302,26 @@ app.post('/delete/commentdata', (req, res) => {
     .catch(err => { throw err })
 })
 
-app.post('/modify/data', (req, res) => {
+app.post('/delete/Managementcommentdata', (req, res) => {
+  Managecomment.destroy({
+    where: { id: req.body.delete.id }
+  })
+    .then(res.sendStatus(200))
+    .catch(err => { throw err })
+})
+
+app.post('/modify/Managementdata', (req, res) => {
+  Managecomment.update({ comment: req.body.modify.comment }, {
+    where: { id: req.body.modify.id }
+  })
+  Eatcomment.update({ date: req.body.modify.date }, {
+    where: { id: req.body.modify.id }
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
+app.post('/modify/Eatdata', (req, res) => {
   Eatcomment.update({ comment: req.body.modify.comment }, {
     where: { id: req.body.modify.id }
   })
@@ -260,7 +354,7 @@ app.post('/get/keywordmanageData', (req, res) => {
     .catch(err => { throw err })
 })
 
-app.get('/get/eatdata', (req, res) => {
+app.get('/get/Eatdata', (req, res) => {
   Eatinfo.findAll()
     .then(result => { res.send(result) })
     .catch(err => { throw err })

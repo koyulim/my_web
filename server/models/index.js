@@ -38,6 +38,11 @@ let sequelize = new Sequelize(
     db.Eatpost = require('./eatpost')(sequelize, Sequelize);
     db.Eatcomment = require('./eatcomment')(sequelize, Sequelize);
     db.Eatnote = require('./eatnote')(sequelize, Sequelize);
+    db.Managepost = require('./managepost')(sequelize, Sequelize);
+    db.Managecomment = require('./managecomment')(sequelize, Sequelize);
+
+
+
 
 
 db.secret = '(9*)5$&!3%^0%^@@2$1!#5@2!4';
