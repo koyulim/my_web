@@ -2,7 +2,22 @@ body {
   font-family: 'nanumsquare';
 }
 
-.loginbtnright{
+.btn {
+  background-color: rgb(199, 192, 192);
+  color: #660000;
+  border: 10px;
+  padding: 6px;
+}
+
+.inlin {
+  display: inline;
+}
+
+.inli {
+  display: inline-flex;
+}
+
+.loginbtnright {
   background-color: #F3ABB3;
   color: #660000;
   border: 10px;
@@ -16,33 +31,32 @@ body {
   font-size: 20px;
 }
 
-.loginmain{
+.loginmain {
   background-color: #F3ABB3;
   color: #660000;
   text-size-adjust: 10px;
   padding: 6px;
-  border-radius: 50px; 
+  border-radius: 50px;
   width: 100px;
   height: 100px;
   text-align: center;
   display: inline-block;
-  
+
 }
 
-.calculatormain{
+.calculatormain {
   background-color: #F3ABB3;
   color: #660000;
   text-size-adjust: 10px;
   padding: 6px;
-  border-radius: 100px; 
+  border-radius: 100px;
   width: 200px;
   height: 175px;
   text-align: center;
   display: inline-block;
-  
 }
 
-.loginbtn{
+.loginbtn {
   background-color: #F3ABB3;
   color: #660000;
   border: 10px;
@@ -87,7 +101,7 @@ body {
   /*가로 사이즈를 브라우저에 가득 채움*/
 }
 
-.note{
+.note {
   background-color: #fad6d9;
   color: #660000;
   border: 10px;
@@ -130,11 +144,11 @@ body {
   color: #61dafb;
 }
 
-.center{
+.center {
   text-align: center;
 }
 
-.note{
+.note {
   background-color: #f7d0d5;
   color: #660000;
   padding: 10px;
@@ -198,14 +212,15 @@ nav {
 }
 
 /* 메인 화면 */
-.cardmargin{
+.cardmargin {
   /* position: relative; */
   display: none;
 }
-.card{
+
+.card {
   width: 40%;
   padding: 10%;
-  border:3px  solid rgb(243,171,179);
+  border: 3px solid rgb(243, 171, 179);
   border-radius: 50%;
   margin: 10px;
   color: #660000;
@@ -213,25 +228,25 @@ nav {
   transform: translate(25%);
 }
 
-.card-img-top{
+.card-img-top {
   height: 5rem;
   object-fit: cover;
 }
 
 .container {
   text-align: center;
-  display:grid;
+  display: grid;
   grid-template-columns:
-    [jobtype-start] 50% 
-    [jobtype-end jobborde-start] 50% 
+    [jobtype-start] 50% [jobtype-end jobborde-start] 50%
 }
-.slidepadding{
+
+.slidepadding {
   padding-left: 80px;
   padding-right: 80px;
   margin: 0;
 }
 
-.Carousel{
+.Carousel {
   text-align: center;
   color: #660000;
   background-color: #fad6d9;
@@ -239,7 +254,7 @@ nav {
   padding-bottom: 30px;
 }
 
-.slideimgpadding{
+.slideimgpadding {
   padding-left: 80px;
   padding-right: 80px;
   height: 150px;
@@ -248,7 +263,35 @@ nav {
   text-align: center;
 }
 
-@media screen and (min-width: 800px) {  /*전체화면*/
+.Modal {
+  position: fixed;
+  top: 100px;
+  bottom: 585px;
+  border: 1px solid #ccc;
+  background: #F3ABB3;
+  overflow: auto;
+  outline: none;
+  padding: 10px;
+  left: 60px;
+  right: 60px;
+}
+
+.Modal2 {
+  position: fixed;
+  top: 100px;
+  bottom: 420px;
+  border: 1px solid #ccc;
+  background: #F3ABB3;
+  overflow: auto;
+  outline: none;
+  padding: 10px;
+  left: 60px;
+  right: 60px;
+}
+
+@media screen and (min-width: 800px) {
+
+  /*전체화면*/
   .nav-center {
     margin: 0 auto;
     display: flex;
@@ -292,21 +335,22 @@ nav {
     background: transparent;
   }
 
-  .card-img-top{
+  .card-img-top {
     height: 10rem;
     object-fit: cover;
   }
 
-  .cardmargin{
+  .cardmargin {
     display: block;
     position: relative;
   }
 
-  .cardmarginsmall{
+  .cardmarginsmall {
     display: none;
     position: relative;
   }
-  .card{
+
+  .card {
     width: 80%;
     padding: 20px;
     border: 3px solid rgb(102, 0, 0);
@@ -315,35 +359,57 @@ nav {
     border-radius: 0%;
     background-color: white;
     transform: translate(0%);
-    }
+  }
 
-    .card-img-top{
-      height: 10rem;
-      object-fit: cover;
-    }
+  .card-img-top {
+    height: 10rem;
+    object-fit: cover;
+  }
 
   .container {
     text-align: center;
-    display:grid;
+    display: grid;
     grid-template-columns:
-      [jobtype-start] 25% 
-      [jobtype-end jobborde-start] 25% 
-      [jobborde-end jobborde-start] 25%
-      [jobborde-end] 25% ;
+      [jobtype-start] 25% [jobtype-end jobborde-start] 25% [jobborde-end jobborde-start] 25% [jobborde-end] 25%;
   }
 
-  .slidepadding{
+  .slidepadding {
     padding-left: 30px;
     padding-right: 30px;
-  
+
   }
 
-  .Carousel{
+  .Carousel {
     text-align: center;
     color: #660000;
     background-color: #fad6d9;
     padding-top: 20px;
     padding-bottom: 30px;
   }
-}
 
+  .Modal {
+    position: fixed;
+    top: 100px;
+    bottom: 480px;
+    border: 1px solid #ccc;
+    background: #F3ABB3;
+    overflow: auto;
+    outline: none;
+    padding: 10px;
+    left: 600px;
+    right: 600px;
+  }
+
+  .Modal2 {
+    position: fixed;
+    top: 100px;
+    bottom: 310px;
+    border: 1px solid #ccc;
+    background: #F3ABB3;
+    overflow: auto;
+    outline: none;
+    padding: 10px;
+    left: 600px;
+    right: 600px;
+  }
+}

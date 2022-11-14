@@ -39,7 +39,7 @@ function Eatrevise() {
     const addData = async (e) => {
         e.preventDefault();
     
-        const res = await axios('/add/eatpost', {
+        const res = await axios('/add/Eatpost', {
           method: 'POST',
           data: {
             'area': area,

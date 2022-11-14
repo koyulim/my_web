@@ -47,6 +47,7 @@ function Management() {
       <div className='login'>
         <h2>Management List</h2>
         <input type='text' maxLength='10' placeholder='지역 검색' onChange={(e) => areaUpdate(e)} />
+        <a>&nbsp;</a>
         <input type='text' maxLength='20' placeholder='가게 이름 검색' onChange={(e) => jobnameUpdate(e)} />
         <a>&nbsp;&nbsp;</a>
         <button className='loginbtn' onClick={getKeywordmanageData}>Search</button>
@@ -71,7 +72,7 @@ function Management() {
                 <div className='note' style={{ padding: '10px' }}>
                   <button className='loginbtn' onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
                   <a>&nbsp;&nbsp;</a>
-                  <button className='loginbtn' ><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Board?Jolist=Management&id=${el.id}` }}>후기글 보기</Link></button>
+                  <button className='loginbtn' ><Link style={{ textDecoration: 'none', color: '#660000' }} to={{pathname: `/Joblist/Managementboard?area=${el.area}&jobname=${el.jobname}`}}>후기글 보기</Link></button>
                 </div>
                 <hr />
               </div>

@@ -7,13 +7,23 @@ function Calculation() {
         "21", "22", "23", "24"];
     const dayList = ["1", "2", "3", "4", "5", "6", "7"];
 
+    const [Btnweekoff, setBtnweekoff] = useState("");
+    const [Btnweekoff2, setBtnweekoff2] = useState("");
+
+    const [Btntax, setBtntax] = useState("");
+    const [Btntax2, setBtntax2] = useState("");
+    const [Btntax3, setBtntax3] = useState("");
+
+    const [Btnapprenticeship, setBtnapprenticeship] = useState("");
+    const [Btntapprenticeship2, setBtnapprenticeship2] = useState("");
+
     const [hour, setHour] = useState("");
     const [calculations, setCalculations] = useState('');
     const [day, setDay] = useState("");
     const [results, setResult] = useState("");
     const [weekoffs, setWeekoffs] = useState("");
     const [taxs, setTaxs] = useState("");
-    const [apprenticeships, setApprenticeships] = useState("");    
+    const [apprenticeships, setApprenticeships] = useState("");
 
     const handleHour = (e) => { //일일
         setHour(e.target.value);
@@ -37,36 +47,54 @@ function Calculation() {
         } else {
             setWeekoffs(0);
         }
+        setBtnweekoff2(true);
+        setBtnweekoff(false);
     }
-
     const weekoff2 = () => {
         setWeekoffs(0);
+        setBtnweekoff(true);
+        setBtnweekoff2(false);
     }
 
     const tax = () => {   //세금
         setTaxs(0);
+        setBtntax(true);
+        setBtntax2(false);
+        setBtntax3(false);
     }
     const tax1 = () => {
         setTaxs(9.32 / 100);
+        setBtntax(false);
+        setBtntax2(true);
+        setBtntax3(false);
     }
     const tax2 = () => {
         setTaxs(3.3 / 100);
+        setBtntax(false);
+        setBtntax2(false);
+        setBtntax3(true);
     }
 
     const apprenticeship = () => { // 수습
         setApprenticeships(0);
+        setBtnapprenticeship(true);
+        setBtnapprenticeship2(false);
+
     }
 
     const apprenticeship1 = () => {
         setApprenticeships(10 / 100);
+        setBtnapprenticeship(false);
+        setBtnapprenticeship2(true);
+
     }
 
     return (
         <div className='login'>
-            <br/>
+            <br />
             <h1 className='calculatormain'><BsCalculator size='169' />시급 계산기</h1>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <div>2022년 최저시급 9,160원 입니다.</div>
             <br />
             <div>시급 <input style={{ color: '#660000' }} onChange={(e) => calculation(e)}></input> 원</div>
@@ -81,7 +109,6 @@ function Calculation() {
                     ))}
                 </select> 시간
             </div>
-
             <br />
             <div>일주 근무일수&nbsp;
 
@@ -92,36 +119,113 @@ function Calculation() {
                         </option>
                     ))}
                 </select> 일
+            </div>
+            <br />
+            <div className='inli'>주휴수당&nbsp;
+                {Btnweekoff === "" ?
+                    <div className='inlin'>
+                        <button className='loginbtn' style={{ color: '#660000' }} onClick={weekoff2} >제외</button>&nbsp;
+                        <button className='loginbtn' style={{ color: '#660000' }} onClick={weekoff}>포함</button>
+                    </div>
+                    :
+                    (
+                        Btnweekoff === true ?
+                            <div>
+                                <button className='btn' style={{ color: '#660000' }} onClick={weekoff2} >제외</button>&nbsp;
+                                <button className='loginbtn' style={{ color: '#660000' }} onClick={weekoff}>포함</button>
+                            </div>
+                            :
+                            <div>
+                                <div>
+                                    <button className='loginbtn' style={{ color: '#660000' }} onClick={weekoff2} >제외</button>&nbsp;
+                                    <button className='btn' style={{ color: '#660000' }} onClick={weekoff}>포함</button>
+                                </div>
+                            </div>
+                    )
+                }
+            </div>
+            <br />
+            <br />
+
+            <div className='inli'>세금&nbsp;
+                {Btntax === "" ?
+                    <div >
+                        <button className='loginbtn' style={{ color: '#660000' }} onClick={tax}>없음</button>&nbsp;
+                        <button className='loginbtn' style={{ color: '#660000' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
+                        <button className='loginbtn' style={{ color: '#660000' }} onClick={tax2}>3.3%(원천징수)</button>
+                    </div>
+                    :
+                    (
+                        Btntax === true ?
+                            <div>
+                                <button className='btn' style={{ color: '#660000' }} onClick={tax}>없음</button>&nbsp;
+                                <button className='loginbtn' style={{ color: '#660000' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
+                                <button className='loginbtn' style={{ color: '#660000' }} onClick={tax2}>3.3%(원천징수)</button>
+                            </div>
+                            :
+                            (
+                                Btntax2 === true ?
+                                    <div>
+                                        <button className='loginbtn' style={{ color: '#660000' }} onClick={tax}>없음</button>&nbsp;
+                                        <button className='btn' style={{ color: '#660000' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
+                                        <button className='loginbtn' style={{ color: '#660000' }} onClick={tax2}>3.3%(원천징수)</button>
+                                    </div>
+                                    :
+                                    (
+                                        Btntax3 === true ?
+                                            <div>
+                                                <button className='loginbtn' style={{ color: '#660000' }} onClick={tax}>없음</button>&nbsp;
+                                                <button className='loginbtn' style={{ color: '#660000' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
+                                                <button className='btn' style={{ color: '#660000' }} onClick={tax2}>3.3%(원천징수)</button>
+                                            </div>
+                                            :
+                                            <div></div>
+                                    )
+
+                            )
+                    )
+                }
 
             </div>
             <br />
-            <div>주휴수당&nbsp;
-                <button className='loginbtn' style={{ color: '#660000' }} onClick={weekoff2}>제외</button>&nbsp;
-                <button className='loginbtn' style={{ color: '#660000' }} onClick={weekoff}>포함</button>
-                </div>
-            
             <br />
-            <div>세금&nbsp;
-                <button className='loginbtn' style={{ color: '#660000' }} onClick={tax}>없음</button>&nbsp;
-                <button className='loginbtn' style={{ color: '#660000' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
-                <button className='loginbtn' style={{ color: '#660000' }} onClick={tax2}>3.3%(원천징수)</button>
-                </div>
+            <div className='inli' >수습&nbsp;
+                {Btnapprenticeship === "" ?
+                    <div className='inlin'>
+                        <button className='loginbtn' style={{ color: '#660000' }} onClick={apprenticeship}>제외</button>&nbsp;
+                        <button className='loginbtn' style={{ color: '#660000' }} onClick={apprenticeship1}>포함</button>
+                    </div>
+                    :
+                    (
+                        Btnapprenticeship === true ?
+                            <div>
+                                <button className='btn' style={{ color: '#660000' }} onClick={apprenticeship}>제외</button>&nbsp;
+                                <button className='loginbtn' style={{ color: '#660000' }} onClick={apprenticeship1}>포함</button>
+                            </div>
+                            :
+                            <div>
+                                <div>
+                                    <button className='loginbtn' style={{ color: '#660000' }} onClick={apprenticeship}>제외</button>&nbsp;
+                                    <button className='btn' style={{ color: '#660000' }} onClick={apprenticeship1}>포함</button>
+                                </div>
+                            </div>
+                    )
+                }
+
+            </div>
             <br />
-            <div>수습&nbsp;
-                <button className='loginbtn' style={{ color: '#660000' }} onClick={apprenticeship}>제외</button>&nbsp;
-                <button className='loginbtn' style={{ color: '#660000' }} onClick={apprenticeship1}>포함</button></div>
             <br />
             <div><button className='loginbtn' onClick={result}>계산하기</button>
             </div>
             <br />
             <hr color='#660000' />
-            <div>
-                {results == 0
+            <h2>
+                {results === 0
                     ? <div>최종 환산 금액 0 원</div>
                     :
                     <div>최종 환산 금액 {results} 원</div>
                 }
-            </div>
+            </h2>
 
 
         </div>

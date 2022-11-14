@@ -13,11 +13,11 @@ import Main from 'Main';
 import Eat from 'Jobtype/Eat';
 import Management from 'Jobtype/Management';
 import Service from 'Jobtype/Service';
-import Post from 'Jobtype/Post';
-import Eatboard from 'Board/Eatboard';
-import Eatboardinfo from 'Board/Eatboardinfo';
-import Eatrevise from 'Board/Eatrevise';
-import Eatnoteboard from 'Board/Eatnoteboard';
+import Post from 'EatBoard/Eatpost';
+import Eatboard from 'EatBoard/Eatboard';
+import Eatboardinfo from 'EatBoard/Eatboardinfo';
+import Eatrevise from 'EatBoard/Eatrevise';
+import Eatnoteboard from 'EatBoard/Eatnoteboard';
 import Calculation from 'Calculation';
 
 

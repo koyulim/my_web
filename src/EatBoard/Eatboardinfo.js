@@ -33,7 +33,7 @@ function Eatboardinfo() {
     const addDatas = async (e) => {
         e.preventDefault();
 
-        const res = await axios('/add/eatnote', {
+        const res = await axios('/add/Eatnote', {
             method: 'POST',
             data: {
                 'user_name': nicknames,
@@ -85,14 +85,14 @@ function Eatboardinfo() {
 
         if (remove) {
             const target = { id: el.id }
-            const res = await axios('/delete/data', {
+            const res = await axios('/delete/Eatdata', {
                 method: 'POST',
                 data: { 'delete': target }
             })
 
             if (res.data) {
                 alert('데이터를 삭제했습니다.')
-                return window.location.reload();
+                return window.location.replace('Eat');
             }
         }
     }
@@ -102,7 +102,7 @@ function Eatboardinfo() {
 
         if (remove) {
             const target = { id: el.id }
-            const res = await axios('/delete/commentdata', {
+            const res = await axios('/delete/Eatcommentdata', {
                 method: 'POST',
                 data: { 'delete': target }
             })
@@ -121,7 +121,7 @@ function Eatboardinfo() {
     const addData = async (e) => {
         e.preventDefault();
 
-        const res = await axios('/add/eatcomment', {
+        const res = await axios('/add/Eatcomment', {
             method: 'POST',
             data: {
                 'area': area,
@@ -150,7 +150,7 @@ function Eatboardinfo() {
 
             }
 
-            const res = await axios('/modify/data', {
+            const res = await axios('/modify/Eatdata', {
                 method: 'POST',
                 data: { 'modify': dataToModify },
                 headers: new Headers()
@@ -169,32 +169,7 @@ function Eatboardinfo() {
             <br />
 
             <Modal
-
-                style={{
-                    overlay: {
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        backgroundColor: 'rgba(255, 255, 255, 0.75)'
-                    },
-                    content: {
-                        position: 'fixed',
-                        top: '100px',
-                        left: '800px',
-                        right: '800px',
-                        bottom: '410px',
-                        border: '1px solid #ccc',
-                        background: '#F3ABB3',
-                        overflow: 'auto',
-                        WebkitOverflowScrolling: 'touch',
-                        borderRadius: '4px',
-                        outline: 'none',
-                        padding: '10px'
-                    }
-                }}
-
+            className= 'Modal2'
                 isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(true)}>
                 <div className='note'>
                     <div className='right'><button onClick={() => setModalIsOpen(false)}>x</button></div>
@@ -290,10 +265,12 @@ function Eatboardinfo() {
                     })
                     : <div className='login'>댓글이 없습니다.</div>
                 }
-
+                
                 <input type={'text'} placeholder="comment..." style={{ width: '300px' }} onChange={(e) => commentUpdate(e)} ></input>
+                <a>&nbsp;</a>
+                <a>&nbsp;</a>
                 {nickname !== null
-                    ? <form method='POST' onSubmit={addData}><button className='loginbtn'>댓글 달기</button></form>
+                    ? <form className="inlin" method='POST' onSubmit={addData}><button className='loginbtn'>댓글 달기</button></form>
                     : <button className='loginbtn' onClick={Posts}>댓글달기</button>
                 }
             </div>

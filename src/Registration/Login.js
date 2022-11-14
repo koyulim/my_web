@@ -25,11 +25,7 @@ function Login() {
         })
         setSample1List(res.data);
 
-        if (sample1List.lenth !== 0) {
-            alert('로그인 성공')
-        } else {
-            alert('아이디 비밀번호를 다시 확인해 주세요.')
-        }
+       
     }
 
     return (

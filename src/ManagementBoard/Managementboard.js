@@ -3,9 +3,8 @@ import React, { useEffect, useState, Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AiFillEdit } from "react-icons/ai";
-//import 'bootstrap/dist/css/bootstrap.css';
 
-function Eatboard() {
+function Managementboard() {
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -16,8 +15,8 @@ function Eatboard() {
     const area = searchParams.get('area');
     const jobname = searchParams.get('jobname');
 
-    const getKeywordEatData = async () => {
-        const res = await axios('/get/keywordEatpostData', {
+    const getKeywordManagementboardData = async () => {
+        const res = await axios('/get/keywordManagementpostData', {
             method: 'POST',
             data: {
                 'area': area,
@@ -28,7 +27,7 @@ function Eatboard() {
     }
 
     useEffect(() => {
-        getKeywordEatData();
+        getKeywordManagementboardData();
     }, []);
 
     return (
@@ -43,7 +42,7 @@ function Eatboard() {
                     return (
                         <div key={key}>
                             <div className='note'>
-                                <Link className='textsize' style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Eatboardinfo?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}> {el.title}</Link>
+                                <Link className='textsize' style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Managementboardinfo?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}> {el.title}</Link>
                                 <div>
                                     <span> {el.nickname} </span>
                                 </div>
@@ -60,7 +59,7 @@ function Eatboard() {
 
             {
                 nickname !== null
-                    ? <div className="btn_area"><button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Post?area=${area}&jobname=${jobname}` }}><AiFillEdit size='30px' /></Link></button></div>
+                    ? <div className="btn_area"><button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Managementpost?area=${area}&jobname=${jobname}` }}><AiFillEdit size='30px' /></Link></button></div>
                     : <div className="btn_area" ><button className='loginbtn' style={{ padding: '5px' }} onClick={Posts}><AiFillEdit size='30px' /></button></div>
 
             }
@@ -71,4 +70,4 @@ function Eatboard() {
 function Posts() {
     alert('로그인을 해주세요.')
 }
-export default Eatboard;
+export default Managementboard;

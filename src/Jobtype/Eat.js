@@ -42,6 +42,7 @@ function Eat() {
       <div className='login'>
         <h2>Eat List</h2>
         <input type='text' maxLength='10' placeholder='지역 검색' onChange={(e) => areaUpdate(e)} />
+        <a>&nbsp;</a>
         <input type='text' maxLength='20' placeholder='가게 이름 검색' onChange={(e) => jobnameUpdate(e)} />
         <a>&nbsp;&nbsp;</a>
         <button className='loginbtn' onClick={getKeywordEatData}>Search</button>

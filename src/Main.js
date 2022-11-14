@@ -52,8 +52,8 @@ function Main() {
                 <img src="img/Main1.png"></img>
                 <Link to='' style={{ color: '#660000' }} onClick={() => window.open('http://www.alba.co.kr/')} >click -&gt;</Link>
               </div>
-              <br/>
-              <br/>
+              <br />
+              <br />
             </div>
           </div>
           <div>
@@ -65,8 +65,8 @@ function Main() {
                 <img src="img/Main2.png"></img>
                 <Link to='' style={{ color: '#660000' }} onClick={() => window.open('https://www.albamon.com/')} >click -&gt;</Link>
               </div>
-              <br/>
-              <br/>
+              <br />
+              <br />
             </div>
           </div>
         </Slider>
@@ -155,55 +155,62 @@ function Main() {
           <Row>
             <Col>
               <Card>
-                <Card.Img variant="top" src="img/Eat2.png" />
-                <br />
-                <Card.Body>
-                  <Card.Title>외식.음료</Card.Title>
-                  {/* <Button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#660000' }} href="http://localhost:3000/Eat">이동하기</a></Button> */}
-                </Card.Body>
+                <br/>
+                <Card.Link style={{ textDecoration: 'none', color: '#660000' }} href="http://localhost:3000/Eat">
+                  <Card.Img variant="top" src="img/Eat2.png" />
+                  <br />
+                  <Card.Body>
+                    <Card.Title>외식.음료</Card.Title>
+                  </Card.Body>
+                </Card.Link>
               </Card>
             </Col>
           </Row>
           <Row>
             <Col>
               <Card>
-                <Card.Img variant="top" src="img/Management2.png" />
-                <br />
-                <Card.Body>
-                  <Card.Title>매장관리.판매</Card.Title>
-                  {/* <Button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#660000' }} href="http://localhost:3000/Management">이동하기</a></Button> */}
-                </Card.Body>
+              <br/>
+
+                <Card.Link style={{ textDecoration: 'none', color: '#660000' }} href="http://localhost:3000/Management">
+                  <Card.Img variant="top" src="img/Management2.png" />
+
+                  <Card.Body>
+                    <Card.Title>매장관리.판매</Card.Title>
+                  </Card.Body>
+                </Card.Link>
+
               </Card>
             </Col>
           </Row>
           <Row>
             <Col>
               <Card>
-                <br />
-                <Card.Img variant="top" src="img/Service2.png" />
-                <br />
-                <Card.Body>
-                  <Card.Title>서비스</Card.Title>
-                  {/* <Button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#660000' }} href="http://localhost:3000/Service">이동하기</a></Button> */}
-                </Card.Body>
+                <Card.Link style={{ textDecoration: 'none', color: '#660000' }} href="http://localhost:3000/Service">
+                  <br />
+                  <Card.Img variant="top" src="img/Service2.png" />
+                  <br />
+                  <Card.Body>
+                    <Card.Title>서비스</Card.Title>
+                  </Card.Body>
+                </Card.Link>
               </Card>
             </Col>
           </Row>
           <Row>
             <Col>
               <Card>
-                <br />
-                <Card.Img variant="top" src="img/Trevise2.png" />
-                <br />
-                <Card.Body>
-                  <Card.Title>시급계산기</Card.Title>
-                  {/* <Button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#660000' }} href="http://localhost:3000/Calculation">이동하기</a></Button> */}
-                </Card.Body>
+                <Card.Link style={{ textDecoration: 'none', color: '#660000' }} href="http://localhost:3000/Calculation">
+                  <br />
+                  <Card.Img variant="top" src="img/Trevise2.png" />
+                  <br />
+                  <Card.Body>
+                    <Card.Title>시급계산기</Card.Title>
+                  </Card.Body>
+                </Card.Link>
               </Card>
             </Col>
           </Row>
           <Row></Row>
-
         </Container>
       </div>
     </>
