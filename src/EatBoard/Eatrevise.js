@@ -67,10 +67,10 @@ function Eatrevise() {
 
 
       const deletepost = async (el) => {
-
+        console.log("test")
         if (el.title) {
             const target = { id: el.id }
-            const res = await axios('/delete/data', {
+            const res = await axios('/delete/EatnotedataRevise', {
                 method: 'POST',
                 data: { 'delete': target }
             })
