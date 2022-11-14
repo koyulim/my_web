@@ -16,6 +16,10 @@ import Managementboard from 'ManagementBoard/Managementboard';
 import Managementpost from 'ManagementBoard/Managementpost';
 import Managementboardinfo from 'ManagementBoard/Managementboardinfo';
 import Managementrevise from 'ManagementBoard/Managementrevise';
+import Serviceboard from 'ServiceBoard/Serviceboard';
+import Serviceboardinfo from 'ServiceBoard/Serviceboardinfo';
+import Servicepost from 'ServiceBoard/Servicepost';
+import Servicetrevise from 'ServiceBoard/Servicetrevise';
 
 
 
@@ -40,7 +44,10 @@ function Joblist() {
                         <Route path='Managementpost/*' element={<Managementpost />} />
                         <Route path='Managementboardinfo/*' element={<Managementboardinfo />} />
                         <Route path='Managementrevise/*' element={<Managementrevise />} />
-
+                        <Route path='Serviceboard/*' element={<Serviceboard />} />
+                        <Route path='Serviceboardinfo/*' element={<Serviceboardinfo />} />
+                        <Route path='Servicepost/*' element={<Servicepost />} />
+                        <Route path='Servicetrevise/*' element={<Servicetrevise />} />
                     </Routes>
                 </div>
             </div>

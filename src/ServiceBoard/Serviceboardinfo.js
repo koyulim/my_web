@@ -6,7 +6,7 @@ import moment from "moment";
 import Modal from 'react-modal';
 
 
-function Managementboardinfo() {
+function Serviceboardinfo() {
 
     const today = moment();
 
@@ -49,8 +49,8 @@ function Managementboardinfo() {
         }
     }
 
-    const getKeywordManagementpostData = async () => {
-        const res = await axios('/get/keywordManagementpostinfoData', {
+    const getKeywordServicepostData = async () => {
+        const res = await axios('/get/keywordServicepostinfoData', {
             method: 'POST',
             data: {
                 'title': title,
@@ -62,8 +62,8 @@ function Managementboardinfo() {
         setSample1List(res.data);
     }
 
-    const getKeywordManagementcommentData = async () => {
-        const res = await axios('/get/keywordManagementcommentData', {
+    const getKeywordServicecommentData = async () => {
+        const res = await axios('/get/keywordServicecommentData', {
             method: 'POST',
             data: {
                 'title': title,
@@ -75,8 +75,8 @@ function Managementboardinfo() {
     }
 
     useEffect(() => {
-        getKeywordManagementpostData();
-        getKeywordManagementcommentData();
+        getKeywordServicepostData();
+        getKeywordServicecommentData();
     }, []);
 
 
@@ -85,7 +85,7 @@ function Managementboardinfo() {
 
         if (remove) {
             const target = { id: el.id }
-            const res = await axios('/delete/Managementdata', {
+            const res = await axios('/delete/Servicedata', {
                 method: 'POST',
                 data: { 'delete': target }
             })
@@ -102,7 +102,7 @@ function Managementboardinfo() {
 
         if (remove) {
             const target = { id: el.id }
-            const res = await axios('/delete/Managementcommentdata', {
+            const res = await axios('/delete/Servicrcommentdata', {
                 method: 'POST',
                 data: { 'delete': target }
             })
@@ -121,7 +121,7 @@ function Managementboardinfo() {
     const addData = async (e) => {
         e.preventDefault();
 
-        const res = await axios('/add/Managecomment', {
+        const res = await axios('/add/Servicecomment', {
             method: 'POST',
             data: {
                 'area': area,
@@ -150,7 +150,7 @@ function Managementboardinfo() {
 
             }
 
-            const res = await axios('/modify/Managementdata', {
+            const res = await axios('/modify/Servicedata', {
                 method: 'POST',
                 data: { 'modify': dataToModify },
                 headers: new Headers()
@@ -207,7 +207,7 @@ function Managementboardinfo() {
                             <div className='note'>
                                 {el.nickname == nickname ?
                                     <div style={{ padding: '10px' }}>
-                                        <button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Managementrevise?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}>수정</Link></button>&nbsp;&nbsp;
+                                        <button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Servicetrevise?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}>수정</Link></button>&nbsp;&nbsp;
                                         <button className='loginbtn' onClick={() => deletepost(el)}>삭제</button>
                                     </div>
                                     : <div>
@@ -282,4 +282,4 @@ function Managementboardinfo() {
 function Posts() {
     alert('로그인을 해주세요.')
 }
-export default Managementboardinfo;
+export default Serviceboardinfo;

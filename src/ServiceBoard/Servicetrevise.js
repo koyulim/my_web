@@ -4,7 +4,7 @@ import axios from "axios";
 import moment from "moment";
 
 
-function Managementrevise() {
+function Servicetrevise() {
     
     const [sample1List, setSample1List] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -18,8 +18,8 @@ function Managementrevise() {
     const today = moment();
     const date = today.format('YYYY-MM-DD');
    
-    const getKeywordManagementData = async () => {
-        const res = await axios('/get/keywordManagementpostinfoData', {
+    const getKeywordEatData = async () => {
+        const res = await axios('/get/keywordServicepostinfoData', {
             method: 'POST',
             data: {
                 'title' : titles,
@@ -32,14 +32,14 @@ function Managementrevise() {
     }
 
     useEffect(() => {
-        getKeywordManagementData();
+        getKeywordEatData();
     }, []);
 
 
     const addData = async (e) => {
         e.preventDefault();
     
-        const res = await axios('/add/Managementpost', {
+        const res = await axios('/add/Servicepost', {
           method: 'POST',
           data: {
             'area': area,
@@ -53,7 +53,7 @@ function Managementrevise() {
     
         if (res.data) {
           alert('게시글이 수정되었습니다.');
-          window.location.replace('/Joblist/Management');
+          window.location.replace('/Joblist/Service');
         }
       }
     
@@ -67,10 +67,10 @@ function Managementrevise() {
 
 
       const deletepost = async (el) => {
-
+        console.log("test")
         if (el.title) {
             const target = { id: el.id }
-            const res = await axios('/delete/ManagementnotedataRevise', {
+            const res = await axios('/delete/ServicenotedataRevise', {
                 method: 'POST',
                 data: { 'delete': target }
             })
@@ -110,5 +110,6 @@ function Managementrevise() {
             <br /></>
     )
 
+
 }
-export default Managementrevise;
+export default Servicetrevise;

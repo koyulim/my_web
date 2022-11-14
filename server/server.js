@@ -41,6 +41,8 @@ const {
   Eatnote,
   Managepost,
   Managecomment,
+  Servicepost,
+  Servicecomment,
   Sequelize: { Op }
 } = require('./models');
 const managecomment = require('./models/managecomment');
@@ -48,6 +50,30 @@ sequelize.query('SET NAMES utf8;');
 
 app.post('/delete/Eatnotedata', (req, res) => {
   Eatnote.destroy({
+    where: { id: req.body.delete.id }
+  })
+    .then(res.sendStatus(200))
+    .catch(err => { throw err })
+})
+
+app.post('/delete/EatnotedataRevise', (req, res) => {
+  Eatpost.destroy({
+    where: { id: req.body.delete.id }
+  })
+    .then(res.sendStatus(200))
+    .catch(err => { throw err })
+})
+
+app.post('/delete/ManagementnotedataRevise', (req, res) => {
+  Managepost.destroy({
+    where: { id: req.body.delete.id }
+  })
+    .then(res.sendStatus(200))
+    .catch(err => { throw err })
+})
+
+app.post('/delete/ServicenotedataRevise', (req, res) => {
+  Servicepost.destroy({
     where: { id: req.body.delete.id }
   })
     .then(res.sendStatus(200))
@@ -112,6 +138,26 @@ app.post('/add/Managementpost', (req, res) => {
     })
 })
 
+app.post('/add/Servicepost', (req, res) => {
+  console.log(req.body);
+
+  Servicepost.create({
+    area: req.body.area,
+    jobname: req.body.jobname,
+    nickname: req.body.nickname,
+    title: req.body.title,
+    content: req.body.content,
+    date: req.body.date
+  })
+    .then(result => {
+      res.send(result)
+    })
+    .catch(err => {
+      console.log(err)
+      throw err;
+    })
+})
+
 app.post('/add/Eatcomment', (req, res) => {
   console.log(req.body);
 
@@ -136,6 +182,26 @@ app.post('/add/Managecomment', (req, res) => {
   console.log(req.body);
 
   Managecomment.create({
+    area: req.body.area,
+    jobname: req.body.jobname,
+    nickname: req.body.nickname,
+    title: req.body.title,
+    date: req.body.date,
+    comment: req.body.comment,
+  })
+    .then(result => {
+      res.send(result)
+    })
+    .catch(err => {
+      console.log(err)
+      throw err;
+    })
+})
+
+app.post('/add/Servicecomment', (req, res) => {
+  console.log(req.body);
+
+  Servicecomment.create({
     area: req.body.area,
     jobname: req.body.jobname,
     nickname: req.body.nickname,
@@ -219,6 +285,14 @@ app.post('/get/keywordManagementpostData', (req, res) => {
     .catch(err => { throw err })
 })
 
+app.post('/get/keywordServicepostData', (req, res) => {
+  Servicepost.findAll({
+    where: [{ area: req.body.area }, { jobname: req.body.jobname }]
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
 app.post('/get/keywordEatnoteData', (req, res) => {
   Eatnote.findAll({
     where: { [Op.or]: [{ user_name: req.body.my_name }, { my_name: req.body.my_name }] }
@@ -262,6 +336,14 @@ app.post('/get/keywordManagementpostinfoData', (req, res) => {
     .catch(err => { throw err })
 })
 
+app.post('/get/keywordServicepostinfoData', (req, res) => {
+  Servicepost.findAll({
+    where: [{ title: req.body.title }, { area: req.body.area }, { jobname: req.body.jobname }, { nickname: req.body.nickname }]
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
 app.post('/get/keywordEatcommentData', (req, res) => {
   Eatcomment.findAll({
     where: [{ title: req.body.title }, { area: req.body.area }, { jobname: req.body.jobname }]
@@ -272,6 +354,14 @@ app.post('/get/keywordEatcommentData', (req, res) => {
 
 app.post('/get/keywordManagementcommentData', (req, res) => {
   Managecomment.findAll({
+    where: [{ title: req.body.title }, { area: req.body.area }, { jobname: req.body.jobname }]
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
+app.post('/get/keywordServicecommentData', (req, res) => {
+  Servicecomment.findAll({
     where: [{ title: req.body.title }, { area: req.body.area }, { jobname: req.body.jobname }]
   })
     .then(result => { res.send(result) })
@@ -294,6 +384,14 @@ app.post('/delete/Managementdata', (req, res) => {
     .catch(err => { throw err })
 })
 
+app.post('/delete/Servicedata', (req, res) => {
+  Servicepost.destroy({
+    where: { id: req.body.delete.id }
+  })
+    .then(res.sendStatus(200))
+    .catch(err => { throw err })
+})
+
 app.post('/delete/Eatcommentdata', (req, res) => {
   Eatcomment.destroy({
     where: { id: req.body.delete.id }
@@ -310,11 +408,19 @@ app.post('/delete/Managementcommentdata', (req, res) => {
     .catch(err => { throw err })
 })
 
+app.post('/delete/Servicrcommentdata', (req, res) => {
+  Servicecomment.destroy({
+    where: { id: req.body.delete.id }
+  })
+    .then(res.sendStatus(200))
+    .catch(err => { throw err })
+})
+
 app.post('/modify/Managementdata', (req, res) => {
   Managecomment.update({ comment: req.body.modify.comment }, {
     where: { id: req.body.modify.id }
   })
-  Eatcomment.update({ date: req.body.modify.date }, {
+  Managecomment.update({ date: req.body.modify.date }, {
     where: { id: req.body.modify.id }
   })
     .then(result => { res.send(result) })
@@ -326,6 +432,17 @@ app.post('/modify/Eatdata', (req, res) => {
     where: { id: req.body.modify.id }
   })
   Eatcomment.update({ date: req.body.modify.date }, {
+    where: { id: req.body.modify.id }
+  })
+    .then(result => { res.send(result) })
+    .catch(err => { throw err })
+})
+
+app.post('/modify/Servicedata', (req, res) => {
+  Servicecomment.update({ comment: req.body.modify.comment }, {
+    where: { id: req.body.modify.id }
+  })
+  Servicedata.update({ date: req.body.modify.date }, {
     where: { id: req.body.modify.id }
   })
     .then(result => { res.send(result) })

@@ -40,10 +40,8 @@ let sequelize = new Sequelize(
     db.Eatnote = require('./eatnote')(sequelize, Sequelize);
     db.Managepost = require('./managepost')(sequelize, Sequelize);
     db.Managecomment = require('./managecomment')(sequelize, Sequelize);
-
-
-
-
+    db.Servicepost = require('./servicepost')(sequelize, Sequelize);
+    db.Servicecomment = require('./servicecomment')(sequelize, Sequelize);
 
 db.secret = '(9*)5$&!3%^0%^@@2$1!#5@2!4';
 module.exports = db;
