@@ -147,9 +147,7 @@ function Serviceboardinfo() {
                 comment: comment,
                 date: date + ('   (수정됨)'),
                 id: el.id
-
             }
-
             const res = await axios('/modify/Servicedata', {
                 method: 'POST',
                 data: { 'modify': dataToModify },
@@ -167,7 +165,6 @@ function Serviceboardinfo() {
     return (
         <>
             <br />
-
             <Modal
                 className='Modal2'
                 isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(true)}>
