@@ -20,7 +20,7 @@ function Calculation() {
     const [hour, setHour] = useState("");
     const [calculations, setCalculations] = useState('');
     const [day, setDay] = useState("");
-    const [results, setResult] = useState("");
+    const [results, setResult] = useState("0");
     const [weekoffs, setWeekoffs] = useState("");
     const [taxs, setTaxs] = useState("");
     const [apprenticeships, setApprenticeships] = useState("");
