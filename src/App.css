@@ -163,19 +163,19 @@ nav {
 }
 
 .nav-header {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 550;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 50px;
+  padding-left: 40px;
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
 .nav-toggle {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #660000;
   background: transparent;
   border-color: transparent;
@@ -218,18 +218,18 @@ nav {
 }
 
 .card {
-  width: 40%;
+  width: 55%;
   padding: 10%;
   border: 3px solid rgb(243, 171, 179);
   border-radius: 50%;
   margin: 10px;
   color: #660000;
   background-color: #f3c6cb;
-  transform: translate(25%);
+  transform: translate(10%);
 }
 
 .card-img-top {
-  height: 5rem;
+  height: 3.5rem;
   object-fit: cover;
 }
 
@@ -241,8 +241,9 @@ nav {
 }
 
 .slidepadding {
-  padding-left: 80px;
-  padding-right: 80px;
+  font-size: 14px;
+  padding-left: 70px;
+  padding-right: 70px;
   margin: 0;
 }
 
@@ -258,7 +259,7 @@ nav {
   padding-left: 80px;
   padding-right: 80px;
   height: 150px;
-  width: 150px;
+  width: 35%;
   display: inline-block;
   text-align: center;
 }
@@ -376,7 +377,21 @@ nav {
   .slidepadding {
     padding-left: 30px;
     padding-right: 30px;
+  }
 
+  .slidepadding {
+    font-size: 100%;
+    padding-left: 70px;
+    padding-right: 70px;
+    margin: 0;
+  }
+  .slideimgpadding {
+    padding-left: 80px;
+    padding-right: 80px;
+    height: 150px;
+    width: 10%;
+    display: inline-block;
+    text-align: center;
   }
 
   .Carousel {

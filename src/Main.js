@@ -89,7 +89,7 @@ function Main() {
                     <br />
                     <br />
                   </Card.Text>
-                  <Button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#660000' }} href="http://localhost:3000/Eat">이동하기</a></Button>
+                  <Button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#660000' }} href="Eat">이동하기</a></Button>
                 </Card.Body>
               </Card>
             </Col>
