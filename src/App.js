@@ -45,9 +45,13 @@ function App() {
         <nav>
           <div className='nav-center'>
             <div className='nav-header'>
-              <div>
-                <Link style={{ textDecoration: 'none', color: '#660000' }} to='Main'>알바 정보 공유 사이트</Link>
-              </div>
+                <img src="img/Main.png"></img>&nbsp;
+                <div className='main_text_center'>
+                <Link style={{ textDecoration: 'none', color: 'white' }} to='Main'>Job review
+                <br/>
+                <div className='main_text'>알바 정보 공유 사이트</div></Link>
+                </div>
+                &nbsp;
               <button className='nav-toggle' onClick={toggleLinks}>
                 <BsFillFilePersonFill /><AiFillCaretDown />
               </button>
@@ -59,15 +63,15 @@ function App() {
                     ?
                     <div className='links'>
                       <a>{sessionStorage.getItem('nickname')}님&nbsp;&nbsp;&nbsp;</a>
-                      <Link style={{ textDecoration: 'none', color: '#660000' }} to='Main'>Home&nbsp;&nbsp;&nbsp;</Link>
-                      <Link style={{ textDecoration: 'none', color: '#660000' }} to='joblist/Eatnoteboard'>Mail&nbsp;&nbsp;&nbsp;</Link>
-                      <a style={{ color: '#660000' }} onClick={Logout} >로그아웃&nbsp;&nbsp;&nbsp;</a>
+                      <Link style={{ textDecoration: 'none', color: 'white' }} to='Main'>Home&nbsp;&nbsp;&nbsp;</Link>
+                      <Link style={{ textDecoration: 'none', color: 'white' }} to='joblist/Eatnoteboard'>Mail&nbsp;&nbsp;&nbsp;</Link>
+                      <a style={{ color: '#FFCD4A' }} onClick={Logout} >로그아웃&nbsp;&nbsp;&nbsp;</a>
                       <br />
                     </div>
                     :
                     <div className='links'>
-                      <Link style={{ textDecoration: 'none', color: '#660000' }} to='Main'>Home&nbsp;&nbsp;&nbsp;</Link>
-                      <Link style={{ textDecoration: 'none', color: '#660000' }} to='Login'>로그인&nbsp;&nbsp;&nbsp;</Link>
+                      <Link style={{ textDecoration: 'none', color: 'white' }} to='Main'>Home&nbsp;&nbsp;&nbsp;</Link>
+                      <Link style={{ textDecoration: 'none', color: '#FFCD4A' }} to='Login'>로그인&nbsp;&nbsp;&nbsp;</Link>
                       <br />
                     </div>
                 }

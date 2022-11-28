@@ -41,21 +41,33 @@ const addDatas = async (e) => {
   return (
     <>
       <Modal className= 'Modal2' isOpen={isOpen}>
-        <div className='note'>
+        <div className='note2'>
                     <div className='right'><button onClick={handleClickCancel} >x</button></div>
                     <br/>
-                    <h3>답장 보내기</h3>
+                    <h3 style={{ fontWeight: 'bold', textAlign: 'center' }}>답장 보내기</h3>
                     <br/>
                     <div>
-                    <div>받은 사람 : {user_name}</div>
+                    <div style={{ padding: '10px' }}>
+                      <a style={{ fontWeight: 'bold'}}>보낸 사람 : </a>
+                      <a className="madaltext">{nickname}</a>
+                    </div>
+                    <div style={{ padding: '10px' }}>
+                      <a style={{ fontWeight: 'bold'}}>받은 사람 : </a>
+                      <a className="madaltext">{user_name}</a>
+                    </div>
+                    <div style={{ padding: '10px' }}>
+                      <a style={{ fontWeight: 'bold' }} >보낸 시간 :</a> 
+                      <a>{dates}</a>
+                    </div>
                     <hr/>
-                    <div>보낸 시간 : {dates}</div>
+                    <div style={{ fontWeight: 'bold', textAlign: 'center'}} >내용</div>
+                    <br/>
+                    <div style={{textAlign: 'center' }}>
+                    <input type={'text'} placeholder="comment..." style={{ width: '200px', height: '200px',textAlign: 'center' }} onChange={(e) => conversationUpdate(e)} ></input>
+                    <br/>
+                    <br/>
+                    </div>
                     <hr/>
-                    <div>내용</div>
-                    <br/>
-                    <input type={'text'} placeholder="comment..." style={{ width: '300px', height: '200px' }} onChange={(e) => conversationUpdate(e)} ></input>
-                    <br/>
-                    <br/>
                     <form className='center' method='POST' onSubmit={addDatas}><button className='loginbtn' >보내기</button>
                     </form>
                     </div>

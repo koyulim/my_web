@@ -8,6 +8,7 @@ import Modals from 'Modals';
 
 function Eatnoteboard() {
 
+    const nickname = sessionStorage.getItem('nickname');
     const [searchParams, setSearchParams] = useSearchParams();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const modalname = searchParams.get('user_namer');
@@ -74,30 +75,39 @@ function Eatnoteboard() {
 
 
     return (
-        <>
-            <h1 style={{ color: '#660000' }}>쪽지함</h1>
+        <div style={{ backgroundColor: '#cecece' }}>
+            <h1 style={{ color: '#202f57' }}>쪽지함</h1>
             
             <Modal
                 className= 'Modal'
                 isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(true)}>
                 {modalname == my_name ?
                     <div>
-                        <div className='note'>
+                        <div className='note2'>
                             <div className='right'><button onClick={() => setModalIsOpen(false)}>x</button></div>
                             <br />
-                            <h3>받은 쪽지</h3>
+                            <h3 style={{ fontWeight: 'bold', textAlign: 'center' }}>받은 쪽지</h3>
                             <br />
                             <div>
-                                <div>보낸 사람 : {modalnams}</div>
-                                <hr />
-                                <div>보낸 시간 : {modaldate}</div>
-                                <hr />
-                                <div>내용</div>
+                                <div style={{ padding: '10px' }}>
+                                <a style={{ fontWeight: 'bold'}} >보낸 사람 : </a>
+                                <a className="madaltext">{modalnams}</a>
+                                </div>
+                                <div style={{ padding: '10px' }}>
+                                <a style={{ fontWeight: 'bold' }} >받는 사람 : </a>
+                                <a className="madaltext" >{nickname}</a>
+                                </div>
+                                <div style={{ padding: '10px' }}>
+                                <a style={{ fontWeight: 'bold' }} >보낸 시간 : </a>
+                                <a>{modaldate}</a>
+                                </div>
+                                <hr/>
+                                <div style={{ fontWeight: 'bold', textAlign: 'center'  }} >내용</div>
                                 <br />
-                                <div>{modalcontent}</div>
+                                <div style={{textAlign: 'center' }} >{modalcontent}</div>
                                 <br />
                                 <hr/>
-                                <div>
+                                <div  style={{textAlign: 'center' }}>
                                     <button className="loginbtn" onClick={handleClick}>답장 보내기</button> 
                                     <Modals
                                         isOpen={isOpen}
@@ -134,7 +144,7 @@ function Eatnoteboard() {
             </Modal>
 
             <br />
-            <h2 style={{ color: '#660000' }}>받은 쪽지</h2>
+            <h2 style={{ color: '#202f57' }}>받은 쪽지</h2>
             {sample1List.length !== 0 ?
                 sample1List.map((el, key) => {
                     return (
@@ -144,17 +154,16 @@ function Eatnoteboard() {
                                 <button className="loginbtnright" onClick={() => deletenotepost(el.id)} >삭제</button>
                                     <Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnoteboard?user_namer=${el.user_name}&my_namer=${el.my_name}&date=${el.date}&content=${el.conversation}&id=${el.id}` }}>
                                         <div onClick={() => setModalIsOpen(true)}>
-                                            <div style={{ padding: '10px', color: '#660000' }} ><span> 보낸 사람 : {el.my_name} </span></div> 
-                                            <div className='textsize' style={{ color: '#660000' }} > 내용 : {el.conversation}</div>
+                                            <div style={{ padding: '10px', color: '#202f57', fontWeight: 'bold', margin: '5px' }} ><span> 보낸 사람 : {el.my_name} </span></div> 
+                                            <h2 className='textsize' style={{ color: '#202f57', fontWeight: 'bold', margin: '5px' }} > &nbsp;내용 : {el.conversation}</h2>
                                         </div>
                                     </Link>
                                 </div>
-                                <div className='right' style={{ padding: '10px' }} >
+                                <div className='right' style={{ padding: '10px', color: '#202f57', fontWeight: 'bold' }} >
                                 <span> {el.date} </span> 
                                 <br/>
                                 </div>
                             </div>
-                            <hr />
                         </div>
                     )
                 })
@@ -162,7 +171,7 @@ function Eatnoteboard() {
             }
 
             <br />
-            <h2 style={{ color: '#660000' }}>보낸 쪽지</h2>
+            <h2 style={{ color: '#202f57' }}>보낸 쪽지</h2>
             {sample2List.length !== 0 ?
                 sample2List.map((el, key) => {
                     return (
@@ -173,22 +182,21 @@ function Eatnoteboard() {
                                     <Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnoteboard?user_namer=${el.user_name}&my_namer=${el.my_name}&date=${el.date}&content=${el.conversation}&id=${el.id}` }}>
                                     <div onClick={() => setModalIsOpen(true)}>
 
-                                        <div style={{ padding: '10px', color: '#660000' }} ><span> 받은 사람 : {el.user_name} </span> </div>
-                                        <div className='textsize' style={{ color: '#660000' }} > 내용 : {el.conversation}</div>
+                                        <div style={{ padding: '10px', color: '#202f57', fontWeight: 'bold', margin: '5px' }} ><span> 받은 사람 : {el.user_name} </span> </div>
+                                        <h2 className='textsize' style={{ color: '#202f57', fontWeight: 'bold', margin: '5px' }} > &nbsp;내용 : {el.conversation}</h2>
                                     </div>
                                 </Link></div>
-                                <div className='right' style={{ padding: '10px' }} >
+                                <div className='right' style={{ padding: '10px', color: '#202f57', fontWeight: 'bold' }} >
                                 <span> {el.date} </span> 
                                 <br/>
                                 </div>
                             </div>
-                            <hr />
                         </div>
                     )
                 })
                 : <div>쪽지가 없습니다.</div>
             }
-        </>
+        </div>
 
     )
 }

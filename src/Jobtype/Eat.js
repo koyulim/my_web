@@ -52,7 +52,8 @@ function Eat() {
         <br />
         <h3>지역 | 가게 이름 | 날짜</h3>
         <hr color='#660000'/>
-        {sample1List.length !== 0 ?
+       
+          {Array.isArray(sample1List)?
           sample1List.map((el, key) => {
             return (
               <div key={key}>
@@ -71,7 +72,8 @@ function Eat() {
               </div>
             )
           })
-          : <div>데이터가 없습니다.</div>}
+        :null}
+          
       </div>
     </>
   )

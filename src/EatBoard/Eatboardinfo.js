@@ -171,21 +171,32 @@ function Eatboardinfo() {
             <Modal
             className= 'Modal2'
                 isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(true)}>
-                <div className='note'>
+                <div className='note2'>
                     <div className='right'><button onClick={() => setModalIsOpen(false)}>x</button></div>
                     <br />
-                    <h3>쪽지 보내기</h3>
+                    <h3 style={{ fontWeight: 'bold', textAlign: 'center' }} >쪽지 보내기</h3>
                     <br />
                     <div>
-                        <div>받은 사람 : {nicknames}</div>
-                        <hr />
-                        <div>보낸 시간 : {dates}</div>
-                        <hr />
-                        <div>내용</div>
+                        <div style={{ padding: '10px' }}>
+                            <a style={{ fontWeight: 'bold'}}>보낸 사람 : </a>
+                            <a  className="madaltext">{nickname}</a>
+                        </div>
+                        <div style={{ padding: '10px' }}>
+                            <a style={{ fontWeight: 'bold'}}>받은 사람 : </a>
+                            <a  className="madaltext">{nicknames}</a>
+                        </div>
+                        <div style={{ padding: '10px' }}>
+                            <a style={{ fontWeight: 'bold'}}>보낸 시간 : </a>
+                            <a>{dates}</a>
+                        </div>
+                        <hr/>
+                        <div style={{ fontWeight: 'bold', textAlign: 'center'  }} >내용</div>
                         <br />
-                        <input type={'text'} placeholder="comment..." style={{ width: '300px', height: '200px' }} onChange={(e) => conversationUpdate(e)} ></input>
+                        <div style={{textAlign: 'center' }}>
+                        <input type={'text'} placeholder="comment..." style={{ width: '200px', height: '200px' }} onChange={(e) => conversationUpdate(e)} ></input>
                         <br />
                         <br />
+                        </div>
                         <form className='center' method='POST' onSubmit={addDatas}><button className='loginbtn' >보내기</button>
                         </form>
                     </div>
