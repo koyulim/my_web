@@ -55,7 +55,7 @@ class Findnickname extends Component {
                                     </div>
                                 )
                             })
-                            : <div>이메일과 닉네임 모두를 정확하게 입력해 주세요.</div>
+                            : <div style={{color: 'red'}} >이메일과 닉네임 모두를 정확하게 입력해 주세요.</div>
                         }
 
 

@@ -38,7 +38,7 @@ function Findnickname() {
                                 </div>
                             )
                         })
-                        : <div>이메일을 정확히 입력해 주세요.</div>}
+                        : <div style={{color: 'red'}}>이메일을 정확히 입력해 주세요.</div>}
                 </a>
                 <h4>
                     <button className='loginbtn' onClick={getemailData} >조회하기</button>
