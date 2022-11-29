@@ -9,7 +9,6 @@ function Eatboard() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [sample1List, setSample1List] = useState([]);
-
     const nickname = sessionStorage.getItem('nickname');
     const [searchParams, setSearchParams] = useSearchParams();
     const area = searchParams.get('area');
@@ -31,25 +30,54 @@ function Eatboard() {
     }, []);
 
     return (
-        <>
-            <a className='login' ><h1>{jobname}</h1>{area}</a>
+        <div style={{ background: '#cecece', height: '830px' }}>
+            <div>
+            <hr style={{ width: '300px', height: '3px', backgroundColor: '#202f57', border: 'none'}}/>
+            <h1 style={{ color: '#202f57' }} >{jobname}</h1>
+            <a style={{ color: '#202f57' }} >[{area}]</a>
+            <br/>
+            <br/>
+            <hr style={{ width: '300px', height: '3px', backgroundColor: '#202f57', border: 'none'}}/>
+            </div>
             <br />
             <br />
-            <h2 className='login'>게시글</h2>
-            <hr color='#660000' />
+            <br/>
+            <div className="board3">게시글</div>
+            <div style={{ display: 'inline-block' }} >
+            <table class="type09">
+            <thead style={{ textAlign: 'center'}}>
+            <tr>
+              <th style={{ backgroundColor: 'white', color: '#202f57' }} >제목</th>
+              <td style={{ backgroundColor: 'white', color: '#202f57' }} >내용</td>
+              <td style={{ backgroundColor: 'white', color: '#202f57' }} >날짜</td>
+            </tr>
+          </thead>
+            </table>
+            </div>
             {sample1List.length !== 0 ?
                 sample1List.map((el, key) => {
                     return (
                         <div key={key}>
-                            <div className='note'>
-                                <Link className='textsize' style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Eatboardinfo?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}> {el.title}</Link>
-                                <div>
+                            <div style={{ display: 'inline-block' }} >
+                            <table class="type09">
+                                <tbody>
+                                <Link style={{ textDecoration: 'none', color: '#202f57' }} to={{ pathname: `/Joblist/Eatboardinfo?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}> 
+                                <tr>
+                                    <th scope="row">
+                                    {el.title}
+                                    </th>
+                                    <td>
                                     <span> {el.nickname} </span>
-                                </div>
-                                <span> {el.date} </span>
+                                    </td>
+                                    <td>
+                                    <span> {el.date} </span>
+                                    </td>
+                                </tr>
+                                </Link>
+                                </tbody>
+                            </table>
 
                             </div>
-                            <hr />
                         </div>
                     )
                 })
@@ -59,11 +87,12 @@ function Eatboard() {
 
             {
                 nickname !== null
-                    ? <div className="btn_area"><button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Eatpost?area=${area}&jobname=${jobname}` }}><AiFillEdit size='30px' /></Link></button></div>
+                    ? <div className="btn_area"><button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#202f57' }} to={{ pathname: `/Joblist/Eatpost?area=${area}&jobname=${jobname}` }}><AiFillEdit size='30px' /></Link></button></div>
                     : <div className="btn_area" ><button className='loginbtn' style={{ padding: '5px' }} onClick={Posts}><AiFillEdit size='30px' /></button></div>
 
             }
-        </>
+            
+        </div>
     )
 }
 

@@ -163,48 +163,60 @@ function Serviceboardinfo() {
     }
 
     return (
-        <>
+        <div style={{ background: '#cecece', height: '840px' }}>
             <br />
             <Modal
                 className='Modal2'
                 isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(true)}>
-                <div className='note'>
+                <div className='note2'>
                     <div className='right'><button onClick={() => setModalIsOpen(false)}>x</button></div>
                     <br />
-                    <h3>쪽지 보내기</h3>
+                    <h3 style={{ fontWeight: 'bold', textAlign: 'center' }} >쪽지 보내기</h3>
                     <br />
                     <div>
-                        <div>받은 사람 : {nicknames}</div>
+                        <div style={{ padding: '10px' }}>
+                            <a style={{ fontWeight: 'bold' }}>보낸 사람 : </a>
+                            <a className="madaltext">{nickname}</a>
+                        </div>
+                        <div style={{ padding: '10px' }}>
+                            <a style={{ fontWeight: 'bold' }}>받은 사람 : </a>
+                            <a className="madaltext">{nicknames}</a>
+                        </div>
+                        <div style={{ padding: '10px' }}>
+                            <a style={{ fontWeight: 'bold' }}>보낸 시간 : </a>
+                            <a>{dates}</a>
+                        </div>
                         <hr />
-                        <div>보낸 시간 : {dates}</div>
-                        <hr />
-                        <div>내용</div>
+                        <div style={{ fontWeight: 'bold', textAlign: 'center' }} >내용</div>
                         <br />
-                        <input type={'text'} placeholder="comment..." style={{ width: '300px', height: '200px' }} onChange={(e) => conversationUpdate(e)} ></input>
-                        <br />
-                        <br />
+                        <div style={{ textAlign: 'center' }}>
+                            <input type={'text'} placeholder="comment..." style={{ width: '200px', height: '200px' }} onChange={(e) => conversationUpdate(e)} ></input>
+                            <br />
+                            <br />
+                        </div>
                         <form className='center' method='POST' onSubmit={addDatas}><button className='loginbtn' >보내기</button>
                         </form>
                     </div>
                 </div>
             </Modal>
             <br />
-            <h2 className='login'>상세내용</h2>
-            <hr color='#660000' />
+            <div className="board">
+            <h2 >상세내용</h2>
+            <hr color='#202f57' />
             {sample1List.length !== 0 ?
                 sample1List.map((el, key) => {
                     return (
                         <div key={key}>
-                            <div className='note'>
-                                <div className='textsize'>제목 : {el.title}</div>
-                                <div style={{ padding: '10px' }} ><span> 내용 : {el.content} </span> </div>
+                            <div >
+                                <div style={{ padding: '10px', fontSize: '20px' }}>제목 : {el.title}</div>
+                                <div style={{ padding: '10px', fontSize: '20px' }} ><span> 내용 : {el.content} </span> </div>
                                 <div style={{ padding: '10px' }} ><span> 작성자 : {el.nickname} </span></div>
                                 <div style={{ padding: '10px' }} ><span> {el.date} </span></div>
                             </div>
-                            <div className='note'>
+                            <div >
                                 {el.nickname == nickname ?
                                     <div style={{ padding: '10px' }}>
-                                        <button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#660000' }} to={{ pathname: `/Joblist/Servicetrevise?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}>수정</Link></button>&nbsp;&nbsp;
+                                        <button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#202f57' }} to={{ pathname: `/Joblist/Servicerevise?area=${el.area}&jobname=${el.jobname}&nickname=${el.nickname}&title=${el.title}` }}>수정</Link></button>&nbsp;&nbsp;
                                         <button className='loginbtn' onClick={() => deletepost(el)}>삭제</button>
                                     </div>
                                     : <div>
@@ -217,44 +229,47 @@ function Serviceboardinfo() {
                                     </div>
                                 }
                             </div>
-                            <hr />
+                            <hr color='#202f57'/>
                         </div>
                     )
                 })
                 : <div>데이터가 없습니다.</div>
             }
+            
+            </div>
             <br />
             <br />
-            <div>
-                <h3 className='login' >댓글</h3>
-                <hr color='#660000' />
+            <div className="board">
+                <h3 style={{ textAlign: 'left', marginLeft: '27px' }} >댓글</h3>
+                <hr/>
 
                 {sample2List.length !== 0 ?
                     sample2List.map((el, key) => {
                         return (
                             <div key={key}>
-                                <div className='note' >
-                                    <div className='textsize'> 내용 : {el.comment}</div>
-                                    <div style={{ padding: '10px' }} ><span> 작성자 : {el.nickname} </span> </div>
-                                    <div style={{ padding: '10px' }} ><span> {el.date} </span> </div>
-                                </div>
+                                <div style={{ marginLeft: '20px' }} >
+                                    <div className="left">
+                                        <div >
+                                            {el.nickname == nickname ?
+                                                <div>
+                                                    <button className="loginbtnright" onClick={() => modify(el)}>수정</button>
+                                                    <button className="loginbtnright" onClick={() => deletecommentpost(el)}>삭제</button>
+                                                </div>
+                                                : <div>
+                                                    {nickname !== null ?
+                                                        <button className="loginbtnright" style={{ padding: '5px' }} onClick={() => setModalIsOpen(true)} >쪽지보내기</button>
+                                                        :
+                                                        <div><button className="loginbtnright" style={{ padding: '5px' }} onClick={Posts}>쪽지보내기</button></div>
 
-                                <div className='note'>
-                                    {el.nickname == nickname ?
-                                        <div style={{ padding: '10px' }}>
-                                            <button className='loginbtn' onClick={() => modify(el)}>수정</button>
-                                            <a>&nbsp;</a>
-                                            <button className='loginbtn' onClick={() => deletecommentpost(el)}>삭제</button>
-                                        </div>
-                                        : <div>
-                                            {nickname !== null ?
-                                                <button className='loginbtn' style={{ padding: '5px' }} onClick={() => setModalIsOpen(true)} >쪽지보내기</button>
-                                                :
-                                                <div><button className='loginbtn' style={{ padding: '5px' }} onClick={Posts}>쪽지보내기</button></div>
-
+                                                    }
+                                                </div>
                                             }
                                         </div>
-                                    }
+                                        <div style={{ marginLeft: '20px', fontWeight: 'bold', margin: '5px' }} ><span> 작성자 : {el.nickname} </span> </div>
+                                        <div style={{ marginLeft: '20px', margin: '5px', fontSize: '20px' }}> 내용 : {el.comment}</div>
+                                        <div style={{ marginLeft: '20px', fontWeight: 'bold', margin: '5px', fontSize: '10px' }} ><span> {el.date} </span></div>
+
+                                    </div>
                                 </div>
                                 <hr />
                             </div>
@@ -262,7 +277,7 @@ function Serviceboardinfo() {
                     })
                     : <div className='login'>댓글이 없습니다.</div>
                 }
-                
+
                 <input type={'text'} placeholder="comment..." style={{ width: '300px' }} onChange={(e) => commentUpdate(e)} ></input>
                 <a>&nbsp;</a>
                 <a>&nbsp;</a>
@@ -272,7 +287,7 @@ function Serviceboardinfo() {
                 }
             </div>
 
-        </>
+        </div>
     )
 }
 

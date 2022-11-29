@@ -43,7 +43,7 @@ function Management() {
 
   return (
 
-    <>
+    <div>
       <div className='login'>
         <h2>Management List</h2>
         <input type='text' maxLength='10' placeholder='지역 검색' onChange={(e) => areaUpdate(e)} />
@@ -53,34 +53,101 @@ function Management() {
         <button className='loginbtn' onClick={getKeywordmanageData}>Search</button>
         <a>&nbsp;</a>
         <button className='loginbtn' onClick={getData}>ListAll</button>
-
         <br />
         <br />
-        <h3>지역 | 가게 이름 | 날짜</h3>
-        <hr color='#660000'/>
+        <br />
 
-        {sample1List.length !== 0 ?
-          sample1List.map((el, key) => {
-            return (
-              <div key={key}>
-                <div className='note'>
-                  {/* <span>  {el.url} </span>/ */}
-                  <span> {el.area} </span> |
-                  <span> {el.jobname} </span> |
-                  <span> {el.date} </span>
+
+        <div className="board1">
+          <div style={{ display: 'inline-block' }}>
+            <table class="type09">
+              <thead style={{ textAlign: 'center' }}>
+                <tr>
+                  <th>지역</th>
+                  <td>회사명/공고제목</td>
+                  <td>날짜</td>
+                  <td>보기</td>
+                </tr>
+              </thead>
+            </table>
+            <hr style={{ width: '1000px', height: '1px', border: 'none'}}/>
+          </div>
+          {Array.isArray(sample1List) ?
+            sample1List.map((el, key) => {
+              return (
+                <div key={key}>
+                  <div style={{ display: 'inline-block' }}>
+                    <table class="type09">
+                      <tbody style={{ textAlign: 'center' }}>
+                        <tr>
+                          <th> {el.area} </th>
+                          <td> {el.jobname} </td>
+                          <td> {el.date} </td>
+                          <td><a style={{ padding: '10px' }}>
+                            <button className='loginbtn' onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
+                            <a>&nbsp;&nbsp;</a>
+                            <button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#202f57' }} to={{ pathname: `/Joblist/Managementboard?area=${el.area}&jobname=${el.jobname}` }} >후기글 보기</Link></button>
+                          </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <hr style={{ width: '1250px', height: '1px', backgroundColor: '#cecece', border: 'none'}}/>
                 </div>
-                <div className='note' style={{ padding: '10px' }}>
-                  <button className='loginbtn' onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
-                  <a>&nbsp;&nbsp;</a>
-                  <button className='loginbtn' ><Link style={{ textDecoration: 'none', color: '#660000' }} to={{pathname: `/Joblist/Managementboard?area=${el.area}&jobname=${el.jobname}`}}>후기글 보기</Link></button>
+              )
+            })
+            : null}
+        </div>
+        <br/>
+        <br/>
+
+        <div className="board2">
+          <div style={{ display: 'inline-block' }}>
+            <table class="type09">
+              <thead style={{ textAlign: 'center' }}>
+                <tr>
+                  <th>지역</th>
+                  <td>공고제목</td>
+                  <td>날짜</td>
+                </tr>
+              </thead>
+            </table>
+            <hr style={{ width: '300px', height: '1px', border: 'none'}}/>
+          </div>
+          {Array.isArray(sample1List) ?
+            sample1List.map((el, key) => {
+              return (
+                <div key={key}>
+
+                  <div style={{ display: 'inline-block' }}>
+                    <table class="type09">
+                      <tbody style={{ textAlign: 'center' }}>
+                        <tr>
+                          <th> {el.area} </th> 
+                          <td> {el.jobname} </td> 
+                          <td> {el.date} </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div style={{ padding: '10px' }}>
+                            <button className='loginbtn' onClick={() => window.open('https://www.albamon.com/recruit/view/gi?AL_GI_No=' + el.url + '&mj_stat=0&optgf=', '_blank')} >자세히 보기</button>
+                            <a>&nbsp;&nbsp;</a>
+                            <button className='loginbtn'><Link style={{ textDecoration: 'none', color: '#202f57' }} to={{ pathname: `/Joblist/Managementboard?area=${el.area}&jobname=${el.jobname}` }} >후기글 보기</Link></button>
+                          </div>
+                          
+                  </div>
+                  <hr style={{ width: '350px', height: '1px', backgroundColor: '#cecece', border: 'none'}}/>
                 </div>
-                <hr />
-              </div>
-            )
-          })
-          : <div>데이터가 없습니다.</div>}
+              )
+            })
+            : null}
+        </div>
+
+
+
       </div>
-    </>
+    </div>
   )
 }
 
