@@ -46,21 +46,20 @@ function Managementpost() {
 
 
   return (
-    <div>
-      
+    <div style={{ background: '#cecece', height: '840px' }}>
       <h2 className='login'>
         글쓰기
       </h2>
-      <hr color='#660000'/>
-      <div className='note'>
-      <div className='note'>
-        <div className='note'>제목</div> <input type={'text'} placeholder="제목" style={{ width: '300px' }} onChange={(e) => titleUpdate(e)}></input>
+      <hr color='#202f57'/>
+      <div >
+      <div >
+        <div style={{ color: '#202f57' }} >제목</div> <input type={'text'} placeholder="제목" style={{ width: '300px' }} onChange={(e) => titleUpdate(e)}></input>
       </div>
-      <div className='note' style={{ padding: '10px' }} >내용</div><input  type={'text'} placeholder="내용" style={{ width: '300px', height: '200px' }} onChange={(e) => contentUpdate(e)} ></input>
+      <div  style={{ padding: '10px', color: '#202f57' }} >내용</div><input  type={'text'} placeholder="내용" style={{ width: '300px', height: '200px' }} onChange={(e) => contentUpdate(e)} ></input>
       <br />
       <br />
       </div>
-      <hr color='#660000'/>
+      <hr color='#202f57'/>
       <form method='POST' onSubmit={addData} ><button className='loginbtn'>올리기</button></form>
 
     </div>
