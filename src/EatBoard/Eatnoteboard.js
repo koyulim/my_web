@@ -180,7 +180,6 @@ function Eatnoteboard() {
                 })
                 : <div>쪽지가 없습니다.</div>
             }
-
             <br />
             <h2 style={{ color: '#202f57' }}>보낸 쪽지</h2>
             {sample2List.length !== 0 ?
