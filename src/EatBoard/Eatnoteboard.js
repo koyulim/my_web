@@ -124,7 +124,7 @@ function Eatnoteboard() {
                         <div className='note2'>
                             <div className='right'><button onClick={() => setModalIsOpen(false)}>x</button></div>
                             <br />
-                            <h3 style={{ fontWeight: 'bold', textAlign: 'center' }}>받은 쪽지</h3>
+                            <h3 style={{ fontWeight: 'bold', textAlign: 'center' }}>보낸 쪽지</h3>
                             <br />
                             <div>
                                 <div style={{ padding: '10px' }}>
