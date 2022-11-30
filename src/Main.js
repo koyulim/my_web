@@ -52,8 +52,8 @@ function Main() {
                 </div>
                 <br/>
                 <button style={{ border: '1px', borderRadius: '80px / 90px' , background: '#FFCD4A' ,color: '#660000' }} onClick={() => window.open('http://www.alba.co.kr/')} >click -&gt;</button>
-                <br/>      
-                <br/>        
+                <br/>
+                <br/>
               </div>
               <br />
               <br />
@@ -76,97 +76,78 @@ function Main() {
         </Slider>
       </div>
       <div className='cardmargin'>
-        <Container>
-          <Row>
-            <Col>
-              <Card>
+        <Container >
+              <Card >
                 <br/>
-                  <img variant="top" src="img/Eat.png" /> 
-                  <div style={{ float: 'right', textAlign: 'center' }}>
-                    <div style={{ fontSize: '20px', fontWeight: 'bold' }} >외식.음료</div>
-                    <br/>
-                    요식업 쪽에서 아르바이트
-                    <br />정보가 궁금하다면?
-                    <br />
-                    <br />
-                    <div>
-                  <button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#161f35' }} href="Eat">이동하기</a></button>
-                  </div>   
-                  </div>
+                {/* <div style={{ display: 'inline' }} > */}
+                  <img variant="top" src="img/Eat.png" />
+                    <div className = "card_content" >
+                      <div style={{ fontSize: '20px', fontWeight: 'bold'}} >외식.음료</div>
+                        <div style={{ marginTop: '10px', marginBottom: '20px' ,marginLeft: '15px'}}>
+                        요식업 쪽에서 아르바이트
+                        <br />정보가 궁금하다면?
+                        </div>
+                        <div>
+                          <button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#161f35' }} href="Eat">이동하기</a></button>
+                        </div>
+                    </div>
+                {/* </div> */}
                   <br/>
-                  <br/>         
+                  <br/>
               </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
               <Card>
               <br/>
                   <img variant="top" src="img/Management.png" />
-                  <div style={{ float: 'right', textAlign: 'center' }}>
+                  <div className = "card_content">
                     <div style={{ fontSize: '20px', fontWeight: 'bold' }} >매장관리.판매</div>
-                    <br/>
+                    <div style={{ marginTop: '10px', marginBottom: '20px' ,marginLeft: '15px'}}>
                     유통하고 판매하는 쪽에서
                     <br />아르바이트 정보가<br /> 궁금하다면?
-                    <br />
-                    <br />
+                    </div>
                     <div>
                   <button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#161f35' }} href="Management">이동하기</a></button>
-                  </div>   
+                  </div>
                   </div>
                   <br/>
-                  <br/>         
+                  <br/>
               </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
               <Card>
               <br/>
-                  <img variant="top" src="img/Service.png" /> 
-                  <div style={{ float: 'right', textAlign: 'center' }}>
+                  <img variant="top" src="img/Service.png" />
+                  <div className = "card_content">
                     <div style={{ fontSize: '20px', fontWeight: 'bold' }} >서비스</div>
-                    <br/>
+                    <div style={{ marginTop: '10px', marginBottom: '20px' ,marginLeft: '15px'}}>
                     서비스 쪽에서 아르바이트
                     <br />정보가 궁금하다면?
-                    <br />
-                    <br />
+                    </div>
                     <div>
                   <button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#161f35' }} href="Service">이동하기</a></button>
-                  </div>   
+                  </div>
                   </div>
                   <br/>
-                  <br/>         
+                  <br/>
               </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
               <Card>
               <br/>
-                  <img variant="top" src="img/Trevise.png" /> 
-                 <div style={{ float: 'right', textAlign: 'center' }}>
-                    <div style={{ fontSize: '20px', fontWeight: 'bold' }} >시급계산기&nbsp;&nbsp;</div>
-                    <br/>
-                     아르바이트 시급&nbsp;&nbsp;&nbsp;&nbsp;
-                    <br />가격이 궁금하다면?&nbsp;&nbsp;&nbsp;&nbsp;
-                    <br />
-                    <br />
+                  <img variant="top" src="img/Trevise.png" />
+                  <div className = "card_content">
+                  <div style={{ fontSize: '20px', fontWeight: 'bold' }} >시급계산기&nbsp;&nbsp;</div>
+                  <div style={{ marginTop: '10px', marginBottom: '20px' ,marginLeft: '15px'}}>
+                    아르바이트 시급 얼만지
+                    <br />합산이 궁금하다면?
+                    </div>
                     <div>
-                  <button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#161f35' }} href="Calculation">이동하기</a></button>&nbsp;&nbsp;&nbsp;
-                  </div>   
-                  </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button className='loginbtn' variant="primary"><a style={{ textDecoration: 'none', color: '#161f35' }} href="Calculation">이동하기</a></button>
+                  </div>
+                  </div>
                   <br/>
-                  <br/>         
+                  <br/>
               </Card>
-            </Col>
-          </Row>
-          <Row></Row>
         </Container>
       </div>
       {/* 작은화면 */}
       <div className='cardmarginsmall'>
-        <Container>
+        <Container className = "main_card_container">
           <Row>
             <Col>
               <Card>

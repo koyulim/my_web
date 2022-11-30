@@ -24,7 +24,7 @@ body {
   display: inline;
 }
 
-.board1{ 
+.board1{
  display: none;
 }
 
@@ -81,10 +81,10 @@ table.type09 tbody td {
 }
 
 .btn {
-  background-color: #eb7d8a;
-  color: #660000;
+  background-color: #cecece;
   border: 10px;
   padding: 6px;
+  border-radius: 80px / 90px ;
 }
 
 .inlin {
@@ -126,7 +126,7 @@ table.type09 tbody td {
 .calculatormain {
   background-color: #FFCD4A;
   padding: 10px;
-  border-radius: 100px ;  
+  border-radius: 100px ;
   width: 200px;
   text-align: center;
   display: inline-block;
@@ -200,8 +200,18 @@ table.type09 tbody td {
 }
 
 .login {
+  margin-top: 80px;
   color: #202f57;
   text-align: center;
+}
+
+.input_content {
+    outline: none;
+    border-radius: 0px;
+    line-height: 2rem;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 .signup {
@@ -357,7 +367,7 @@ nav {
 
 .Modal2 {
   position: fixed;
-  top: 9%;
+  top: 3%;
   /* bottom: 9%; */
   border: 1px solid #ccc;
   background: #202f57;
@@ -368,8 +378,25 @@ nav {
   right: 7%;
 }
 
-@media screen and (min-width: 800px) {
+.cardmargin .card_content{
+  display: inline-block;
+  float: 'right';
+  text-align: 'center';
+  padding: 0px;
+}
 
+@media (max-width: 400px) {
+  .slidepadding{
+    font-size: 10px;
+  }
+  
+}
+
+@media screen and (min-width: 800px) {
+  .card_content{ 
+    float: 'right';
+    text-align: 'center'
+  }
   /*전체화면*/
   .nav-center {
     margin: 0 auto;
@@ -448,11 +475,12 @@ nav {
   }
 
   .container {
-    text-align: center;
+     text-align: center;
     display: grid;
     grid-template-columns:
       [jobtype-start] 25% [jobtype-end jobborde-start] 25% [jobborde-end jobborde-start] 25% [jobborde-end] 25%;
   }
+
 
   .slidepadding {
     padding-top: 0px;
@@ -495,7 +523,7 @@ nav {
     padding: 5px;
     left: 40%;
     right: 40%;
-  } 
+  }
 
   .Modal2 {
     position: fixed;
@@ -523,8 +551,8 @@ nav {
   .board2{
     display: none;
    }
-   
-   .board1{ 
+
+   .board1{
     display: inline;
    }
 
@@ -541,7 +569,7 @@ nav {
     color: white;
     /* border-bottom: 1px solid #cecece; */
     background: #202f57;
-  
+
   }
   table.type09 thead td {
     font-size: medium;
@@ -552,7 +580,7 @@ nav {
     color: white;
     /* border-bottom: 1px solid #cecece; */
     background: #202f57;
-  
+
   }
   table.type09 tbody th {
     width: 300px;
@@ -580,3 +608,4 @@ nav {
     display: inline-block;
   }
 }
+

@@ -27,7 +27,7 @@ function Findnickname() {
             <div className='login'>
                 <h1>닉네임 찾기</h1>
                 <h4>이메일</h4>
-                <input type='email' placeholder='이메일을 입력하시오.' onChange={(e) => emailUpdate(e)} />
+                <input className = "input_content" type='email' placeholder='이메일을 입력하시오.' onChange={(e) => emailUpdate(e)} />
                 <h4></h4>
                 <a>
                     {sample1List.length !== 0 ?

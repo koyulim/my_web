@@ -132,14 +132,14 @@ function Calculation() {
                     (
                         Btnweekoff === true ?
                             <div>
-                                <button className='btn' style={{ color: '#202f57' }} onClick={weekoff2} >제외</button>&nbsp;
-                                <button className='loginbtn' style={{ color: '#202f57' }} onClick={weekoff}>포함</button>
+                                <button className='loginbtn' style={{ color: '#202f57' }} onClick={weekoff2} >제외</button>&nbsp;
+                                <button className='btn' style={{ color: '#202f57' }} onClick={weekoff}>포함</button>
                             </div>
                             :
                             <div>
                                 <div>
-                                    <button className='loginbtn' style={{ color: '#202f57' }} onClick={weekoff2} >제외</button>&nbsp;
-                                    <button className='btn' style={{ color: '#202f57' }} onClick={weekoff}>포함</button>
+                                    <button className='btn' style={{ color: '#202f57' }} onClick={weekoff2} >제외</button>&nbsp;
+                                    <button className='loginbtn' style={{ color: '#202f57' }} onClick={weekoff}>포함</button>
                                 </div>
                             </div>
                     )
@@ -159,25 +159,25 @@ function Calculation() {
                     (
                         Btntax === true ?
                             <div>
-                                <button className='btn' style={{ color: '#202f57' }} onClick={tax}>없음</button>&nbsp;
-                                <button className='loginbtn' style={{ color: '#202f57' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
-                                <button className='loginbtn' style={{ color: '#202f57' }} onClick={tax2}>3.3%(원천징수)</button>
+                                <button className='loginbtn' style={{ color: '#202f57' }} onClick={tax}>없음</button>&nbsp;
+                                <button className='btn' style={{ color: '#202f57' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
+                                <button className='btn' style={{ color: '#202f57' }} onClick={tax2}>3.3%(원천징수)</button>
                             </div>
                             :
                             (
                                 Btntax2 === true ?
                                     <div>
-                                        <button className='loginbtn' style={{ color: '#202f57' }} onClick={tax}>없음</button>&nbsp;
-                                        <button className='btn' style={{ color: '#202f57' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
-                                        <button className='loginbtn' style={{ color: '#202f57' }} onClick={tax2}>3.3%(원천징수)</button>
+                                        <button className='btn' style={{ color: '#202f57' }} onClick={tax}>없음</button>&nbsp;
+                                        <button className='loginbtn' style={{ color: '#202f57' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
+                                        <button className='btn' style={{ color: '#202f57' }} onClick={tax2}>3.3%(원천징수)</button>
                                     </div>
                                     :
                                     (
                                         Btntax3 === true ?
                                             <div>
-                                                <button className='loginbtn' style={{ color: '#202f57' }} onClick={tax}>없음</button>&nbsp;
-                                                <button className='loginbtn' style={{ color: '#202f57' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
-                                                <button className='btn' style={{ color: '#202f57' }} onClick={tax2}>3.3%(원천징수)</button>
+                                                <button className='btn' style={{ color: '#202f57' }} onClick={tax}>없음</button>&nbsp;
+                                                <button className='btn' style={{ color: '#202f57' }} onClick={tax1}>9.32%(4대보험)</button>&nbsp;
+                                                <button className='loginbtn' style={{ color: '#202f57' }} onClick={tax2}>3.3%(원천징수)</button>
                                             </div>
                                             :
                                             <div></div>
@@ -200,14 +200,14 @@ function Calculation() {
                     (
                         Btnapprenticeship === true ?
                             <div>
-                                <button className='btn' style={{ color: '#202f57' }} onClick={apprenticeship}>제외</button>&nbsp;
-                                <button className='loginbtn' style={{ color: '#202f57' }} onClick={apprenticeship1}>포함</button>
+                                <button className='loginbtn' style={{ color: '#202f57' }} onClick={apprenticeship}>제외</button>&nbsp;
+                                <button className='btn' style={{ color: '#202f57' }} onClick={apprenticeship1}>포함</button>
                             </div>
                             :
                             <div>
                                 <div>
-                                    <button className='loginbtn' style={{ color: '#202f57' }} onClick={apprenticeship}>제외</button>&nbsp;
-                                    <button className='btn' style={{ color: '#202f57' }} onClick={apprenticeship1}>포함</button>
+                                    <button className='btn' style={{ color: '#202f57' }} onClick={apprenticeship}>제외</button>&nbsp;
+                                    <button className='loginbtn' style={{ color: '#202f57' }} onClick={apprenticeship1}>포함</button>
                                 </div>
                             </div>
                     )

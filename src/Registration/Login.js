@@ -32,14 +32,14 @@ function Login() {
 
     return (
         <>
-            <div className='login'>
+            <div className='login' >
                 <h1 className='loginmain'><AiOutlineUser size='100' />Login</h1>
                 <br />
                 <br />
                 <h4>닉네임</h4>
-                <input type='text' maxLength='10' placeholder='닉네임을 입력하시오.' onChange={(e) => nicknameUpdate(e)} />
+                <input className = "input_content" type='text' maxLength='10' placeholder='닉네임을 입력하시오.' onChange={(e) => nicknameUpdate(e)}/>
                 <h4>비밀번호</h4>
-                <input type='password' maxLength='20' placeholder='비밀번호를 입력하시오.' onChange={(e) => passwordUpdate(e)} />
+                <input className = "input_content" type='password' maxLength='20' placeholder='비밀번호를 입력하시오.' onChange={(e) => passwordUpdate(e)} />
                 <h4></h4>
                 <div>
                 {
