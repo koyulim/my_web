@@ -81,6 +81,8 @@ function App() {
         </nav>
         <Routes>
           <Route path='' element={<Navigate to='Main' replace />} />
+          {/* <Route path='/*' element={<Main />} /> */}
+
           <Route path='Main/*' element={<Main />} />
           <Route path='Joblist/*' element={<Joblist />} />
           <Route path='Login/*' element={<Login />} />
