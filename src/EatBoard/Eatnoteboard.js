@@ -77,9 +77,9 @@ function Eatnoteboard() {
     return (
         <div style={{ backgroundColor: '#cecece' }}>
             <h1 style={{ color: '#202f57' }}>쪽지함</h1>
-            
+
             <Modal
-                className= 'Modal'
+                className='Modal'
                 isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(true)}>
                 {modalname == my_name ?
                     <div>
@@ -90,29 +90,29 @@ function Eatnoteboard() {
                             <br />
                             <div>
                                 <div style={{ padding: '10px' }}>
-                                <a style={{ fontWeight: 'bold'}} >보낸 사람 : </a>
-                                <a className="madaltext">{modalnams}</a>
+                                    <a style={{ fontWeight: 'bold' }} >보낸 사람 : </a>
+                                    <a className="madaltext">{modalnams}</a>
                                 </div>
                                 <div style={{ padding: '10px' }}>
-                                <a style={{ fontWeight: 'bold' }} >받는 사람 : </a>
-                                <a className="madaltext" >{nickname}</a>
+                                    <a style={{ fontWeight: 'bold' }} >받는 사람 : </a>
+                                    <a className="madaltext" >{nickname}</a>
                                 </div>
                                 <div style={{ padding: '10px' }}>
-                                <a style={{ fontWeight: 'bold' }} >보낸 시간 : </a>
-                                <a>{modaldate}</a>
+                                    <a style={{ fontWeight: 'bold' }} >보낸 시간 : </a>
+                                    <a>{modaldate}</a>
                                 </div>
-                                <hr/>
-                                <div style={{ fontWeight: 'bold', textAlign: 'center'  }} >내용</div>
+                                <hr />
+                                <div style={{ fontWeight: 'bold', textAlign: 'center' }} >내용</div>
                                 <br />
-                                <div style={{textAlign: 'center' }} >{modalcontent}</div>
+                                <div style={{ textAlign: 'center' }} >{modalcontent}</div>
                                 <br />
-                                <hr/>
-                                <div  style={{textAlign: 'center' }}>
-                                    <button className="loginbtn" onClick={handleClick}>답장 보내기</button> 
+                                <hr />
+                                <div style={{ textAlign: 'center' }}>
+                                    <button className="loginbtn" onClick={handleClick}>답장 보내기</button>
                                     <Modals
                                         isOpen={isOpen}
                                         onCancel={handleModalCancel}
-                                        user_name = {modalnams} />
+                                        user_name={modalnams} />
                                     <a>&nbsp;&nbsp;</a>
                                     <button className="loginbtn" onClick={() => deletenotepost(ID)} >삭제</button>
                                 </div>
@@ -121,22 +121,33 @@ function Eatnoteboard() {
                     </div>
                     :
                     <div>
-                        <div className='note'>
+                        <div className='note2'>
                             <div className='right'><button onClick={() => setModalIsOpen(false)}>x</button></div>
                             <br />
-                            <h3>보낸 쪽지</h3>
+                            <h3 style={{ fontWeight: 'bold', textAlign: 'center' }}>받은 쪽지</h3>
                             <br />
                             <div>
-                                <div>받은 사람 : {modalname}</div>
+                                <div style={{ padding: '10px' }}>
+                                    <a style={{ fontWeight: 'bold' }} >받은 사람 : </a>
+                                    <a className="madaltext">{modalname}</a>
+                                </div>
+                                <div style={{ padding: '10px' }}>
+                                    <a style={{ fontWeight: 'bold' }} >보낸 사람 : </a>
+                                    <a className="madaltext" >{nickname}</a>
+                                </div>
+                                <div style={{ padding: '10px' }}>
+                                    <a style={{ fontWeight: 'bold' }} >받은 시간 : </a>
+                                    <a>{modaldate}</a>
+                                </div>
                                 <hr />
-                                <div>받은 시간 : {modaldate}</div>
-                                <hr />
-                                <div>내용</div>
+                                <div style={{ fontWeight: 'bold', textAlign: 'center' }} >내용</div>
                                 <br />
-                                <div>{modalcontent}</div>
+                                <div style={{ textAlign: 'center' }} >{modalcontent}</div>
                                 <br />
                                 <hr />
-                                <button className="loginbtn" onClick={() => deletenotepost(ID)} >삭제</button>
+                                <div style={{ textAlign: 'center' }}>
+                                    <button className="loginbtn" onClick={() => deletenotepost(ID)} >삭제</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -151,17 +162,17 @@ function Eatnoteboard() {
                         <div key={key}>
                             <div className='note'>
                                 <div className='left'>
-                                <button className="loginbtnright" onClick={() => deletenotepost(el.id)} >삭제</button>
+                                    <button className="loginbtnright" onClick={() => deletenotepost(el.id)} >삭제</button>
                                     <Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnoteboard?user_namer=${el.user_name}&my_namer=${el.my_name}&date=${el.date}&content=${el.conversation}&id=${el.id}` }}>
                                         <div onClick={() => setModalIsOpen(true)}>
-                                            <div style={{ padding: '10px', color: '#202f57', fontWeight: 'bold', margin: '5px' }} ><span> 보낸 사람 : {el.my_name} </span></div> 
+                                            <div style={{ padding: '10px', color: '#202f57', fontWeight: 'bold', margin: '5px' }} ><span> 보낸 사람 : {el.my_name} </span></div>
                                             <h2 className='textsize' style={{ color: '#202f57', fontWeight: 'bold', margin: '5px' }} > &nbsp;내용 : {el.conversation}</h2>
                                         </div>
                                     </Link>
                                 </div>
                                 <div className='right' style={{ padding: '10px', color: '#202f57', fontWeight: 'bold' }} >
-                                <span> {el.date} </span> 
-                                <br/>
+                                    <span> {el.date} </span>
+                                    <br />
                                 </div>
                             </div>
                         </div>
@@ -178,17 +189,17 @@ function Eatnoteboard() {
                         <div key={key}>
                             <div className='note'>
                                 <div className='left'>
-                                <button className="loginbtnright" onClick={() => deletenotepost(el.id)} >삭제</button>
+                                    <button className="loginbtnright" onClick={() => deletenotepost(el.id)} >삭제</button>
                                     <Link style={{ textDecoration: 'none', color: 'Black' }} to={{ pathname: `/Joblist/Eatnoteboard?user_namer=${el.user_name}&my_namer=${el.my_name}&date=${el.date}&content=${el.conversation}&id=${el.id}` }}>
-                                    <div onClick={() => setModalIsOpen(true)}>
+                                        <div onClick={() => setModalIsOpen(true)}>
 
-                                        <div style={{ padding: '10px', color: '#202f57', fontWeight: 'bold', margin: '5px' }} ><span> 받은 사람 : {el.user_name} </span> </div>
-                                        <h2 className='textsize' style={{ color: '#202f57', fontWeight: 'bold', margin: '5px' }} > &nbsp;내용 : {el.conversation}</h2>
-                                    </div>
-                                </Link></div>
+                                            <div style={{ padding: '10px', color: '#202f57', fontWeight: 'bold', margin: '5px' }} ><span> 받은 사람 : {el.user_name} </span> </div>
+                                            <h2 className='textsize' style={{ color: '#202f57', fontWeight: 'bold', margin: '5px' }} > &nbsp;내용 : {el.conversation}</h2>
+                                        </div>
+                                    </Link></div>
                                 <div className='right' style={{ padding: '10px', color: '#202f57', fontWeight: 'bold' }} >
-                                <span> {el.date} </span> 
-                                <br/>
+                                    <span> {el.date} </span>
+                                    <br />
                                 </div>
                             </div>
                         </div>

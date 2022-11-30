@@ -81,10 +81,10 @@ table.type09 tbody td {
 }
 
 .btn {
-  background-color: #eb7d8a;
-  color: #660000;
+  background-color: #cecece;
   border: 10px;
   padding: 6px;
+  border-radius: 80px / 90px ;
 }
 
 .inlin {
@@ -367,7 +367,7 @@ nav {
 
 .Modal2 {
   position: fixed;
-  top: 9%;
+  top: 3%;
   /* bottom: 9%; */
   border: 1px solid #ccc;
   background: #202f57;

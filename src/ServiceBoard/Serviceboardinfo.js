@@ -190,7 +190,7 @@ function Serviceboardinfo() {
                         <div style={{ fontWeight: 'bold', textAlign: 'center' }} >내용</div>
                         <br />
                         <div style={{ textAlign: 'center' }}>
-                            <input type={'text'} placeholder="comment..." style={{ width: '200px', height: '200px' }} onChange={(e) => conversationUpdate(e)} ></input>
+                            <input type={'text'} placeholder="comment..." style={{ width: '200px', height: '200px', textAlign: 'center'  }} onChange={(e) => conversationUpdate(e)} ></input>
                             <br />
                             <br />
                         </div>
