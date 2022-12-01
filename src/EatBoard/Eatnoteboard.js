@@ -75,7 +75,7 @@ function Eatnoteboard() {
 
 
     return (
-        <div style={{ backgroundColor: '#cecece' }}>
+        <div style={{ background: '#cecece', height: '830px' }}>
             <h1 style={{ color: '#202f57' }}>쪽지함</h1>
 
             <Modal
